@@ -11,7 +11,7 @@
     tools:context="com.classichu.classichu2.login.LoginFragment">
 
 
-    <EditText
+    <EditText xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/id_et_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,13 +47,12 @@
         android:layout_marginTop="20dp"
         android:text="@string/classic_app_login" />
 
-
     <TextView
-        android:id="@+id/id_tv_root"
+        android:id="@+id/id_tv_admin"
+        style="@style/ClassicTextSecondaryColored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        style="@style/ClassicTextSecondaryColored"
-        android:text="管理登录" />
+        android:text="@string/login_admin_login" />
 
 </LinearLayout>

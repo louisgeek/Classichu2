@@ -9,15 +9,17 @@
     <string name="classic_app_tip">提示</string>
     <string name="classic_app_login">登录</string>
 
+
     <string name="openDrawerContentDesc">openDrawerContentDesc</string>
     <string name="closeDrawerContentDesc">closeDrawerContentDesc</string>
 
 
 
-    <string name="appbar_title_login">登录</string>
+
 
     <string name="login_username_hint">请输入用户账号</string>
     <string name="login_password_hint">请输入用户密码</string>
+    <string name="login_admin_login">管理员登录</string>
 
 
     <string name="action_sign_in_short">action_sign_in_short</string>
