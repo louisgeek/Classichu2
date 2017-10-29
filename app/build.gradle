@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.androidConfig.compileSdkVersion
+    buildToolsVersion rootProject.ext.androidConfig.buildToolsVersion
+    defaultConfig {
+        applicationId "com.classichu.classichu2"
+        minSdkVersion rootProject.ext.androidConfig.minSdkVersion
+        targetSdkVersion rootProject.ext.androidConfig.targetSdkVersion
+        versionCode rootProject.ext.androidConfig.versionCode
+        versionName rootProject.ext.androidConfig.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    // core 相关
+    compile "com.android.support:appcompat-v7:$rootProject.ext.dependenciesConfig.supportLibraryVersion"
+    compile "com.android.support:cardview-v7:$rootProject.ext.dependenciesConfig.supportLibraryVersion"
+    compile "com.android.support:design:$rootProject.ext.dependenciesConfig.supportLibraryVersion"
+    compile "com.android.support:recyclerview-v7:$rootProject.ext.dependenciesConfig.supportLibraryVersion"
+    compile "com.android.support:support-v4:$rootProject.ext.dependenciesConfig.supportLibraryVersion"
+    compile "com.android.support:support-vector-drawable:$rootProject.ext.dependenciesConfig.supportLibraryVersion"
+    //
+    compile "com.android.support.constraint:constraint-layout:$rootProject.ext.dependenciesConfig.constraintLayoutVersion"
+    compile "com.google.guava:guava:$rootProject.ext.dependenciesConfig.guavaVersion"
+    //classic
+    compile "com.github.classichu:ClassicDialogView:$rootProject.ext.dependenciesConfig.classicDialogViewVersion"
+    compile "com.github.classichu:ClassicAdapter:$rootProject.ext.dependenciesConfig.classicAdapterVersion"
+    // rxjava2 相关
+    compile "io.reactivex.rxjava2:rxjava:$rootProject.ext.dependenciesConfig.rxJavaVersion"
+    compile "io.reactivex.rxjava2:rxandroid:$rootProject.ext.dependenciesConfig.rxAndroidVersion"
+    compile "com.jakewharton.rxbinding2:rxbinding:$rootProject.ext.dependenciesConfig.rxBindingVersion"
+    compile "com.tbruyelle.rxpermissions2:rxpermissions:$rootProject.ext.dependenciesConfig.rxPermissionsVersion"
+    // retrofit2 相关
+    compile "com.squareup.retrofit2:retrofit:$rootProject.ext.dependenciesConfig.retrofitVersion"
+    compile "com.squareup.retrofit2:converter-scalars:$rootProject.ext.dependenciesConfig.retrofitConverterScalarsVersion"
+    compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.dependenciesConfig.retrofitConverterGsonVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.dependenciesConfig.retrofitAdapterRxjava2Version"
+    // okhttp3 相关
+    compile "com.squareup.okhttp3:okhttp:$rootProject.ext.dependenciesConfig.okhttpVersion"
+    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.dependenciesConfig.okhttpLoggingInterceptorVersion"
+    // json 相关
+    compile "com.google.code.gson:gson:$rootProject.ext.dependenciesConfig.gsonVersion"
+    // glide 相关
+    compile "com.github.bumptech.glide:glide:$rootProject.ext.dependenciesConfig.glideVersion"
+    compile "jp.wasabeef:glide-transformations:$rootProject.ext.dependenciesConfig.glideTransformationsVersion"
+    //
+    compile "org.greenrobot:eventbus:$rootProject.ext.dependenciesConfig.eventBusVersion"
+    // jakewharton 相关
+    compile "com.jakewharton:disklrucache:$rootProject.ext.dependenciesConfig.diskLruCacheVersion"
+    compile "com.jakewharton:butterknife:$rootProject.ext.dependenciesConfig.butterKnifeVersion"
+    //
+    //
+
+    compile 'com.github.fondesa:recycler-view-divider:1.3.3'
+    compile 'com.jude:swipebackhelper:3.1.2'
+    compile 'com.jaeger.statusbaruitl:library:1.4.0'
+    compile 'cn.bingoogolapple:bga-swipebacklayout:1.0.8@aar'
+    compile 'com.android.support:support-v4:25.3.1'
+
+    testCompile 'junit:junit:4.12'
+}
