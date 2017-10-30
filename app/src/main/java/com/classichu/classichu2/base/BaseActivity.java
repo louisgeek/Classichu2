@@ -5,9 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by Classichu on 2017/9/30.
@@ -19,7 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected static String mTag;
     protected Activity mActivity;
     protected Context mContext;
-
+    private Unbinder mUnbinder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,6 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         mTag = this.getClass().getSimpleName();
         mContext = this;
         mActivity = this;
+        mUnbinder = ButterKnife.bind(this);
         /**
          * last
          */
@@ -53,6 +58,22 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected <V extends View> V findById(View view, int resId) {
         return (V) view.findViewById(resId);
+    }
+
+    protected void showSnack(int resId) {
+        Snackbar.make(getContentViewRootLayout(), resId, Snackbar.LENGTH_SHORT).show();
+    }
+
+    protected void showSnack(int resId, int duration) {
+        Snackbar.make(getContentViewRootLayout(), resId, duration).show();
+    }
+
+    protected void showSnack(CharSequence text) {
+        Snackbar.make(getContentViewRootLayout(), text, Snackbar.LENGTH_SHORT).show();
+    }
+
+    protected void showSnack(CharSequence text, int duration) {
+        Snackbar.make(getContentViewRootLayout(), text, duration).show();
     }
 
     protected void startAty(Class<?> clazz) {
@@ -129,4 +150,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mUnbinder != null) {
+            mUnbinder.unbind();
+        }
+    }
 }

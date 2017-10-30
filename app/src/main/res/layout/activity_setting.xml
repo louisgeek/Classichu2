@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".logic.setting.SettingActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/id_toolbar"
+        style="@style/ClassicToolbar"
+         />
+
+    <EditText
+        android:id="@+id/id_et_java_ip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/classic_item_comm_margin"
+        android:layout_marginRight="@dimen/classic_item_comm_margin"
+        android:layout_marginTop="@dimen/classic_item_comm_margin"
+        android:inputType="text"
+        android:hint="ip" />
+
+
+    <EditText
+        android:id="@+id/id_et_java_port"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/classic_item_comm_margin"
+        android:layout_marginRight="@dimen/classic_item_comm_margin"
+        android:layout_marginTop="@dimen/classic_item_comm_margin"
+        android:inputType="number"
+        android:hint="port" />
+
+
+</LinearLayout>

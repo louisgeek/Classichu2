@@ -8,7 +8,7 @@
     android:layout_marginTop="30dp"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.classichu.classichu2.login.LoginFragment">
+    tools:context=".logic.login.LoginFragment">
 
 
     <EditText xmlns:android="http://schemas.android.com/apk/res/android"
@@ -22,7 +22,8 @@
         android:inputType="text"
         android:maxLines="1"
         android:paddingBottom="20dp"
-        android:paddingTop="20dp" />
+        android:paddingTop="20dp"
+        android:text="5820" />
 
 
     <EditText
@@ -52,7 +53,8 @@
         style="@style/ClassicTextSecondaryColored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
+        android:padding="@dimen/classic_item_comm_big_padding"
         android:text="@string/login_admin_login" />
 
 </LinearLayout>

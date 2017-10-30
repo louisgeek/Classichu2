@@ -1,13 +1,5 @@
 [
     {
-        "merged": "D:\\ee\\NEW\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\ic_launcher.png",
-        "source": "D:\\ee\\NEW\\Classichu2\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "D:\\ee\\NEW\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\ic_launcher_round.png",
-        "source": "D:\\ee\\NEW\\Classichu2\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
-    },
-    {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\ic_launcher.png",
         "source": "D:\\LouisGit\\study\\Classichu2\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },

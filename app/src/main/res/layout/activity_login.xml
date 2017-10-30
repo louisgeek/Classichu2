@@ -4,13 +4,12 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.classichu.classichu2.login.LoginActivity">
+    tools:context="com.classichu.classichu2.logic.login.LoginActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/id_toolbar"
         style="@style/ClassicToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+         />
 
 
     <FrameLayout

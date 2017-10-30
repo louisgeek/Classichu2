@@ -35,9 +35,9 @@ public class ToastTool {
         } else {
             mToast.setText(message);
             mToast.setDuration(duration);
-            if (gravity != 0) {
-                mToast.setGravity(gravity, 0, 0);
-            }
+        }
+        if (gravity != 0) {
+            mToast.setGravity(gravity, 0, 0);
         }
         return mToast;
     }
@@ -47,35 +47,37 @@ public class ToastTool {
      *
      * @param message
      */
-    public static void showShort(String message) {
-        initToast(message, Toast.LENGTH_SHORT, 0).show();
+    public static void show(String message) {
+        initToast(message, Toast.LENGTH_SHORT, Gravity.NO_GRAVITY).show();
     }
 
-    /**
-     * 长时间显示Toast
-     *
-     * @param message
-     */
-    public static void showLong(String message) {
-        initToast(message, Toast.LENGTH_LONG, 0).show();
+    public static void show(String message, int duration) {
+        initToast(message, duration, Gravity.NO_GRAVITY).show();
     }
 
-    /**
-     * 自定义显示Toast位置
-     *
-     * @param message
-     */
-    public static void showShortCenter(String message) {
+    public static void show(int resId) {
+        initToast(BaseTool.getAppContext().getText(resId), Toast.LENGTH_SHORT, Gravity.NO_GRAVITY).show();
+    }
+
+    public static void show(int resId, int duration) {
+        initToast(BaseTool.getAppContext().getText(resId), duration, Gravity.NO_GRAVITY).show();
+    }
+
+
+    public static void showCenter(String message) {
         initToast(message, Toast.LENGTH_SHORT, Gravity.CENTER).show();
     }
 
-    /**
-     * 自定义显示Toast位置
-     *
-     * @param message
-     */
-    public static void showLongCenter(String message) {
-        initToast(message, Toast.LENGTH_LONG, Gravity.CENTER).show();
+    public static void showCenter(String message, int duration) {
+        initToast(message, duration, Gravity.CENTER).show();
+    }
+
+    public static void showCenter(int resId) {
+        initToast(BaseTool.getAppContext().getText(resId), Toast.LENGTH_SHORT, Gravity.CENTER).show();
+    }
+
+    public static void showCenter(int resId, int duration) {
+        initToast(BaseTool.getAppContext().getText(resId), duration, Gravity.CENTER).show();
     }
 
     /**
@@ -86,7 +88,7 @@ public class ToastTool {
      * @return
      */
     private static Toast initImageToast(final String message, final Drawable drawable) {
-        Context appContext=BaseTool.getAppContext();
+        Context appContext = BaseTool.getAppContext();
         if (mImageToast == null) {
             mImageToast = new Toast(appContext);
             mImageToast.setDuration(Toast.LENGTH_SHORT);
@@ -127,7 +129,7 @@ public class ToastTool {
      * @return
      */
     public static void showImage(final String message, int imageResId) {
-        Context appContext=BaseTool.getAppContext();
+        Context appContext = BaseTool.getAppContext();
         Drawable drawable = VectorOrImageResHelper.getDrawable(imageResId);
         initImageToast(message, drawable).show();
     }

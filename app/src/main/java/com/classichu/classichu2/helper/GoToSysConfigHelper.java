@@ -61,13 +61,13 @@ public class GoToSysConfigHelper {
         }
         }catch (Exception e){
             Log.e("kkk 1", "e: "+e.getMessage());
-            ToastTool.showLong("kkk 1 e: "+e.getMessage());
+            ToastTool.show("kkk 1 e: "+e.getMessage());
            try {
                goToSysConfigAppInfoSettings2();
            }catch (Exception e1)
            {
                Log.e("kkk 2", "e1: "+e1.getMessage());
-               ToastTool.showLong("kkk 2 e1: "+e1.getMessage());
+               ToastTool.show("kkk 2 e1: "+e1.getMessage());
                goToSysConfigSettings();
            }
         }

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:2:1-26:12
+ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:2:1-35:12
 	package
 		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:3:5-39
 		INJECTED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml
@@ -13,86 +13,102 @@ ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:2:1-26:
 	android:versionCode
 		INJECTED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml
 		INJECTED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:6:5-67
+	android:name
+		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:6:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:7:5-79
+	android:name
+		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:7:22-76
+uses-permission#android.permission.CAMERA
+ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:8:5-65
+	android:name
+		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:8:22-62
 application
-ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:5:5-24:19
-MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\louisgeek\.android\build-cache\219b1e82eef310240fd6252c45a93d65683318c9\output\AndroidManifest.xml:26:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\louisgeek\.android\build-cache\866730d0f5d1847f541aedea7d9395257788e337\output\AndroidManifest.xml:9:5-20
-MERGED from [com.github.classichu:ClassicDialogView:1.1.0] C:\Users\louisgeek\.android\build-cache\34186162eddef0b2d6459ef0ee209211915d5bfd\output\AndroidManifest.xml:11:5-15:19
-MERGED from [com.github.classichu:ClassicAdapter:1.1.4] C:\Users\louisgeek\.android\build-cache\b2ba63aaecd580230d1a19ec78e5dca2a8012d6b\output\AndroidManifest.xml:11:5-15:19
-MERGED from [com.tbruyelle.rxpermissions2:rxpermissions:0.9.4] C:\Users\louisgeek\.android\build-cache\4fa8fc7e68fcf74f7b2b3ce18bf4350024cf2865\output\AndroidManifest.xml:11:5-20
-MERGED from [com.jaeger.statusbaruitl:library:1.4.0] C:\Users\louisgeek\.android\build-cache\bf92a323783df799109d99dc726d48ca929c3ba3\output\AndroidManifest.xml:11:5-20
-MERGED from [com.android.support:design:25.3.1] C:\Users\louisgeek\.android\build-cache\6bbf2a6ec717f8b7dfb872a2508d44a77b2c5183\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\louisgeek\.android\build-cache\0047377dccd165a4b65e4cd90beecb0510b8e19c\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\louisgeek\.android\build-cache\5ae98ad3891a0e1137b6deffd74e883e7a5e0f57\output\AndroidManifest.xml:26:5-20
-MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\louisgeek\.android\build-cache\ba58bf1c2d87ae78e2f4cffed19d0f5be09ef1e7\output\AndroidManifest.xml:26:5-20
-MERGED from [com.android.support:transition:25.3.1] C:\Users\louisgeek\.android\build-cache\7d8d220e6c51bfec2ae84a937852716df55ce547\output\AndroidManifest.xml:26:5-20
-MERGED from [com.android.support:support-v4:25.3.1] C:\Users\louisgeek\.android\build-cache\b872c5e7542c106c2bf98f612da71acf1eaaadf3\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\louisgeek\.android\build-cache\f4ee17233ca6d724c4a2ac27041b49706dbbdc04\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\louisgeek\.android\build-cache\2142f4efbcec835fcfef62d2eda4f53ed75be157\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\louisgeek\.android\build-cache\305469fbb4e8a9a2b6bf1ee4b01810b28292a155\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\louisgeek\.android\build-cache\6f07bd183e73e865d0510f431da96c3cdfde743d\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:support-compat:25.3.1] C:\Users\louisgeek\.android\build-cache\69b627cab05450f1627a461db9c9526c069be17f\output\AndroidManifest.xml:29:5-20
+ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:10:5-33:19
+MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\Classichu\.android\build-cache\ba0e64140a3039e1354eab07b9e64bd9e79c960d\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Classichu\.android\build-cache\694110c3e9906a7cdc7063adac722fa202514caf\output\AndroidManifest.xml:9:5-20
+MERGED from [com.github.classichu:ClassicDialogView:1.1.0] C:\Users\Classichu\.android\build-cache\46e13640d0681fd02e760d2cce36a61a266caa2e\output\AndroidManifest.xml:11:5-15:19
+MERGED from [com.github.classichu:ClassicAdapter:1.1.4] C:\Users\Classichu\.android\build-cache\1e40880653b798aa2cc0115a1ebec2984246031c\output\AndroidManifest.xml:11:5-15:19
+MERGED from [com.tbruyelle.rxpermissions2:rxpermissions:0.9.4] C:\Users\Classichu\.android\build-cache\93873805862f124c535885533225592f1f1d838c\output\AndroidManifest.xml:11:5-20
+MERGED from [com.jaeger.statusbaruitl:library:1.4.0] C:\Users\Classichu\.android\build-cache\89ba9adbbb725f2dffde93b373e9b9c33459371e\output\AndroidManifest.xml:11:5-20
+MERGED from [com.android.support:design:25.3.1] C:\Users\Classichu\.android\build-cache\f89ac0d96da777b58fae9db8117a596bad665332\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Classichu\.android\build-cache\5392e42d847474323dc0e9b9a1303fcc6a2075f5\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\Classichu\.android\build-cache\a14ac7e1226928b0ea77f3737e9b701ec366fed7\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\Classichu\.android\build-cache\37a9704126a5e771970900a53a08228d7581d4cd\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:transition:25.3.1] C:\Users\Classichu\.android\build-cache\1aa02733c59573fef2f4f68629b754faa18d0399\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\Classichu\.android\build-cache\c4768f8a44fa1ae759883385ee60dc09f9680ad9\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\Classichu\.android\build-cache\ab7c43a9472a373d00792657dbf039bc449ea64e\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\Classichu\.android\build-cache\78a0c986596de6e485ffd5205398f352d870cc7f\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\Classichu\.android\build-cache\365eddbe85125429b388da70a46240324f581c84\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\Classichu\.android\build-cache\02f406326b635ec06bb1a105704afc090f8d9a6c\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\Classichu\.android\build-cache\c5918612142ab4ab03f6b44b5034aff9b0626b4e\output\AndroidManifest.xml:29:5-20
 	android:label
-		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:9:9-41
+		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:14:9-41
 	android:supportsRtl
-		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:11:9-35
+		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:16:9-35
 	android:roundIcon
-		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:10:9-54
+		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:15:9-54
 	android:allowBackup
-		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:7:9-35
+		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:12:9-35
 	android:icon
-		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:8:9-43
+		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:13:9-43
 	android:theme
-		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:12:9-44
+		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:17:9-44
 	android:name
-		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:6:9-50
-activity#com.classichu.classichu2.MainActivity
-ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:13:9-15:20
+		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:11:9-50
+activity#com.classichu.classichu2.logic.main.MainActivity
+ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:18:9-20:20
 	android:name
-		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:13:19-47
-activity#com.classichu.classichu2.login.LoginActivity
-ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:17:9-23:20
+		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:18:19-58
+activity#com.classichu.classichu2.logic.login.LoginActivity
+ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:22:9-28:20
 	android:name
-		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:17:19-54
+		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:22:19-60
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:18:13-22:29
+ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:23:13-27:29
 action#android.intent.action.MAIN
-ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:19:17-69
+ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:24:17-69
 	android:name
-		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:19:25-66
+		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:24:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:21:17-77
+ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:26:17-77
 	android:name
-		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:21:27-74
+		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:26:27-74
+activity#com.classichu.classichu2.logic.setting.SettingActivity
+ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:30:9-32:20
+	android:name
+		ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:30:19-64
 uses-sdk
 INJECTED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\louisgeek\.android\build-cache\219b1e82eef310240fd6252c45a93d65683318c9\output\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\louisgeek\.android\build-cache\866730d0f5d1847f541aedea7d9395257788e337\output\AndroidManifest.xml:5:5-7:41
-MERGED from [com.github.classichu:ClassicDialogView:1.1.0] C:\Users\louisgeek\.android\build-cache\34186162eddef0b2d6459ef0ee209211915d5bfd\output\AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.classichu:ClassicAdapter:1.1.4] C:\Users\louisgeek\.android\build-cache\b2ba63aaecd580230d1a19ec78e5dca2a8012d6b\output\AndroidManifest.xml:7:5-9:41
-MERGED from [com.jakewharton.rxbinding2:rxbinding:2.0.0] C:\Users\louisgeek\.android\build-cache\5aa0e03afa4b3c6e39b9cc185d7938019624eb6d\output\AndroidManifest.xml:6:5-44
-MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] C:\Users\louisgeek\.android\build-cache\930cee084a24efaf1e20f3d38c1ed96d046ab104\output\AndroidManifest.xml:19:5-43
-MERGED from [com.tbruyelle.rxpermissions2:rxpermissions:0.9.4] C:\Users\louisgeek\.android\build-cache\4fa8fc7e68fcf74f7b2b3ce18bf4350024cf2865\output\AndroidManifest.xml:7:5-9:41
-MERGED from [jp.wasabeef:glide-transformations:2.0.1] C:\Users\louisgeek\.android\build-cache\68d47812da7f8a4df195c793ed0fe0f0c07e843c\output\AndroidManifest.xml:8:5-10:41
-MERGED from [com.jakewharton:butterknife:8.5.1] C:\Users\louisgeek\.android\build-cache\adffe0e533994a25c0a8ef9a16d2abe36ab60bb0\output\AndroidManifest.xml:5:5-43
-MERGED from [com.github.fondesa:recycler-view-divider:1.3.3] C:\Users\louisgeek\.android\build-cache\062771786d2efb6c4bb3f638f9e86a8817d22f65\output\AndroidManifest.xml:6:5-8:41
-MERGED from [com.jude:swipebackhelper:3.1.2] C:\Users\louisgeek\.android\build-cache\9466a0a54041cf13f09e86bcc65f3c04c7078399\output\AndroidManifest.xml:7:5-9:41
-MERGED from [com.jaeger.statusbaruitl:library:1.4.0] C:\Users\louisgeek\.android\build-cache\bf92a323783df799109d99dc726d48ca929c3ba3\output\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:design:25.3.1] C:\Users\louisgeek\.android\build-cache\6bbf2a6ec717f8b7dfb872a2508d44a77b2c5183\output\AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\louisgeek\.android\build-cache\0047377dccd165a4b65e4cd90beecb0510b8e19c\output\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\louisgeek\.android\build-cache\5ae98ad3891a0e1137b6deffd74e883e7a5e0f57\output\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\louisgeek\.android\build-cache\ba58bf1c2d87ae78e2f4cffed19d0f5be09ef1e7\output\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\louisgeek\.android\build-cache\3b67af6c1e69f60d84988c4f142a6702788c317f\output\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:transition:25.3.1] C:\Users\louisgeek\.android\build-cache\7d8d220e6c51bfec2ae84a937852716df55ce547\output\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:25.3.1] C:\Users\louisgeek\.android\build-cache\b872c5e7542c106c2bf98f612da71acf1eaaadf3\output\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\louisgeek\.android\build-cache\f4ee17233ca6d724c4a2ac27041b49706dbbdc04\output\AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\louisgeek\.android\build-cache\2142f4efbcec835fcfef62d2eda4f53ed75be157\output\AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\louisgeek\.android\build-cache\305469fbb4e8a9a2b6bf1ee4b01810b28292a155\output\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\louisgeek\.android\build-cache\6f07bd183e73e865d0510f431da96c3cdfde743d\output\AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-compat:25.3.1] C:\Users\louisgeek\.android\build-cache\69b627cab05450f1627a461db9c9526c069be17f\output\AndroidManifest.xml:21:5-23:58
-MERGED from [cn.bingoogolapple:bga-swipebacklayout:1.0.8] C:\Users\louisgeek\.android\build-cache\11143c5fe39e4db4bc1dfd36bf68f16be6a2bfd9\output\AndroidManifest.xml:6:5-8:41
+MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\Classichu\.android\build-cache\ba0e64140a3039e1354eab07b9e64bd9e79c960d\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Classichu\.android\build-cache\694110c3e9906a7cdc7063adac722fa202514caf\output\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.classichu:ClassicDialogView:1.1.0] C:\Users\Classichu\.android\build-cache\46e13640d0681fd02e760d2cce36a61a266caa2e\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.classichu:ClassicAdapter:1.1.4] C:\Users\Classichu\.android\build-cache\1e40880653b798aa2cc0115a1ebec2984246031c\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.jakewharton.rxbinding2:rxbinding:2.0.0] C:\Users\Classichu\.android\build-cache\cdfd1d1f20c0e3b92dea77a1fb7f395305001a31\output\AndroidManifest.xml:6:5-44
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] C:\Users\Classichu\.android\build-cache\cc7cef05cd21c7af998a489fd0013a552d2639e1\output\AndroidManifest.xml:19:5-43
+MERGED from [com.tbruyelle.rxpermissions2:rxpermissions:0.9.4] C:\Users\Classichu\.android\build-cache\93873805862f124c535885533225592f1f1d838c\output\AndroidManifest.xml:7:5-9:41
+MERGED from [jp.wasabeef:glide-transformations:2.0.1] C:\Users\Classichu\.android\build-cache\65c272d554dc4c95091012c0d5bc2471e8b7c4da\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.jakewharton:butterknife:8.8.1] C:\Users\Classichu\.android\build-cache\1fa4a7244c537ddb32035daef4910a108e095e65\output\AndroidManifest.xml:5:5-43
+MERGED from [com.github.fondesa:recycler-view-divider:1.3.3] C:\Users\Classichu\.android\build-cache\2b150a519f8f35a3168c8ad9fe91ed61ca4e6f51\output\AndroidManifest.xml:6:5-8:41
+MERGED from [com.jude:swipebackhelper:3.1.2] C:\Users\Classichu\.android\build-cache\972645808afd687894944ea754e1b11e9e5654bc\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.jaeger.statusbaruitl:library:1.4.0] C:\Users\Classichu\.android\build-cache\89ba9adbbb725f2dffde93b373e9b9c33459371e\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:25.3.1] C:\Users\Classichu\.android\build-cache\f89ac0d96da777b58fae9db8117a596bad665332\output\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Classichu\.android\build-cache\5392e42d847474323dc0e9b9a1303fcc6a2075f5\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\Classichu\.android\build-cache\a14ac7e1226928b0ea77f3737e9b701ec366fed7\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\Classichu\.android\build-cache\37a9704126a5e771970900a53a08228d7581d4cd\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\Classichu\.android\build-cache\e90b25e64e4adc769803c90f3850de35d56fe398\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:transition:25.3.1] C:\Users\Classichu\.android\build-cache\1aa02733c59573fef2f4f68629b754faa18d0399\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\Classichu\.android\build-cache\c4768f8a44fa1ae759883385ee60dc09f9680ad9\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\Classichu\.android\build-cache\ab7c43a9472a373d00792657dbf039bc449ea64e\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\Classichu\.android\build-cache\78a0c986596de6e485ffd5205398f352d870cc7f\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\Classichu\.android\build-cache\365eddbe85125429b388da70a46240324f581c84\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\Classichu\.android\build-cache\02f406326b635ec06bb1a105704afc090f8d9a6c\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\Classichu\.android\build-cache\c5918612142ab4ab03f6b44b5034aff9b0626b4e\output\AndroidManifest.xml:21:5-23:58
+MERGED from [cn.bingoogolapple:bga-swipebacklayout:1.0.8] C:\Users\Classichu\.android\build-cache\9dbb123c6957c93e98a3236598934b509c3b3086\output\AndroidManifest.xml:6:5-8:41
 	tools:overrideLibrary
-		ADDED from [com.android.support:design:25.3.1] C:\Users\louisgeek\.android\build-cache\6bbf2a6ec717f8b7dfb872a2508d44a77b2c5183\output\AndroidManifest.xml:23:9-59
+		ADDED from [com.android.support:design:25.3.1] C:\Users\Classichu\.android\build-cache\f89ac0d96da777b58fae9db8117a596bad665332\output\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
 		INJECTED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml
 		INJECTED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml
@@ -100,20 +116,20 @@ MERGED from [cn.bingoogolapple:bga-swipebacklayout:1.0.8] C:\Users\louisgeek\.an
 		INJECTED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml
 		INJECTED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml
 meta-data#android.support.VERSION
-ADDED from [com.android.support:cardview-v7:25.3.1] C:\Users\louisgeek\.android\build-cache\219b1e82eef310240fd6252c45a93d65683318c9\output\AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:design:25.3.1] C:\Users\louisgeek\.android\build-cache\6bbf2a6ec717f8b7dfb872a2508d44a77b2c5183\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\louisgeek\.android\build-cache\0047377dccd165a4b65e4cd90beecb0510b8e19c\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\louisgeek\.android\build-cache\5ae98ad3891a0e1137b6deffd74e883e7a5e0f57\output\AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\louisgeek\.android\build-cache\ba58bf1c2d87ae78e2f4cffed19d0f5be09ef1e7\output\AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\louisgeek\.android\build-cache\3b67af6c1e69f60d84988c4f142a6702788c317f\output\AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:transition:25.3.1] C:\Users\louisgeek\.android\build-cache\7d8d220e6c51bfec2ae84a937852716df55ce547\output\AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:support-v4:25.3.1] C:\Users\louisgeek\.android\build-cache\b872c5e7542c106c2bf98f612da71acf1eaaadf3\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\louisgeek\.android\build-cache\f4ee17233ca6d724c4a2ac27041b49706dbbdc04\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\louisgeek\.android\build-cache\2142f4efbcec835fcfef62d2eda4f53ed75be157\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\louisgeek\.android\build-cache\305469fbb4e8a9a2b6bf1ee4b01810b28292a155\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\louisgeek\.android\build-cache\6f07bd183e73e865d0510f431da96c3cdfde743d\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:support-compat:25.3.1] C:\Users\louisgeek\.android\build-cache\69b627cab05450f1627a461db9c9526c069be17f\output\AndroidManifest.xml:25:5-27:34
+ADDED from [com.android.support:cardview-v7:25.3.1] C:\Users\Classichu\.android\build-cache\ba0e64140a3039e1354eab07b9e64bd9e79c960d\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:design:25.3.1] C:\Users\Classichu\.android\build-cache\f89ac0d96da777b58fae9db8117a596bad665332\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Classichu\.android\build-cache\5392e42d847474323dc0e9b9a1303fcc6a2075f5\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\Classichu\.android\build-cache\a14ac7e1226928b0ea77f3737e9b701ec366fed7\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\Classichu\.android\build-cache\37a9704126a5e771970900a53a08228d7581d4cd\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\Classichu\.android\build-cache\e90b25e64e4adc769803c90f3850de35d56fe398\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:transition:25.3.1] C:\Users\Classichu\.android\build-cache\1aa02733c59573fef2f4f68629b754faa18d0399\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\Classichu\.android\build-cache\c4768f8a44fa1ae759883385ee60dc09f9680ad9\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\Classichu\.android\build-cache\ab7c43a9472a373d00792657dbf039bc449ea64e\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\Classichu\.android\build-cache\78a0c986596de6e485ffd5205398f352d870cc7f\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\Classichu\.android\build-cache\365eddbe85125429b388da70a46240324f581c84\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\Classichu\.android\build-cache\02f406326b635ec06bb1a105704afc090f8d9a6c\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\Classichu\.android\build-cache\c5918612142ab4ab03f6b44b5034aff9b0626b4e\output\AndroidManifest.xml:25:5-27:34
 	android:value
-		ADDED from [com.android.support:cardview-v7:25.3.1] C:\Users\louisgeek\.android\build-cache\219b1e82eef310240fd6252c45a93d65683318c9\output\AndroidManifest.xml:24:9-31
+		ADDED from [com.android.support:cardview-v7:25.3.1] C:\Users\Classichu\.android\build-cache\ba0e64140a3039e1354eab07b9e64bd9e79c960d\output\AndroidManifest.xml:24:9-31
 	android:name
-		ADDED from [com.android.support:cardview-v7:25.3.1] C:\Users\louisgeek\.android\build-cache\219b1e82eef310240fd6252c45a93d65683318c9\output\AndroidManifest.xml:23:9-47
+		ADDED from [com.android.support:cardview-v7:25.3.1] C:\Users\Classichu\.android\build-cache\ba0e64140a3039e1354eab07b9e64bd9e79c960d\output\AndroidManifest.xml:23:9-47

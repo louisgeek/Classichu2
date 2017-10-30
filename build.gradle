@@ -16,6 +16,7 @@ allprojects {
     repositories {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }//jcenter()镜像
         //jcenter() //http://jcenter.bintray.com/
+        mavenCentral()
         maven { url "https://jitpack.io" }
     }
 }
@@ -64,7 +65,7 @@ ext {
             glideVersion                   : '3.7.0',
             glideTransformationsVersion    : '2.0.1',
             //jakewharton 相关
-            butterKnifeVersion             : '8.5.1',
+            butterKnifeVersion             : '8.8.1',
             diskLruCacheVersion            : '2.0.2',
             //
             eventBusVersion                : '3.0.0',

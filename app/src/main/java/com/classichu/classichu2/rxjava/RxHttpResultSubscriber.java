@@ -1,7 +1,7 @@
 package com.classichu.classichu2.rxjava;
 
 
-import com.classichu.classichu2.base.FinalData;
+import com.classichu.classichu2.app.FinalData;
 import com.classichu.classichu2.custom.CLog;
 import com.classichu.classichu2.tool.NetWorkTool;
 import com.classichu.classichu2.tool.ToastTool;
@@ -31,7 +31,7 @@ public abstract class RxHttpResultSubscriber<T> implements RxHttpResult<T>, Subs
     @Override
     public void onNetWorkError(int code, String msg) {
         //simple
-        ToastTool.showShort(msg);
+        ToastTool.show(msg);
         CLog.e(msg);
         //
         onFinish();
