@@ -19,7 +19,7 @@ import java.util.List;
 public class MainAdapter extends ClassicRVHeaderFooterAdapter<PatientListBean> {
 
     public MainAdapter(Context mContext, List<PatientListBean> mDataList, int mItemLayoutId) {
-        super(mContext, mDataList, mItemLayoutId);
+        super(mContext, mItemLayoutId);
     }
 
     @Override

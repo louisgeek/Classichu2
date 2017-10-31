@@ -15,7 +15,7 @@ import java.util.List;
 public class PatientAdapter extends ClassicRVHeaderFooterAdapter<String>{
 
     public PatientAdapter(Context mContext, List<String> mDataList, int mItemLayoutId) {
-        super(mContext, mDataList, mItemLayoutId);
+        super(mContext, mItemLayoutId);
     }
 
     @Override

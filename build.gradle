@@ -44,7 +44,7 @@ ext {
             guavaVersion                   : '18.0',
             //classic
             classicDialogViewVersion       : '1.1.0',
-            classicAdapterVersion          : '1.1.4',
+            classicAdapterVersion          : '1.1.11',
             // rxjava2 相关
             rxJavaVersion                  : '2.1.0',
             rxAndroidVersion               : '2.0.1',

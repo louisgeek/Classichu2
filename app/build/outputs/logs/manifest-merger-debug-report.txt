@@ -30,7 +30,7 @@ ADDED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml:10:5-33
 MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\Classichu\.android\build-cache\ba0e64140a3039e1354eab07b9e64bd9e79c960d\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Classichu\.android\build-cache\694110c3e9906a7cdc7063adac722fa202514caf\output\AndroidManifest.xml:9:5-20
 MERGED from [com.github.classichu:ClassicDialogView:1.1.0] C:\Users\Classichu\.android\build-cache\46e13640d0681fd02e760d2cce36a61a266caa2e\output\AndroidManifest.xml:11:5-15:19
-MERGED from [com.github.classichu:ClassicAdapter:1.1.4] C:\Users\Classichu\.android\build-cache\1e40880653b798aa2cc0115a1ebec2984246031c\output\AndroidManifest.xml:11:5-15:19
+MERGED from [com.github.classichu:ClassicAdapter:1.1.11] C:\Users\Classichu\.android\build-cache\17d695db7a8b0a27ce73b3562c26b36efc410840\output\AndroidManifest.xml:11:5-15:19
 MERGED from [com.tbruyelle.rxpermissions2:rxpermissions:0.9.4] C:\Users\Classichu\.android\build-cache\93873805862f124c535885533225592f1f1d838c\output\AndroidManifest.xml:11:5-20
 MERGED from [com.jaeger.statusbaruitl:library:1.4.0] C:\Users\Classichu\.android\build-cache\89ba9adbbb725f2dffde93b373e9b9c33459371e\output\AndroidManifest.xml:11:5-20
 MERGED from [com.android.support:design:25.3.1] C:\Users\Classichu\.android\build-cache\f89ac0d96da777b58fae9db8117a596bad665332\output\AndroidManifest.xml:29:5-20
@@ -85,7 +85,7 @@ INJECTED from D:\LouisGit\study\Classichu2\app\src\main\AndroidManifest.xml reas
 MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\Classichu\.android\build-cache\ba0e64140a3039e1354eab07b9e64bd9e79c960d\output\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Classichu\.android\build-cache\694110c3e9906a7cdc7063adac722fa202514caf\output\AndroidManifest.xml:5:5-7:41
 MERGED from [com.github.classichu:ClassicDialogView:1.1.0] C:\Users\Classichu\.android\build-cache\46e13640d0681fd02e760d2cce36a61a266caa2e\output\AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.classichu:ClassicAdapter:1.1.4] C:\Users\Classichu\.android\build-cache\1e40880653b798aa2cc0115a1ebec2984246031c\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.classichu:ClassicAdapter:1.1.11] C:\Users\Classichu\.android\build-cache\17d695db7a8b0a27ce73b3562c26b36efc410840\output\AndroidManifest.xml:7:5-9:41
 MERGED from [com.jakewharton.rxbinding2:rxbinding:2.0.0] C:\Users\Classichu\.android\build-cache\cdfd1d1f20c0e3b92dea77a1fb7f395305001a31\output\AndroidManifest.xml:6:5-44
 MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] C:\Users\Classichu\.android\build-cache\cc7cef05cd21c7af998a489fd0013a552d2639e1\output\AndroidManifest.xml:19:5-43
 MERGED from [com.tbruyelle.rxpermissions2:rxpermissions:0.9.4] C:\Users\Classichu\.android\build-cache\93873805862f124c535885533225592f1f1d838c\output\AndroidManifest.xml:7:5-9:41

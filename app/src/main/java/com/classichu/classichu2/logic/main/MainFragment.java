@@ -10,11 +10,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.classichu.adapter.listener.SimpleOnRVItemTouchListener;
 import com.classichu.adapter.widget.ClassicEmptyView;
 import com.classichu.classichu2.R;
 import com.classichu.classichu2.base.BaseMvpFragment;
 import com.classichu.classichu2.logic.main.adapter.MainAdapter;
 import com.classichu.classichu2.logic.main.bean.PatientListBean;
+import com.classichu.classichu2.tool.ToastTool;
 import com.fondesa.recyclerviewdivider.RecyclerViewDivider;
 
 import java.util.ArrayList;
@@ -87,18 +89,6 @@ public class MainFragment extends BaseMvpFragment<MainPresenter> implements Main
         classicEmptyView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         classicEmptyView.setOnEmptyViewClickListener(new ClassicEmptyView.OnEmptyViewClickListener() {
             @Override
-            public void onClickTextView(View view) {
-                super.onClickTextView(view);
-                toRefreshData();
-            }
-
-            @Override
-            public void onClickImageView(View view) {
-                super.onClickImageView(view);
-                toRefreshData();
-            }
-
-            @Override
             public void onClickEmptyView(View view) {
                 super.onClickEmptyView(view);
                 toRefreshData();
@@ -109,7 +99,19 @@ public class MainFragment extends BaseMvpFragment<MainPresenter> implements Main
          *RecyclerView设置Adapter
          */
         id_recycler_view.setAdapter(mAdapter);
+        id_recycler_view.addOnItemTouchListener(new SimpleOnRVItemTouchListener(id_recycler_view){
+            @Override
+            public void onItemClick(View view, int position) {
+                super.onItemClick(view, position);
+                ToastTool.show("onItemClick");
+            }
 
+            @Override
+            public void onItemLongClick(View view, int position) {
+                super.onItemLongClick(view, position);
+                ToastTool.show("onItemLongClick");
+            }
+        });
 
     /*    id_recycler_view.setOnTouchListener(new OnRecyclerViewTouchListener() {
             @Override
@@ -167,6 +169,7 @@ public class MainFragment extends BaseMvpFragment<MainPresenter> implements Main
 
     @Override
     public void setupData(List<PatientListBean> patientListBeen) {
+        mAdapter.setEmptyViewVisibility();
         mAdapter.refreshDataList(patientListBeen);
     }
 

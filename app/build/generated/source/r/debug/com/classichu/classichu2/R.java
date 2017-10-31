@@ -3956,6 +3956,8 @@ containing a value of this type.
         public static final int ClassicTextSecondaryColored=0x7f0900e8;
         public static final int ClassicTextTertiary=0x7f0900e9;
         public static final int ClassicTextTertiaryColored=0x7f0900ea;
+        /** <item name="android:windowAnimationStyle">@style/ClassicAnimationActivity</item>
+         */
         public static final int ClassicTheme=0x7f0900eb;
         public static final int ClassicTheme_Fullscreen=0x7f0900ec;
         public static final int ClassicTheme_Fullscreen_Translucent=0x7f0900ed;

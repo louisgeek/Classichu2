@@ -14,12 +14,13 @@ import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.classichu.adapter.recyclerview.ClassicRecyclerViewAdapter;
+import com.classichu.adapter.listener.SimpleOnRVItemTouchListener;
 import com.classichu.classichu2.R;
 import com.classichu.classichu2.app.AppInfoDataManager;
 import com.classichu.classichu2.base.BaseActivity;
 import com.classichu.classichu2.logic.login.bean.UserLoginBean;
 import com.classichu.classichu2.logic.main.adapter.AreaListAdapter;
+import com.classichu.classichu2.tool.ToastTool;
 import com.fondesa.recyclerviewdivider.RecyclerViewDivider;
 import com.jakewharton.rxbinding2.view.RxView;
 
@@ -72,6 +73,7 @@ public class MainActivity extends BaseActivity {
         setTitle(title);
     }
 
+    private PopupWindow popupWindow;
 
     private void showAreaSelect(View view) {
         //
@@ -95,9 +97,31 @@ public class MainActivity extends BaseActivity {
         RecyclerViewDivider.with(mContext).color(Color.parseColor("#FFD1CFCF")).build().addTo(recyclerView);
         recyclerView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
+        recyclerView.addOnItemTouchListener(new SimpleOnRVItemTouchListener(recyclerView) {
+            @Override
+            public void onItemClick(View view, int position) {
+                super.onItemClick(view, position);
+                ToastTool.show("onItemClick");
+                UserLoginBean.AreasBean areasBean = areaListAdapter.getData(position);
+                AppInfoDataManager.getInstance().setAreasBean(areasBean);
+                //
+                if (mainFragment != null) {
+                    mainFragment.callAtAty_toRefreshData();
+                }
+                id_tv_area.setText(areasBean.getKSMC());
+                //
+                popupWindow.dismiss();
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+                super.onItemLongClick(view, position);
+                ToastTool.show("dasda");
+            }
+        });
         recyclerView.setAdapter(areaListAdapter);
         //
-        final PopupWindow popupWindow = new PopupWindow(mContext);
+        popupWindow = new PopupWindow(mContext);
         popupWindow.setContentView(recyclerView);
         popupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -120,21 +144,7 @@ public class MainActivity extends BaseActivity {
         //此法不型  y偏移不行
         // int statusBarHeight=ScreenTool.getStatusBarHeight();
         // popupWindow.showAtLocation(view,Gravity.CENTER_HORIZONTAL,0,-statusBarHeight);
-        areaListAdapter.setOnItemClickListener(new ClassicRecyclerViewAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View itemView, int position) {
-                super.onItemClick(itemView, position);
-                UserLoginBean.AreasBean areasBean = areaListAdapter.getData(position);
-                AppInfoDataManager.getInstance().setAreasBean(areasBean);
-                //
-                if (mainFragment != null) {
-                    mainFragment.callAtAty_toRefreshData();
-                }
-                id_tv_area.setText(areasBean.getKSMC());
-                //
-                popupWindow.dismiss();
-            }
-        });
+
     }
 
 

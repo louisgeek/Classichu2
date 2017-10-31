@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.classichu.adapter.listener.SimpleOnRVItemTouchListener;
 import com.classichu.adapter.recyclerview.ClassicRVHeaderFooterAdapter;
 import com.classichu.adapter.widget.ClassicEmptyView;
 import com.classichu.classichu2.R;
@@ -83,7 +84,6 @@ public class PatientInfoFragment extends BaseMvpFragment<PatientPresenter> imple
     @Override
     public void setupData(List<String> stringList) {
         mAdapter.refreshDataList(stringList);
-        id_recycler_view.setVisibility(View.VISIBLE);
     }
 
 
@@ -123,36 +123,24 @@ public class PatientInfoFragment extends BaseMvpFragment<PatientPresenter> imple
         classicEmptyView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         classicEmptyView.setOnEmptyViewClickListener(new ClassicEmptyView.OnEmptyViewClickListener() {
             @Override
-            public void onClickTextView(View view) {
-                super.onClickTextView(view);
-                toRefreshData();
-            }
-
-            @Override
-            public void onClickImageView(View view) {
-                super.onClickImageView(view);
-                toRefreshData();
-            }
-
-            @Override
             public void onClickEmptyView(View view) {
                 super.onClickEmptyView(view);
                 toRefreshData();
             }
         });
         mAdapter.setEmptyView(classicEmptyView);
-        mAdapter.setOnItemClickListener(new ClassicRVHeaderFooterAdapter.OnItemClickListener() {
+
+
+
+        id_recycler_view.setAdapter(mAdapter);
+        id_recycler_view.addOnItemTouchListener(new SimpleOnRVItemTouchListener(id_recycler_view){
             @Override
-            public void onItemClick(View itemView, int position) {
-                super.onItemClick(itemView, position);
+            public void onItemClick(View view, int position) {
+                super.onItemClick(view, position);
                 ToastTool.showCenter("sda" + position);
                 // startAty(PatientActivity.class);
             }
         });
-
-
-        id_recycler_view.setAdapter(mAdapter);
-        id_recycler_view.setVisibility(View.GONE);//初始化 不显示
     }
 
 
