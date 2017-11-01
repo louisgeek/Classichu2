@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
-    android:id="@+id/id_drawer_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/id_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.louisgeek.classichu.patient.PatientActivity"
     tools:openDrawer="end">
 
     <!-- 内容布局 -->
-        <LinearLayout
-            android:id="@+id/id_layout_content"
-            android:orientation="vertical"
+    <LinearLayout
+        android:id="@+id/id_layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <!--###动态添加 app bar -->
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/id_toolbar"
+            style="@style/ClassicToolbar"
+            />
+
+        <FrameLayout
+            android:id="@+id/id_frame_layout_content"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" >
-            <!--动态添加 app bar -->
-
-            <FrameLayout
-                android:id="@+id/id_frame_layout_content"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                />
-        </LinearLayout>
+            android:layout_weight="1" />
+    </LinearLayout>
 
     <!-- 侧滑布局  app:headerLayout="@layout/layout_navigation_header_right"
         app:menu="@menu/menu_navigation_view_right"-->
@@ -33,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="end"
-
+        app:headerLayout="@layout/layout_navigation_header_right"
+        app:menu="@menu/menu_navigation_view_right"
         />
 </android.support.v4.widget.DrawerLayout>

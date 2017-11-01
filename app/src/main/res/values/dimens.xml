@@ -3,6 +3,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="api21_fixed_edittext_spacing">0dp</dimen>
+
     <dimen name="classic_tab_layout_height">38dp</dimen>
 
     <dimen name="classic_image_icon_width">56dp</dimen>

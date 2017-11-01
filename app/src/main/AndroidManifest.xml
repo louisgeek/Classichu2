@@ -27,9 +27,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".logic.setting.SettingActivity">
+        <activity android:name=".logic.setting.SettingActivity" />
+        <activity android:name=".logic.patient.PatientActivity" />
 
-        </activity>
     </application>
 
 </manifest>

@@ -13,6 +13,9 @@ public interface PatientContract {
     interface View<D> extends IView {
         void setupData(D d);
         void setupPatientInfoDetail(D d);
+        void showMoreDataLoading();
+        void showMoreDataLoadComplete();
+        void showMoreDataLoadNormal();
     }
 
     interface Model extends IModel {

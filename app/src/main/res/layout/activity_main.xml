@@ -1,37 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+    android:id="@+id/id_drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.classichu.classichu2.logic.main.MainActivity">
+    tools:openDrawer="start">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/id_toolbar"
-        style="@style/ClassicToolbar"
-        >
-
-        <TextView
-            android:id="@+id/id_tv_area"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:paddingLeft="@dimen/classic_item_comm_padding"
-            android:paddingRight="@dimen/classic_item_comm_padding"
-            android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
-            android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
-            android:textSize="@dimen/classic_text_size_big"
-            android:background="@drawable/selector_classic_nav_item_bg"
-            android:textColor="@color/white" />
-    </android.support.v7.widget.Toolbar>
-
-
-    <FrameLayout
-        android:id="@+id/id_frame_layout"
+    <!-- 内容布局 -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--content -->
+        <LinearLayout
+            android:id="@+id/id_layout_content"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+            <!--#####动态添加 app bar -->
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/id_toolbar"
+                style="@style/ClassicToolbar"
+                >
+
+                <TextView
+                    android:id="@+id/id_tv_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/classic_item_comm_padding"
+                    android:paddingRight="@dimen/classic_item_comm_padding"
+                    android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:textSize="@dimen/classic_text_size_big"
+                    android:background="@drawable/selector_classic_nav_item_bg"
+                    android:textColor="@color/white" />
+            </android.support.v7.widget.Toolbar>
+
+            <FrameLayout
+                android:id="@+id/id_frame_layout_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
 
 
-</LinearLayout>
+        </LinearLayout>
+
+
+        <!--BottomNavigation -->
+        <com.classichu.classichu2.custom.BottomNavigationViewSupport
+            android:id="@+id/id_bottom_navigation_view_support"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:visibility="gone"
+            android:background="@color/colorPrimary"
+            app:itemIconTint="@color/color_selector_item"
+            app:itemTextColor="@color/color_selector_item"
+            app:menu="@menu/menu_bottom_navigation_view" />
+
+    </LinearLayout>
+
+    <!-- 侧滑布局 -->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/id_navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/layout_navigation_header_left"
+        app:menu="@menu/menu_navigation_view_left"
+        />
+
+
+</android.support.v4.widget.DrawerLayout>

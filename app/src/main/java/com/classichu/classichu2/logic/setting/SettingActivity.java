@@ -42,7 +42,7 @@ public class SettingActivity extends BaseActivity {
 
     }
 
-    private void configTitle(String title) {
+    private void configTitle(CharSequence title) {
         Toolbar toolbar = findById(R.id.id_toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();

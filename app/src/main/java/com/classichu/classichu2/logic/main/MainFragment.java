@@ -13,10 +13,11 @@ import android.view.ViewGroup;
 import com.classichu.adapter.listener.SimpleOnRVItemTouchListener;
 import com.classichu.adapter.widget.ClassicEmptyView;
 import com.classichu.classichu2.R;
+import com.classichu.classichu2.app.AppInfoDataManager;
 import com.classichu.classichu2.base.BaseMvpFragment;
 import com.classichu.classichu2.logic.main.adapter.MainAdapter;
 import com.classichu.classichu2.logic.main.bean.PatientListBean;
-import com.classichu.classichu2.tool.ToastTool;
+import com.classichu.classichu2.logic.patient.PatientActivity;
 import com.fondesa.recyclerviewdivider.RecyclerViewDivider;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class MainFragment extends BaseMvpFragment<MainPresenter> implements Main
 
     @BindView(R.id.id_recycler_view)
     RecyclerView id_recycler_view;
+
     public MainFragment() {
         // Required empty public constructor
     }
@@ -99,17 +101,14 @@ public class MainFragment extends BaseMvpFragment<MainPresenter> implements Main
          *RecyclerView设置Adapter
          */
         id_recycler_view.setAdapter(mAdapter);
-        id_recycler_view.addOnItemTouchListener(new SimpleOnRVItemTouchListener(id_recycler_view){
+        id_recycler_view.addOnItemTouchListener(new SimpleOnRVItemTouchListener(id_recycler_view) {
             @Override
             public void onItemClick(View view, int position) {
                 super.onItemClick(view, position);
-                ToastTool.show("onItemClick");
-            }
-
-            @Override
-            public void onItemLongClick(View view, int position) {
-                super.onItemLongClick(view, position);
-                ToastTool.show("onItemLongClick");
+                // ToastTool.show("onItemClick");
+                PatientListBean patientListBean = mAdapter.getData(position);
+                AppInfoDataManager.getInstance().setPatientListBean(patientListBean);
+                startAty(PatientActivity.class);
             }
         });
 
@@ -163,6 +162,7 @@ public class MainFragment extends BaseMvpFragment<MainPresenter> implements Main
     protected void toRefreshData() {
         mPresenter.gainData();
     }
+
     public void callAtAty_toRefreshData() {
         toRefreshData();
     }
@@ -174,6 +174,7 @@ public class MainFragment extends BaseMvpFragment<MainPresenter> implements Main
     }
 
     private boolean isFilterMyPatients;
+
     @Override
     public boolean isFilterMyPatients() {
         return isFilterMyPatients;
@@ -183,6 +184,7 @@ public class MainFragment extends BaseMvpFragment<MainPresenter> implements Main
     public void callAtAty_switchGridOrList() {
         switchGridOrList();
     }
+
     private void switchGridOrList() {
         if (id_recycler_view == null) {
             return;
@@ -191,7 +193,7 @@ public class MainFragment extends BaseMvpFragment<MainPresenter> implements Main
             id_recycler_view.setLayoutManager(new LinearLayoutManager(mContext));
         }/*  else if(mRecyclerView.getLayoutManager() instanceof LinearLayoutManager) {
             mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-        }*/else {
+        }*/ else {
             id_recycler_view.setLayoutManager(new GridLayoutManager(mContext, 2));
             //让合并单元格的设置生效
             mAdapter.callAfterChangeGridLayoutManager(id_recycler_view);

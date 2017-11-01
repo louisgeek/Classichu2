@@ -7,17 +7,17 @@
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 55,
-                    "endColumn": 74,
-                    "endOffset": 125
+                    "endColumn": 58,
+                    "endOffset": 109
                 },
                 "from": {
-                    "file": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\values-v22\\values-v22.xml",
+                    "file": "D:\\LouisGit\\study\\Classichu2\\app\\src\\main\\res\\values-v22\\dimens.xml",
                     "position": {
-                        "startLine": 2,
+                        "startLine": 1,
                         "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 74,
-                        "endOffset": 125
+                        "startOffset": 17,
+                        "endColumn": 58,
+                        "endOffset": 71
                     }
                 }
             },
@@ -25,61 +25,50 @@
                 "to": {
                     "startLine": 3,
                     "startColumn": 4,
-                    "startOffset": 130,
-                    "endColumn": 86,
-                    "endOffset": 212
+                    "startOffset": 114,
+                    "endColumn": 74,
+                    "endOffset": 184
                 },
                 "from": {
-                    "file": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\values-v22\\values-v22.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 130,
-                        "endColumn": 86,
-                        "endOffset": 212
-                    }
+                    "file": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\values-v22\\values-v22.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 4,
                     "startColumn": 4,
-                    "startOffset": 217,
-                    "endLine": 8,
-                    "endColumn": 12,
-                    "endOffset": 548
+                    "startOffset": 189,
+                    "endColumn": 86,
+                    "endOffset": 271
                 },
                 "from": {
-                    "file": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\values-v22\\values-v22.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 217,
-                        "endLine": 8,
-                        "endColumn": 12,
-                        "endOffset": 548
-                    }
+                    "file": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\values-v22\\values-v22.xml"
                 }
             },
             {
                 "to": {
-                    "startLine": 9,
+                    "startLine": 5,
                     "startColumn": 4,
-                    "startOffset": 553,
-                    "endLine": 13,
+                    "startOffset": 276,
+                    "endLine": 9,
                     "endColumn": 12,
-                    "endOffset": 896
+                    "endOffset": 541
                 },
                 "from": {
-                    "file": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\values-v22\\values-v22.xml",
-                    "position": {
-                        "startLine": 9,
-                        "startColumn": 4,
-                        "startOffset": 553,
-                        "endLine": 13,
-                        "endColumn": 12,
-                        "endOffset": 896
-                    }
+                    "file": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\values-v22\\values-v22.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 546,
+                    "endLine": 14,
+                    "endColumn": 12,
+                    "endOffset": 823
+                },
+                "from": {
+                    "file": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\values-v22\\values-v22.xml"
                 }
             }
         ]

@@ -1,0 +1,3 @@
+<resources>
+    <dimen name="api21_fixed_edittext_spacing">6dp</dimen>
+</resources>

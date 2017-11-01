@@ -2,7 +2,6 @@ package com.classichu.classichu2.logic.login;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.classichu.classichu2.R;
 import com.classichu.classichu2.base.BaseActivity;
@@ -25,18 +24,18 @@ public class LoginActivity extends BaseActivity{
                 .commitAllowingStateLoss();
     }
 
-    private void configTitle(String title) {
+    private void configTitle(CharSequence title) {
         Toolbar toolbar = findById(R.id.id_toolbar);
         setSupportActionBar(toolbar);
         //ActionBar actionBar = getSupportActionBar();
         //actionBar.setDisplayHomeAsUpEnabled(true);
         //必须设置在setSupportActionBar(mToolbar);后才有效
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+      /*  toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
-        });
+        });*/
         //
         setTitle(title);
     }

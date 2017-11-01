@@ -14,11 +14,12 @@ import com.classichu.adapter.recyclerview.ClassicRVHeaderFooterAdapter;
 import com.classichu.adapter.widget.ClassicEmptyView;
 import com.classichu.classichu2.R;
 import com.classichu.classichu2.base.BaseMvpFragment;
+import com.classichu.classichu2.listener.OnRecyclerViewTouchListener;
 import com.classichu.classichu2.logic.patient.adapter.PatientAdapter;
 import com.classichu.classichu2.tool.ToastTool;
+import com.classichu.classichu2.tool.ViewTool;
 import com.fondesa.recyclerviewdivider.RecyclerViewDivider;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -83,9 +84,15 @@ public class PatientInfoFragment extends BaseMvpFragment<PatientPresenter> imple
 
     @Override
     public void setupData(List<String> stringList) {
+        mAdapter.setEmptyViewVisibility();
         mAdapter.refreshDataList(stringList);
+
     }
 
+    @Override
+    protected int configSwipeRefreshLayoutResId() {
+        return R.id.id_swipe_refresh_layout;
+    }
 
     @Override
     protected PatientPresenter setupPresenter() {
@@ -98,7 +105,7 @@ public class PatientInfoFragment extends BaseMvpFragment<PatientPresenter> imple
         mPresenter.gainData();
     }
 
-    protected void toLoadPatientInfoDetail() {
+    protected void toLoadMoreData() {
         mPresenter.gainPatientInfoDetail();
     }
 
@@ -108,8 +115,7 @@ public class PatientInfoFragment extends BaseMvpFragment<PatientPresenter> imple
 
     private void initRecyclerViewAndAdapter() {
 
-        List<String> stringList = new ArrayList<>();
-        mAdapter = new PatientAdapter(mContext, stringList, R.layout.item_list_classic);
+        mAdapter = new PatientAdapter(mContext, R.layout.item_list_classic);
 
         //config
         id_recycler_view.setLayoutManager(new LinearLayoutManager(mContext));
@@ -131,9 +137,8 @@ public class PatientInfoFragment extends BaseMvpFragment<PatientPresenter> imple
         mAdapter.setEmptyView(classicEmptyView);
 
 
-
         id_recycler_view.setAdapter(mAdapter);
-        id_recycler_view.addOnItemTouchListener(new SimpleOnRVItemTouchListener(id_recycler_view){
+        id_recycler_view.addOnItemTouchListener(new SimpleOnRVItemTouchListener(id_recycler_view) {
             @Override
             public void onItemClick(View view, int position) {
                 super.onItemClick(view, position);
@@ -141,14 +146,48 @@ public class PatientInfoFragment extends BaseMvpFragment<PatientPresenter> imple
                 // startAty(PatientActivity.class);
             }
         });
+        id_recycler_view.setOnTouchListener(new OnRecyclerViewTouchListener() {
+            @Override
+            public void onScrollUp() {
+
+            }
+
+            @Override
+            public void onScrollDown() {
+                if (ViewTool.isReachedBottom(id_recycler_view) &&
+                        !mAdapter.isDataLoading() &&
+                        !mAdapter.isLoadComplete()
+                        ) {
+                    toLoadMoreData();
+                }
+            }
+        });
     }
 
 
     @Override
     public void setupPatientInfoDetail(List<String> stringList) {
-        mAdapter.addDataAtEnd(stringList);
+        mAdapter.setEmptyViewVisibility();
+        mAdapter.addDataListAtEnd(stringList);
+       // mAdapter.showFooterViewLoadComplete(null);
 
     }
+
+    @Override
+    public void showMoreDataLoading() {
+        mAdapter.showFooterViewDataLoading(null);
+    }
+
+    @Override
+    public void showMoreDataLoadComplete() {
+        mAdapter.showFooterViewLoadComplete(null);
+    }
+
+    @Override
+    public void showMoreDataLoadNormal() {
+        mAdapter.showFooterViewNormal(null);
+    }
+
 
 
 }

@@ -39,8 +39,10 @@ public class PatientPresenter extends BasePresenter<PatientContract.Model, Patie
         }
         stringList.add(String.format("%s%s", "病人床号：", AppInfoDataManager.getInstance().getPatientListBean().getBRCH()));
 
+        mView.hideLoading();//隐藏手动下拉显示的加载
+        mView.showMoreDataLoadNormal();//隐藏曾加载完成的
         mView.setupData(stringList);
-        mView.hideLoading();
+
     }
 
 
@@ -53,7 +55,8 @@ public class PatientPresenter extends BasePresenter<PatientContract.Model, Patie
                 .subscribe(new RxHttpResultObserver<BS_BaseBean<PatientInfoBean>>() {
                     @Override
                     protected void onStart(Disposable disposable) {
-                        //### mView.showProgress();
+                        //##mView.showLoading();
+                        mView.showMoreDataLoading();
                         //add 进行统一管理
                         addDisposable(disposable);
                     }
@@ -88,6 +91,14 @@ public class PatientPresenter extends BasePresenter<PatientContract.Model, Patie
                             }
 
                             //=====
+                                /*if (data.size() == 0) {
+            //所有数据加载完毕
+            mClassicRVHeaderFooterAdapter.showFooterViewLoadComplete();
+        } else {
+            //一次加载完成
+            mClassicRVHeaderFooterAdapter.turnNextPageNum();
+            mClassicRVHeaderFooterAdapter.showFooterViewNormal();
+        }*/
 
                             mView.setupPatientInfoDetail(stringList);
                         } else if (patientInfoBeanBS_baseBean.getReType() == 100) {
@@ -102,11 +113,13 @@ public class PatientPresenter extends BasePresenter<PatientContract.Model, Patie
                     @Override
                     public void onFailure(String msg) {
                         mView.showMessage(msg);
+                        mView.showMoreDataLoadNormal();
                     }
 
                     @Override
                     public void onFinish() {
-                        //### mView.hideProgress();
+                        //## mView.hideLoading();
+                        mView.showMoreDataLoadComplete();
                     }
                 });
 

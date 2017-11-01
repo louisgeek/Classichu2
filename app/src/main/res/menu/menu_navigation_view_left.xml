@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/id_menu_item_patient_list"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="病人列表" />
+    <item
+        android:id="@+id/id_menu_item_daily_work"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="今日工作" />
+    <item
+        android:id="@+id/id_menu_item_check_drug"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="药品核对" />
+    <item
+        android:id="@+id/id_menu_item_batch_signs"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="批量体征" />
+    <item
+        android:id="@+id/id_menu_item_specimen_collection"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="标本采集" />
+    <item
+        android:id="@+id/id_menu_item_oral_single"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="口服单" />
+    <item
+        android:id="@+id/id_menu_item_infusion_single"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="输液单" />
+    <item
+        android:id="@+id/id_menu_item_nursing_handover"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="护理交接" />
+    <item
+        android:id="@+id/id_menu_item_daily_patrol"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="日常巡视" />
+    <item
+        android:id="@+id/id_menu_item_catheter_drainage"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="导管引流" />
+    <item
+        android:id="@+id/id_menu_item_blood_sign"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="血液签收" />
+    <item
+        android:id="@+id/id_menu_item_saved_offline"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="离线保存" />
+    <item
+        android:id="@+id/id_menu_item_message_list"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="消息列表" />
+    <item
+        android:id="@+id/id_menu_item_about_us"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="关于我们" />
+
+</menu>

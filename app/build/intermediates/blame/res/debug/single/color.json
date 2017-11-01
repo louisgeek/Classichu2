@@ -12,6 +12,10 @@
         "source": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\color\\switch_thumb_material_dark.xml"
     },
     {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\color\\color_selector_item.xml",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\src\\main\\res\\color\\color_selector_item.xml"
+    },
+    {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
         "source": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\color\\switch_thumb_material_light.xml"
     },

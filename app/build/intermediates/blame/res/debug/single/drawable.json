@@ -1,19 +1,19 @@
 [
     {
-        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
-        "source": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
-    },
-    {
-        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_vector_test.xml",
-        "source": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\drawable\\abc_vector_test.xml"
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background.xml",
+        "source": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\drawable\\abc_dialog_material_background.xml"
     },
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_small_material.xml",
         "source": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\drawable\\abc_ratingbar_small_material.xml"
     },
     {
-        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background.xml",
-        "source": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\drawable\\abc_dialog_material_background.xml"
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_vector_test.xml",
+        "source": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\drawable\\abc_vector_test.xml"
+    },
+    {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
+        "source": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
     },
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_bottom_navigation_item_background.xml",
@@ -30,6 +30,14 @@
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_go_search_api_material.xml",
         "source": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\drawable\\abc_ic_go_search_api_material.xml"
+    },
+    {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_classic_text_item_underline_bg.xml",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\src\\main\\res\\drawable\\selector_classic_text_item_underline_bg.xml"
+    },
+    {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_classic_text_item_topline_bg.xml",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\src\\main\\res\\drawable\\selector_classic_text_item_topline_bg.xml"
     },
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_classic_popup_bg.xml",
@@ -76,12 +84,12 @@
         "source": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\drawable\\abc_ic_voice_search_api_material.xml"
     },
     {
-        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_classic_edit_item_bg.xml",
-        "source": "D:\\LouisGit\\study\\Classichu2\\app\\src\\main\\res\\drawable\\selector_classic_edit_item_bg.xml"
-    },
-    {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_ab_back_material.xml",
         "source": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\drawable\\abc_ic_ab_back_material.xml"
+    },
+    {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_classic_edit_item_bg.xml",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\src\\main\\res\\drawable\\selector_classic_edit_item_bg.xml"
     },
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_classic_nav_item_bg.xml",
@@ -166,6 +174,10 @@
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_bg_low.xml",
         "source": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\drawable\\notification_bg_low.xml"
+    },
+    {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_classic_text_item_no_topline_bg.xml",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\src\\main\\res\\drawable\\selector_classic_text_item_no_topline_bg.xml"
     },
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_thumb_material.xml",

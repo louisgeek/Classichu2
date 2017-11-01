@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/id_menu_item_patient_info"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="病人信息" />
+    <item
+        android:id="@+id/id_menu_item_vital_sign"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="生命体征" />
+    <item
+        android:id="@+id/id_menu_item_nursing_evaluation"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="护理评估" />
+    <item
+        android:id="@+id/id_menu_item_nursing_focus"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="护理焦点" />
+    <item
+        android:id="@+id/id_menu_item_focus_associated"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="焦点关联" />
+    <item
+        android:id="@+id/id_menu_item_risk_evaluation"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="风险评估" />
+    <item
+        android:id="@+id/id_menu_item_nursing_record"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="护理记录" />
+
+    <item
+        android:id="@+id/id_menu_item_nursing_plan"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="护理计划" />
+    <item
+        android:id="@+id/id_menu_item_medical_orders"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="医嘱执行" />
+    <item
+        android:id="@+id/id_menu_item_transfusion_patrol"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="输液巡视" />
+    <item
+        android:id="@+id/id_menu_item_specimen_collection"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="标本采集" />
+    <item
+        android:id="@+id/id_menu_item_blood_medicaladvice"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="输血医嘱" />
+    <item
+        android:id="@+id/id_menu_item_blood_patrol"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="输血巡视" />
+    <item
+        android:id="@+id/id_menu_item_nursing_handover"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="护理交接" />
+
+
+    <item
+        android:id="@+id/id_menu_item_health_education"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="健康教育" />
+
+    <item
+        android:id="@+id/id_menu_item_nursing_routine"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="护理常规" />
+
+    <item
+        android:id="@+id/id_menu_item_go_out"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="外出管理" />
+    <item
+        android:id="@+id/id_menu_item_bags_to_hand"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="血袋上交" />
+    <item
+        android:id="@+id/id_menu_item_clinical_events"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="临床事件" />
+
+    <item
+        android:id="@+id/id_menu_item_expenses_inquiry"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="费用查询" />
+
+    <item
+        android:id="@+id/id_menu_item_inspection_check"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="检验检查" />
+
+    <item
+        android:id="@+id/id_menu_item_bloodsugar_treatment"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        android:title="血糖治疗" />
+</menu>

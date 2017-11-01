@@ -33,8 +33,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.classichu.classichu2.logic.setting.SettingActivity" >
-        </activity>
+        <activity android:name="com.classichu.classichu2.logic.setting.SettingActivity" />
+        <activity android:name="com.classichu.classichu2.logic.patient.PatientActivity" />
 
         <provider
             android:name="com.android.tools.fd.runtime.InstantRunContentProvider"
