@@ -1,4 +1,4 @@
-package com.classichu.classichu2.custom;
+package com.classichu.classichu2.widget;
 
 import android.animation.ValueAnimator;
 import android.content.Context;

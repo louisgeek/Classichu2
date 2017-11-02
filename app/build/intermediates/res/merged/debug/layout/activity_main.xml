@@ -55,7 +55,7 @@
 
 
         <!--BottomNavigation -->
-        <com.classichu.classichu2.custom.BottomNavigationViewSupport
+        <com.classichu.classichu2.widget.BottomNavigationViewSupport
             android:id="@+id/id_bottom_navigation_view_support"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

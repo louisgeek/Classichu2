@@ -25,7 +25,7 @@ import com.classichu.classichu2.R;
 import com.classichu.classichu2.app.AppInfoDataManager;
 import com.classichu.classichu2.base.BaseActivity;
 import com.classichu.classichu2.base.BaseFragment;
-import com.classichu.classichu2.custom.BottomNavigationViewSupport;
+import com.classichu.classichu2.widget.BottomNavigationViewSupport;
 import com.classichu.classichu2.logic.login.bean.UserLoginBean;
 import com.classichu.classichu2.logic.main.adapter.AreaListAdapter;
 import com.classichu.classichu2.logic.main.factory.MainAtyFragmentFactory;

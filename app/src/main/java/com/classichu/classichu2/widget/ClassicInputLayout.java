@@ -1,4 +1,4 @@
-package com.classichu.classichu2.custom;
+package com.classichu.classichu2.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;

@@ -1,4 +1,4 @@
-package com.classichu.classichu2.custom;
+package com.classichu.classichu2.widget;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.FrameLayout;
+
+import com.classichu.classichu2.custom.CLog;
 
 
 /**

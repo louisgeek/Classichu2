@@ -1,14 +1,11 @@
-package com.classichu.classichu2.custom;
+package com.classichu.classichu2.widget;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,13 +13,15 @@ import android.widget.TextView;
 import com.classichu.classichu2.R;
 import com.classichu.classichu2.tool.SizeTool;
 
+import java.util.List;
+
 
 /**
  * Created by louisgeek on 2017/8/21.
  */
 
 public class ClassicFormInputLayout extends LinearLayout {
-
+    private final static int DEFLAUT_PADDING_LEFT_RIGHT_START_END = 10;
     public ClassicFormInputLayout(Context context) {
         this(context, null);
     }
@@ -43,13 +42,13 @@ public class ClassicFormInputLayout extends LinearLayout {
         this.setBackgroundResource(R.drawable.selector_classic_item_primary_bg);
         //
         initStartLayout();
-        initInputEditText();
+        initCenterLayout();
         initEndLayout();
     }
 
     private LinearLayout mStartLayout;
+    private LinearLayout mCenterLayout;
     private LinearLayout mEndLayout;
-    private EditText mInputEditText;
     private Context mContext;
 
     private void initStartLayout() {
@@ -73,34 +72,17 @@ public class ClassicFormInputLayout extends LinearLayout {
     }
 
 
-    private void initInputEditText() {
-        mInputEditText = new EditText(mContext);
+    private void initCenterLayout() {
+        mCenterLayout = new LinearLayout(mContext);
         LayoutParams ll_lp = new LayoutParams(
                 LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         ll_lp.weight = 1.0f;
-        //android 5.0 API 21上的EditText文字偏上 定义不同的dimen文件 兼容处理这个问题
-        int api21_fixed_edittext_spacing= mContext.getResources().getDimensionPixelSize(R.dimen.api21_fixed_edittext_spacing);
         ll_lp.gravity = Gravity.CENTER_VERTICAL;
-        mInputEditText.setGravity(Gravity.CENTER_VERTICAL);
-        mInputEditText.setLayoutParams(ll_lp);
-        mInputEditText.setLines(1);
-        //设置左padding
-        mInputEditText.setPadding(mInputEditText.getPaddingLeft() + SizeTool.dp2px(5),
-                mInputEditText.getPaddingTop()+api21_fixed_edittext_spacing,
-                mInputEditText.getPaddingRight(),
-                mInputEditText.getPaddingBottom());
-        mInputEditText.setHintTextColor(Color.parseColor("#42000000"));
-        ViewCompat.setBackground(mInputEditText, null);
-        mInputEditText.setOnFocusChangeListener(new OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                // 会影响内部view 的 setSelected 状态
-                ClassicFormInputLayout.this.setSelected(hasFocus);
-                // ClassicInputLayout.this.setActivated(hasFocus);
-            }
-        });
-        this.addView(mInputEditText);
+        mCenterLayout.setGravity(Gravity.CENTER_VERTICAL);
+        mCenterLayout.setLayoutParams(ll_lp);
+        this.addView(mCenterLayout);
     }
+
 
 
     ///////////////////////////////////////////////////////////////////////////
@@ -116,6 +98,7 @@ public class ClassicFormInputLayout extends LinearLayout {
         int padding = SizeTool.dp2px(10);//10dp
         startTxt.setPadding(padding, padding, padding, padding);
         startTxt.setOnClickListener(listener);
+        startTxt.setBackgroundResource(R.drawable.selector_classic_btn_item_click_bg);
         mStartLayout.addView(startTxt);
         return this;
     }
@@ -128,6 +111,9 @@ public class ClassicFormInputLayout extends LinearLayout {
         ImageView startImg = new ImageView(mContext);
         startImg.setImageDrawable(drawable);
         startImg.setOnClickListener(listener);
+        int padding = SizeTool.dp2px(DEFLAUT_PADDING_LEFT_RIGHT_START_END);
+        startImg.setPadding(padding,padding,padding,padding);
+        startImg.setBackgroundResource(R.drawable.selector_classic_btn_item_click_bg);
         mStartLayout.addView(startImg);
         return this;
     }
@@ -143,6 +129,7 @@ public class ClassicFormInputLayout extends LinearLayout {
         int padding = SizeTool.dp2px(10);//10dp
         endTxt.setPadding(padding, padding, padding, padding);
         endTxt.setOnClickListener(listener);
+        endTxt.setBackgroundResource(R.drawable.selector_classic_btn_item_click_bg);
         mEndLayout.addView(endTxt);
         return this;
     }
@@ -155,22 +142,28 @@ public class ClassicFormInputLayout extends LinearLayout {
         ImageView endImg = new ImageView(mContext);
         endImg.setImageDrawable(drawable);
         endImg.setOnClickListener(listener);
+        int padding = SizeTool.dp2px(DEFLAUT_PADDING_LEFT_RIGHT_START_END);
+        endImg.setPadding(padding,padding,padding,padding);
+        endImg.setBackgroundResource(R.drawable.selector_classic_btn_item_click_bg);
         mEndLayout.addView(endImg);
         return this;
     }
 
-    public ClassicFormInputLayout setHintText(CharSequence hintText) {
-        mInputEditText.setHint(hintText);
+    public ClassicFormInputLayout addCenterEditView(String text) {
+        return addCenterEditView(text,null,null);
+    }
+    public ClassicFormInputLayout addCenterEditView(String text,String hintText,List<String> stringList) {
+        ClassicDropSelectEditView dropSelectEditView = new ClassicDropSelectEditView(mContext);
+        LayoutParams ll_lp = new LayoutParams(
+                LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        ll_lp.weight = 1.0f;
+        dropSelectEditView.setLayoutParams(ll_lp);
+        dropSelectEditView.getEditText().setHint(hintText);
+        dropSelectEditView.setupDropDownSelectData(stringList);
+        mCenterLayout.addView(dropSelectEditView);
         return this;
     }
 
-    public EditText getInputEditText() {
-        return mInputEditText;
-    }
-
-    public String getInputText() {
-        return mInputEditText.getText().toString();
-    }
     //  End 2017/8/21
     ///////////////////////////////////////////////////////////////////////////
 }
