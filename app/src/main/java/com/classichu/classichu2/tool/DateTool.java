@@ -31,7 +31,7 @@ public class DateTool {
     public static final String FORMAT_8 = "yyyy-MM-dd HH:mm:ss.S";
     public static final String FORMAT_9 = "yyyy-MM-dd HH:mm:SS";
 
-   // public static final String FORMAT_dot_1 = "HH:mm";
+    // public static final String FORMAT_dot_1 = "HH:mm";
     public static final String FORMAT_dot_2 = "MM.dd";
     public static final String FORMAT_dot_3 = "MM.dd HH:mm";
     public static final String FORMAT_dot_4 = "yyyy.MM.dd HH:mm";
@@ -169,7 +169,7 @@ public class DateTool {
      * @return
      */
     public static String getChinaDateTimeFromCalendar(int year, int monthOfYear, int dayOfMonth) {
-        SimpleDateFormat sdf = new SimpleDateFormat(FORMAT_DATE_TIME, Locale.CHINA);
+        SimpleDateFormat sdf = new SimpleDateFormat(FORMAT_DATE_TIME, Locale.CHINA);//Locale.SIMPLIFIED_CHINESE和Locale.CHINA一样
         //new Data(int,int,int)过时了
         GregorianCalendar calendar = new GregorianCalendar(year, monthOfYear, dayOfMonth);//初始具有指定年月日的公历类对象。
         Long timeInMillis = calendar.getTimeInMillis();
@@ -192,7 +192,7 @@ public class DateTool {
 
     public static Date parseStr2Date(String dateStr, String formatStr) {
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat(formatStr, Locale.CHINA);
+        SimpleDateFormat sdf = new SimpleDateFormat(formatStr, Locale.CHINA);//Locale.SIMPLIFIED_CHINESE和Locale.CHINA一样
         try {
             date = sdf.parse(dateStr);
         } catch (ParseException e) {
@@ -202,7 +202,7 @@ public class DateTool {
     }
 
     public static String parseDate2Str(Date date, String formatStr) {
-        SimpleDateFormat sdf = new SimpleDateFormat(formatStr, Locale.CHINA);
+        SimpleDateFormat sdf = new SimpleDateFormat(formatStr, Locale.CHINA);//Locale.SIMPLIFIED_CHINESE和Locale.CHINA一样
         return sdf.format(date);
     }
 
@@ -281,7 +281,7 @@ public class DateTool {
     public static Date getDateFromAll(String dateStr){
         Date date = null;
         for (SimpleDateFormat format:
-             formats) {
+                formats) {
             try {
                 date = format.parse(dateStr);
             } catch (ParseException e) {
@@ -291,7 +291,7 @@ public class DateTool {
         return  date;
     }
     public static long getBetween(String time) {
-        
+
         Date date = getDateFromAll(time);
         if (null == date) {
             date = new Date();
@@ -326,4 +326,7 @@ public class DateTool {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss_SSS");
         return prefixStr + "_" + dateFormat.format(date) + suffixStr;
     }
+
+
+
 }

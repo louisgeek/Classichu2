@@ -6,22 +6,22 @@
     density="xxhdpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1509593857336"
+    timestamp="1509691369742"
     token="6672792904628962016"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="6665" />
+        duration="8642" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="21" />
+        duration="80" />
     <task
         name="verifier"
-        duration="6" />
+        duration="22" />
 
     <artifact
         location="D:\LouisGit\study\Classichu2\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
@@ -32,17 +32,8 @@
 
     <build
         build-mode="FULL"
-        timestamp="1509532755986"
+        timestamp="1509623991938"
         verifier="FULL_BUILD_REQUESTED" >
-        <artifact
-            location="D:\LouisGit\study\Classichu2\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
-            type="SPLIT" />
-        <artifact
-            location="D:\LouisGit\study\Classichu2\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-            type="SPLIT" />
-        <artifact
-            location="D:\LouisGit\study\Classichu2\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
-            type="SPLIT" />
         <artifact
             location="D:\LouisGit\study\Classichu2\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
@@ -51,6 +42,9 @@
             type="SPLIT_MAIN" />
         <artifact
             location="D:\LouisGit\study\Classichu2\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="D:\LouisGit\study\Classichu2\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
         <artifact
             location="D:\LouisGit\study\Classichu2\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
@@ -68,39 +62,37 @@
             location="D:\LouisGit\study\Classichu2\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
             type="SPLIT" />
         <artifact
+            location="D:\LouisGit\study\Classichu2\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="D:\LouisGit\study\Classichu2\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
+        <artifact
             location="D:\LouisGit\study\Classichu2\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
             type="SPLIT" />
     </build>
     <build
         build-mode="COLD"
-        timestamp="1509590810618"
+        timestamp="1509679320168"
         verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="D:\LouisGit\study\Classichu2\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
-            type="SPLIT" />
         <artifact
             location="D:\LouisGit\study\Classichu2\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
     </build>
     <build
         build-mode="COLD"
-        timestamp="1509591723100"
+        timestamp="1509691251602"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="D:\LouisGit\study\Classichu2\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
             type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1509593761193"
-        verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="D:\LouisGit\study\Classichu2\app\build\outputs\apk\app-debug.apk"
             type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        timestamp="1509593857336"
+        timestamp="1509691369742"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="D:\LouisGit\study\Classichu2\app\build\intermediates\split-apk\debug\slices\slice_9.apk"

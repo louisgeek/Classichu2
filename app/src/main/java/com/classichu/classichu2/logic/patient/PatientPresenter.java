@@ -50,7 +50,7 @@ public class PatientPresenter extends BasePresenter<PatientContract.Model, Patie
     public void gainPatientInfoDetail() {
         String zhy = AppInfoDataManager.getInstance().getZyh();
         String jgid = AppInfoDataManager.getInstance().getJGID();
-        ApiServiceFactory.getInstance().getUserApi().getPatientInfoDetail(zhy, jgid)
+        ApiServiceFactory.getInstance().getPatientApi().getPatientInfoDetail(zhy, jgid)
                 .compose(RxTransformerSchedulers.<BS_BaseBean<PatientInfoBean>>observable_io_main()) //compose配合进行线程调度
                 .subscribe(new RxHttpResultObserver<BS_BaseBean<PatientInfoBean>>() {
                     @Override

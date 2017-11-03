@@ -188,6 +188,10 @@
         "source": "D:\\LouisGit\\study\\Classichu2\\app\\src\\main\\res\\layout\\item_list_classic.xml"
     },
     {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_list_card_expandable.xml",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\src\\main\\res\\layout\\item_list_card_expandable.xml"
+    },
+    {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
         "source": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },

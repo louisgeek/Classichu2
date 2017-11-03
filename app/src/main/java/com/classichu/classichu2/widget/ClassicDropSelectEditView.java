@@ -11,7 +11,9 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Pair;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -36,22 +38,46 @@ import java.util.List;
  * Created by Classichu on 2017/11/2.
  */
 
-public class ClassicDropSelectEditView extends LinearLayout {
-    private static final int DEFLAUT_PADDING_LEFT_RIGHT_START_END = 10;
+public class ClassicDropSelectEditView extends LinearLayout{
     private Context mContext;
+    private boolean mEditAble;
 
-    public ClassicDropSelectEditView(Context context) {
-        this(context, null);
+    public ClassicDropSelectEditView(Context context, boolean editAble) {
+        this(context, null, editAble);
     }
 
-    public ClassicDropSelectEditView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+    public ClassicDropSelectEditView(Context context, AttributeSet attrs, boolean editAble) {
+        this(context, attrs, 0, editAble);
     }
 
-    public ClassicDropSelectEditView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ClassicDropSelectEditView(Context context, AttributeSet attrs, int defStyleAttr, boolean editAble) {
         super(context, attrs, defStyleAttr);
         mContext = context;
+        mEditAble = editAble;
         init();
+        initEditText();
+        initDropDownImg();
+        //
+        if (mEditAble) {
+            dropDownImg.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showDropDownSelect(v);
+                }
+            });
+            this.setBackgroundResource(R.drawable.selector_classic_item_primary_bg);
+        } else {
+            editText.setCursorVisible(false);
+            //
+            this.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showDropDownSelect(v);
+                }
+            });
+            this.setBackgroundResource(R.drawable.selector_classic_btn_item_click_bg);
+        }
+
     }
 
     private void init() {
@@ -61,34 +87,38 @@ public class ClassicDropSelectEditView extends LinearLayout {
         ll_lp.gravity = Gravity.CENTER_VERTICAL;
         this.setLayoutParams(ll_lp);
         this.setGravity(Gravity.CENTER_VERTICAL);
-        this.setBackgroundResource(R.drawable.selector_classic_item_primary_bg);
-        //
-        initEditText();
     }
 
     private ImageView dropDownImg;
+
     private void initDropDownImg() {
         dropDownImg = new ImageView(mContext);
-        dropDownImg.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDropDownSelect(v);
-            }
-        });
-        int paddingTopBottom = SizeTool.dp2px(10);
-        int paddingLeftRight = SizeTool.dp2px(5);
-        dropDownImg.setPadding(0, paddingTopBottom, paddingLeftRight, paddingTopBottom);
-        Drawable downDrawable =VectorOrImageResHelper.getDrawable(R.drawable.ic_keyboard_arrow_down_black_24dp);
-        downDrawable.setColorFilter(ContextCompat.getColor(mContext,R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+        int paddingTopBottomRight  = SizeTool.dp2px(10);//10dp
+        dropDownImg.setPadding(0, paddingTopBottomRight, paddingTopBottomRight, paddingTopBottomRight);
+        Drawable downDrawable = VectorOrImageResHelper.getDrawable(R.drawable.ic_keyboard_arrow_down_black_24dp);
+        downDrawable.setColorFilter(ContextCompat.getColor(mContext, R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
         dropDownImg.setImageDrawable(downDrawable);
-       //###!!!! dropDownImg.setBackgroundResource(R.drawable.selector_classic_btn_item_click_bg);
+        //###!!!! dropDownImg.setBackgroundResource(R.drawable.selector_classic_btn_item_click_bg);
         this.addView(dropDownImg);
     }
 
     private EditText editText;
 
-    public EditText getEditText() {
-        return editText;
+    public void setHint(CharSequence hint) {
+        editText.setHint(hint);
+    }
+    public void setSelectAllOnFocus(boolean selectAllOnFocus) {
+        editText.setSelectAllOnFocus(selectAllOnFocus);
+    }
+    public void setText(CharSequence text) {
+        editText.setText(text);
+    }
+    public void setError(CharSequence error) {
+        editText.setError(error);
+    }
+
+    public String getText() {
+        return editText.getText().toString();
     }
 
     private void initEditText() {
@@ -109,36 +139,52 @@ public class ClassicDropSelectEditView extends LinearLayout {
                 editText.getPaddingBottom());
         editText.setHintTextColor(Color.parseColor("#42000000"));
         ViewCompat.setBackground(editText, null);
-        editText.setOnFocusChangeListener(new OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                // 会影响内部view 的 setSelected 状态
-                ClassicDropSelectEditView.this.setSelected(hasFocus);
-                // ClassicInputLayout.this.setActivated(hasFocus);
-            }
-        });
+        if (mEditAble) {
+            editText.setOnFocusChangeListener(new OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    // 会影响内部view 的 setSelected 状态
+                    ClassicDropSelectEditView.this.setSelected(hasFocus);
+                    // ClassicInputLayout.this.setActivated(hasFocus);
+                }
+            });
+        }
         this.addView(editText);
     }
 
-    public void setupDropDownSelectData(List<String> stringList) {
+   /*  private TextView textView;
+
+   private void initTextView() {
+        textView = new TextView(mContext);
+        LayoutParams ll_lp = new LayoutParams(
+                LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        ll_lp.weight = 1.0f;
+        ll_lp.gravity = Gravity.CENTER_VERTICAL;
+        textView.setGravity(Gravity.CENTER_VERTICAL);
+        textView.setLayoutParams(ll_lp);
+        textView.setLines(1);
+        //设置左padding
+        textView.setPadding(textView.getPaddingLeft() + SizeTool.dp2px(5),
+                textView.getPaddingTop(),
+                textView.getPaddingRight(),
+                textView.getPaddingBottom());
+        textView.setHintTextColor(Color.parseColor("#42000000"));
+        this.addView(textView);
+    }*/
+
+    public void setupDropDownSelectData(List<Pair<String,String>> stringList) {
         if (stringList != null && stringList.size() > 0) {
-            if (dropDownImg == null) {
-                initDropDownImg();
-            } else {
-                dropDownImg.setVisibility(VISIBLE);
-            }
+            dropDownImg.setVisibility(VISIBLE);
             this.stringList.clear();
             this.stringList.addAll(stringList);
         } else {
-            if (dropDownImg != null) {
-                dropDownImg.setVisibility(GONE);
-            }
+            dropDownImg.setVisibility(GONE);
         }
 
     }
 
     private PopupWindow popupWindow;
-    private List<String> stringList = new ArrayList<>();
+    private List<Pair<String,String>> stringList = new ArrayList<>();
     private SelectAdapter adapter;
 
     private void showDropDownSelect(View view) {
@@ -160,8 +206,8 @@ public class ClassicDropSelectEditView extends LinearLayout {
             public void onItemClick(View view, int position) {
                 super.onItemClick(view, position);
                 // ToastTool.show("onItemClick");
-                String value = adapter.getData(position);
-                editText.setText(value);
+                Pair<String,String> value = adapter.getData(position);
+                editText.setText(value.second);
                 editText.setSelection(editText.length());//将光标移动最后一个字符后面
                 //
                 popupWindow.dismiss();
@@ -171,7 +217,9 @@ public class ClassicDropSelectEditView extends LinearLayout {
         //
         popupWindow = new PopupWindow(mContext);
         popupWindow.setContentView(recyclerView);
-        popupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
+        int linearLayoutWidth = this.getMeasuredWidth();
+       //## popupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setWidth(linearLayoutWidth);
         popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         //
         popupWindow.setAnimationStyle(android.R.style.Animation_Dialog);
@@ -181,8 +229,10 @@ public class ClassicDropSelectEditView extends LinearLayout {
         //
         popupWindow.setOutsideTouchable(true);
         popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        int fixed = SizeTool.dp2px(10);//10dp
-        popupWindow.showAsDropDown(editText,editText.getPaddingLeft(),-fixed);
+       /* int fixed = SizeTool.dp2px(10);//10dp
+        popupWindow.showAsDropDown(editText, editText.getPaddingLeft(), -fixed);*/
+        popupWindow.showAsDropDown(this, 0, -view.getHeight() / 5);
+
  /*       //显示类似于右对齐
         int[] location = new int[2];
         view.getLocationOnScreen(location);
@@ -204,9 +254,18 @@ public class ClassicDropSelectEditView extends LinearLayout {
 
     }
 
-    class SelectAdapter extends ClassicRecyclerViewAdapter<String> {
 
-        public SelectAdapter(List<String> mDataList, int mItemLayoutId) {
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        if (mEditAble) {
+            return super.onInterceptTouchEvent(ev);
+        }
+        return true;
+    }
+
+    class SelectAdapter extends ClassicRecyclerViewAdapter<Pair<String,String>> {
+
+        public SelectAdapter(List<Pair<String,String>> mDataList, int mItemLayoutId) {
             super(mDataList, mItemLayoutId);
         }
 
@@ -214,7 +273,7 @@ public class ClassicDropSelectEditView extends LinearLayout {
         public void findBindView(int pos, ClassicRecyclerViewHolder classicRecyclerViewHolder) {
             if (!EmptyTool.isEmpty(mDataList)) {
                 TextView id_tv_item_title = classicRecyclerViewHolder.findBindItemView(R.id.id_tv_item_title);
-                id_tv_item_title.setText(mDataList.get(pos));
+                id_tv_item_title.setText(mDataList.get(pos).second);
             }
         }
     }
