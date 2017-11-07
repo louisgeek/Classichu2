@@ -68,6 +68,6 @@ dependencies {
     compile 'com.jude:swipebackhelper:3.1.2'
     compile 'com.jaeger.statusbaruitl:library:1.4.0'
     compile 'cn.bingoogolapple:bga-swipebacklayout:1.0.8@aar'
-    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.33'
     testCompile 'junit:junit:4.12'
 }

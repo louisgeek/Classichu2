@@ -7,6 +7,7 @@ import android.util.Pair;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ import java.util.List;
 
 public class ClassicFormInputLayout extends LinearLayout {
     private final static int DEFLAUT_PADDING_LEFT_RIGHT_START_END = 10;
+    private final static int DEFLAUT_PADDING_LEFT_RIGHT_START_END_SMALL = 5;
 
     public ClassicFormInputLayout(Context context) {
         this(context, null);
@@ -36,10 +38,12 @@ public class ClassicFormInputLayout extends LinearLayout {
         super(context, attrs, defStyle);
         mContext = context;
         //
-        LinearLayout.LayoutParams ll_lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+        LinearLayout.LayoutParams ll_lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         ll_lp.gravity = Gravity.CENTER_VERTICAL;
+        ll_lp.weight = 1.0f;
         this.setLayoutParams(ll_lp);
+        this.setOrientation(LinearLayout.HORIZONTAL);
         this.setGravity(Gravity.CENTER_VERTICAL);
         this.setBackgroundResource(R.drawable.selector_classic_item_primary_bg);
         //
@@ -80,6 +84,8 @@ public class ClassicFormInputLayout extends LinearLayout {
                 LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         ll_lp.weight = 1.0f;
         ll_lp.gravity = Gravity.CENTER_VERTICAL;
+      /*  int padding=SizeTool.dp2px(10);
+        mCenterLayout.setPadding(padding,0,padding,0);*/
         mCenterLayout.setGravity(Gravity.CENTER_VERTICAL);
         mCenterLayout.setLayoutParams(ll_lp);
         this.addView(mCenterLayout);
@@ -96,8 +102,8 @@ public class ClassicFormInputLayout extends LinearLayout {
         TextView startTxt = new TextView(mContext);
         startTxt.setLines(1);
         startTxt.setText(text);
-        int padding = SizeTool.dp2px(10);//10dp
-        startTxt.setPadding(padding, padding, padding, padding);
+       /* int padding = SizeTool.dp2px(10);//10dp
+        startTxt.setPadding(padding, padding, padding, padding);*/
         if (listener != null) {
             startTxt.setOnClickListener(listener);
         }
@@ -131,8 +137,8 @@ public class ClassicFormInputLayout extends LinearLayout {
         TextView endTxt = new TextView(mContext);
         endTxt.setLines(1);
         endTxt.setText(text);
-        int padding = SizeTool.dp2px(10);//10dp
-        endTxt.setPadding(padding, padding, padding, padding);
+      /*  int padding = SizeTool.dp2px(10);//10dp
+        endTxt.setPadding(padding, padding, padding, padding);*/
         if (listener != null) {
             endTxt.setOnClickListener(listener);
         }
@@ -159,9 +165,22 @@ public class ClassicFormInputLayout extends LinearLayout {
     }
 
     public ClassicFormInputLayout addCenterView(View view) {
-        mCenterLayout.addView(view);
+        addCenterView(view, DEFLAUT_PADDING_LEFT_RIGHT_START_END_SMALL);
         return this;
     }
+
+    public ClassicFormInputLayout addCenterView(View view, int paddingLeftRight_Dp) {
+        mCenterLayout.addView(view);
+        int paddingLeftRight = SizeTool.dp2px(paddingLeftRight_Dp);
+        mCenterLayout.setPadding(paddingLeftRight, 0, paddingLeftRight, 0);
+        return this;
+    }
+
+    public EditText getEditTextInCenterLayout() {
+        return dropSelectEditView != null ? dropSelectEditView.getEditText() : null;
+    }
+
+    private ClassicDropSelectEditView dropSelectEditView;
 
     public ClassicFormInputLayout addCenterEditView(String text) {
         return addCenterEditView(text, null, null);
@@ -172,16 +191,23 @@ public class ClassicFormInputLayout extends LinearLayout {
     }
 
     public ClassicFormInputLayout addCenterEditView(String text, String hintText, List<Pair<String, String>> stringList, boolean editAble) {
-        ClassicDropSelectEditView dropSelectEditView = new ClassicDropSelectEditView(mContext, editAble);
+        return addCenterEditView(text, hintText, stringList, editAble, DEFLAUT_PADDING_LEFT_RIGHT_START_END_SMALL);
+    }
+
+    public ClassicFormInputLayout addCenterEditView(String text, String hintText, List<Pair<String, String>> stringList, boolean editAble, int paddingLeftRight_Dp) {
+        dropSelectEditView = new ClassicDropSelectEditView(mContext, editAble);
         LayoutParams ll_lp = new LayoutParams(
                 LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         ll_lp.weight = 1.0f;
         dropSelectEditView.setLayoutParams(ll_lp);
         dropSelectEditView.setHint(hintText);
         dropSelectEditView.setText(text);
-        dropSelectEditView.setError("error");
+        dropSelectEditView.setBackgroundResource(R.drawable.selector_classic_edit_item_bg);
+        //dropSelectEditView.setError("error");
         dropSelectEditView.setupDropDownSelectData(stringList);
         mCenterLayout.addView(dropSelectEditView);
+        int paddingLeftRight = SizeTool.dp2px(paddingLeftRight_Dp);
+        mCenterLayout.setPadding(paddingLeftRight, 0, paddingLeftRight, 0);
         return this;
     }
 

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.classichu.classichu2.R;
 import com.classichu.classichu2.custom.CLog;
 import com.classichu.classichu2.custom.CustomFragment;
+import com.classichu.classichu2.logic.login.bean.UserLoginBean;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -66,6 +67,8 @@ public abstract class BaseFragment extends CustomFragment {
     protected abstract int setupLayoutResId();
 
     protected abstract void initView(View rootLayout,Bundle savedInstanceState);
+
+    protected  abstract void loginAgainSuccess(UserLoginBean userLoginBean);
 
     /**
      * =======================================protected===================================
@@ -147,6 +150,8 @@ public abstract class BaseFragment extends CustomFragment {
     protected  void toRefreshData(){
     }
 
+
+
     /**
      * =======================================private===================================
      */
@@ -175,4 +180,5 @@ public abstract class BaseFragment extends CustomFragment {
             mUnbinder.unbind();
         }
     }
+
 }

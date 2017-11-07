@@ -34,7 +34,9 @@
             </intent-filter>
         </activity>
         <activity android:name="com.classichu.classichu2.logic.setting.SettingActivity" />
-        <activity android:name="com.classichu.classichu2.logic.patient.PatientActivity" />
+        <activity
+            android:name="com.classichu.classichu2.logic.patient.PatientActivity"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

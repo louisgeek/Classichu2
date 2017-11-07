@@ -53,7 +53,7 @@ public class MainPresenter extends BasePresenter<MainContract.Model,MainContract
                             mView.setupData(patientListBeanBS_baseListBean.getData());
                         } else if (patientListBeanBS_baseListBean.getReType() == 100) {
                             //未登录
-                            onFailure(patientListBeanBS_baseListBean.getMsg());
+                            mView.showLoginAgainView();
                         } else {
                             onFailure(patientListBeanBS_baseListBean.getMsg());
                         }

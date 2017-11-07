@@ -15,6 +15,8 @@ import com.classichu.adapter.widget.ClassicEmptyView;
 import com.classichu.classichu2.R;
 import com.classichu.classichu2.app.AppInfoDataManager;
 import com.classichu.classichu2.base.BaseMvpFragment;
+import com.classichu.classichu2.logic.login.bean.UserLoginBean;
+import com.classichu.classichu2.logic.login.manager.LoginManager;
 import com.classichu.classichu2.logic.main.adapter.MainAdapter;
 import com.classichu.classichu2.logic.main.bean.PatientListBean;
 import com.classichu.classichu2.logic.patient.PatientActivity;
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import io.reactivex.disposables.Disposable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -66,6 +69,12 @@ public class MainFragment extends BaseMvpFragment<MainPresenter> implements Main
     @Override
     protected void initView(View rootLayout, Bundle savedInstanceState) {
         initRecyclerViewAndAdapter();
+        toRefreshData();
+    }
+
+
+    @Override
+    protected void loginAgainSuccess(UserLoginBean userLoginBean) {
         toRefreshData();
     }
 
@@ -152,6 +161,22 @@ public class MainFragment extends BaseMvpFragment<MainPresenter> implements Main
     public void showMessage(String msg) {
         showSnack(msg);
     }
+
+    @Override
+    public void showLoginAgainView() {
+        LoginManager.showLoginAgainDialog(getActivity(), new LoginManager.LoginAgainBack() {
+            @Override
+            public void addDisposable(Disposable disposable) {
+                mPresenter.addDisposable(disposable);
+            }
+
+            @Override
+            public void onLoginSuccess() {
+                toRefreshData();
+            }
+        });
+    }
+
 
     @Override
     protected int configSwipeRefreshLayoutResId() {

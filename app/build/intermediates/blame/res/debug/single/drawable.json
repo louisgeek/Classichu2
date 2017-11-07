@@ -96,6 +96,10 @@
         "source": "D:\\LouisGit\\study\\Classichu2\\app\\src\\main\\res\\drawable\\selector_classic_nav_item_bg.xml"
     },
     {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\sample_footer_loading.png",
+        "source": "C:\\Users\\Classichu\\.android\\build-cache\\8edbf181b43cbe4be684696b56e759195384aac4\\output\\res\\drawable\\sample_footer_loading.png"
+    },
+    {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_classic_list_item_bg.xml",
         "source": "C:\\Users\\Classichu\\.android\\build-cache\\17d695db7a8b0a27ce73b3562c26b36efc410840\\output\\res\\drawable\\selector_classic_list_item_bg.xml"
     },
@@ -114,6 +118,10 @@
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_radio_material.xml",
         "source": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\drawable\\abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\divider.xml",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\src\\main\\res\\drawable\\divider.xml"
     },
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
@@ -174,6 +182,10 @@
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_bg_low.xml",
         "source": "C:\\Users\\Classichu\\.android\\build-cache\\5392e42d847474323dc0e9b9a1303fcc6a2075f5\\output\\res\\drawable\\notification_bg_low.xml"
+    },
+    {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_view_bg.xml",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\src\\main\\res\\drawable\\shape_view_bg.xml"
     },
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_classic_text_item_no_topline_bg.xml",
@@ -242,6 +254,10 @@
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_info_black_24dp.xml",
         "source": "C:\\Users\\Classichu\\.android\\build-cache\\17d695db7a8b0a27ce73b3562c26b36efc410840\\output\\res\\drawable\\ic_info_black_24dp.xml"
+    },
+    {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\sample_footer_loading_progress.xml",
+        "source": "C:\\Users\\Classichu\\.android\\build-cache\\8edbf181b43cbe4be684696b56e759195384aac4\\output\\res\\drawable\\sample_footer_loading_progress.xml"
     },
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",

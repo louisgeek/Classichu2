@@ -4,7 +4,6 @@ package com.classichu.classichu2.logic.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,28 +13,22 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.classichu.classichu2.R;
-import com.classichu.classichu2.app.AppInfoDataManager;
 import com.classichu.classichu2.base.BaseMvpFragment;
-import com.classichu.classichu2.custom.ClassicApplication;
 import com.classichu.classichu2.logic.login.adapter.AgencyBaseAdapter;
 import com.classichu.classichu2.logic.login.bean.AgencyBean;
 import com.classichu.classichu2.logic.login.bean.AgencyBeanWrapper;
 import com.classichu.classichu2.logic.login.bean.UserLoginBean;
+import com.classichu.classichu2.logic.login.manager.LoginManager;
 import com.classichu.classichu2.logic.main.MainActivity;
 import com.classichu.classichu2.logic.setting.SettingActivity;
-import com.classichu.classichu2.tool.DateTool;
 import com.classichu.classichu2.tool.KeyBoardTool;
 import com.classichu.classichu2.tool.SharedPreferencesTool;
 import com.classichu.classichu2.tool.ToastTool;
 import com.classichu.dialogview.manager.DialogManager;
 import com.classichu.dialogview.ui.ClassicDialogFragment;
-import com.google.gson.Gson;
 import com.jakewharton.rxbinding2.view.RxView;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.List;
-import java.util.Vector;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -127,6 +120,11 @@ public class LoginFragment extends BaseMvpFragment<LoginPresenter> implements Lo
 
     }
 
+    @Override
+    protected void loginAgainSuccess(UserLoginBean userLoginBean) {
+
+    }
+
     private ClassicDialogFragment mCustomLoginAdminDialogFragment;
 
     private void showLoginAdminDialog() {
@@ -192,57 +190,16 @@ public class LoginFragment extends BaseMvpFragment<LoginPresenter> implements Lo
         showSnack(msg);
     }
 
+    @Override
+    public void showLoginAgainView() {
+
+    }
+
 
     @Override
     public void loginSuccess(UserLoginBean userLoginBean) {
-        //
-        AppInfoDataManager.getInstance().setUserLoginBean(userLoginBean);
 
-        UserLoginBean.LonginUserBean user = userLoginBean.getLonginUser();
-        AppInfoDataManager.getInstance().getAuthBean().Account = user.getYHDM();
-        AppInfoDataManager.getInstance().getAuthBean().Name = user.getYHXM();
-        AppInfoDataManager.getInstance().getAuthBean().PWD = "";
-        AppInfoDataManager.getInstance().getAuthBean().MAC = "";
-        AppInfoDataManager.getInstance().getAuthBean().IP = "";
-        AppInfoDataManager.getInstance().getAuthBean().JGID = user.getJGID();
-       /* String data = "";
-        try {
-            data = JsonUtil.toJson(authVo);
-            data = "Scan" + data;
-            data = URLEncoder.encode(data, "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        application.authorizationString = data;
-         saveUser(user);*/
-
-        List<UserLoginBean.AreasBean> aList = userLoginBean.getAreas();
-        Vector<UserLoginBean.AreasBean> areasBeanVector = new Vector<>(aList);
-        AppInfoDataManager.getInstance().setAreasBeanVector(areasBeanVector);
-
-        UserLoginBean.TimeVoBean timeVo = userLoginBean.getTimeVo();
-        String webTime = timeVo.getTime();
-        Log.i("zfq", "loginSuccess: webTime:" + webTime);
-        AppInfoDataManager.getInstance().setBetweenTime(DateTool.getBetween(webTime));
-/*
-        application.JSESSIONID = userlogin.getData().getSessionId();*/
-
-        ClassicApplication classicApplication = ClassicApplication.getInstance();
-        Gson gson = new Gson();
-        String authorization = "Basic" + gson.toJson(AppInfoDataManager.getInstance().getAuthBean());
-        try {
-            authorization = URLEncoder.encode(authorization, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        String sessionId = userLoginBean.getSessionId();
-        Log.i("zfq", "loginSuccess: sessionId:" + sessionId);
-        classicApplication.getHeadersMap().put("Authorization", authorization);
-        //
-        //原生请求 用"JSESSIONID"   这里OkHttp使用"Cookie"
-        // classicApplication.getHeadersMap().put("JSESSIONID",sessionId);
-        //Set-Cookie是响应里header  Cookie是请求里header
-        classicApplication.getHeadersMap().put("Cookie", "SESSION=" + sessionId);
+        LoginManager.updateUserLoginBean(userLoginBean);
 
         Intent intent = new Intent(mContext,
                 MainActivity.class);

@@ -12,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Pair;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -42,6 +43,9 @@ public class ClassicDropSelectEditView extends LinearLayout{
     private Context mContext;
     private boolean mEditAble;
 
+    public ClassicDropSelectEditView(Context context) {
+        this(context, null, true);
+    }
     public ClassicDropSelectEditView(Context context, boolean editAble) {
         this(context, null, editAble);
     }
@@ -65,7 +69,6 @@ public class ClassicDropSelectEditView extends LinearLayout{
                     showDropDownSelect(v);
                 }
             });
-            this.setBackgroundResource(R.drawable.selector_classic_item_primary_bg);
         } else {
             editText.setCursorVisible(false);
             //
@@ -75,9 +78,10 @@ public class ClassicDropSelectEditView extends LinearLayout{
                     showDropDownSelect(v);
                 }
             });
-            this.setBackgroundResource(R.drawable.selector_classic_btn_item_click_bg);
         }
-
+        if (this.getBackground()==null) {
+            this.setBackgroundResource(R.drawable.selector_classic_edit_item_bg);
+        }
     }
 
     private void init() {
@@ -93,7 +97,7 @@ public class ClassicDropSelectEditView extends LinearLayout{
 
     private void initDropDownImg() {
         dropDownImg = new ImageView(mContext);
-        int paddingTopBottomRight  = SizeTool.dp2px(10);//10dp
+        int paddingTopBottomRight  = SizeTool.dp2px(8);//x dp
         dropDownImg.setPadding(0, paddingTopBottomRight, paddingTopBottomRight, paddingTopBottomRight);
         Drawable downDrawable = VectorOrImageResHelper.getDrawable(R.drawable.ic_keyboard_arrow_down_black_24dp);
         downDrawable.setColorFilter(ContextCompat.getColor(mContext, R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
@@ -103,6 +107,10 @@ public class ClassicDropSelectEditView extends LinearLayout{
     }
 
     private EditText editText;
+
+    public EditText getEditText() {
+        return editText;
+    }
 
     public void setHint(CharSequence hint) {
         editText.setHint(hint);
@@ -137,7 +145,8 @@ public class ClassicDropSelectEditView extends LinearLayout{
                 editText.getPaddingTop() + api21_fixed_edittext_spacing,
                 editText.getPaddingRight(),
                 editText.getPaddingBottom());
-        editText.setHintTextColor(Color.parseColor("#42000000"));
+      //  editText.setHintTextColor(Color.parseColor("#42000000"));
+        editText.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimensionPixelSize(R.dimen.classic_text_size_secondary));
         ViewCompat.setBackground(editText, null);
         if (mEditAble) {
             editText.setOnFocusChangeListener(new OnFocusChangeListener() {

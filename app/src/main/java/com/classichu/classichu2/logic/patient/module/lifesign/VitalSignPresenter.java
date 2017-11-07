@@ -69,7 +69,7 @@ public class VitalSignPresenter extends BasePresenter<VitalSignContract.Model, V
 
                         } else if (bs_BaseListBean.first.getReType() == 100||bs_BaseListBean.second.getReType() == 100) {
                             //未登录
-                            onFailure(bs_BaseListBean.first.getMsg()+"\n"+bs_BaseListBean.second.getMsg());
+                            mView.showLoginAgainView();
                         } else {
                             onFailure(bs_BaseListBean.first.getMsg()+"\n"+bs_BaseListBean.second.getMsg());
                         }

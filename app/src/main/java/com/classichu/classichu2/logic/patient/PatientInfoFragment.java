@@ -15,6 +15,7 @@ import com.classichu.adapter.widget.ClassicEmptyView;
 import com.classichu.classichu2.R;
 import com.classichu.classichu2.base.BaseMvpFragment;
 import com.classichu.classichu2.listener.OnRecyclerViewTouchListener;
+import com.classichu.classichu2.logic.login.bean.UserLoginBean;
 import com.classichu.classichu2.logic.patient.adapter.PatientAdapter;
 import com.classichu.classichu2.tool.ToastTool;
 import com.classichu.classichu2.tool.ViewTool;
@@ -66,6 +67,11 @@ public class PatientInfoFragment extends BaseMvpFragment<PatientPresenter> imple
         toRefreshData();
     }
 
+    @Override
+    protected void loginAgainSuccess(UserLoginBean userLoginBean) {
+
+    }
+
 
     @Override
     public void showLoading() {
@@ -80,6 +86,11 @@ public class PatientInfoFragment extends BaseMvpFragment<PatientPresenter> imple
     @Override
     public void showMessage(String msg) {
         ToastTool.show(msg);
+    }
+
+    @Override
+    public void showLoginAgainView() {
+
     }
 
     @Override

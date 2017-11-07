@@ -8,4 +8,5 @@ public interface IView {
     void showLoading();
     void hideLoading();
     void showMessage(String msg);
+    void showLoginAgainView();
 }

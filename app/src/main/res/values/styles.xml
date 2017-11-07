@@ -231,5 +231,9 @@
      <style name="ClassicPopupThemeOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
+    <style name="ClassicDateSelectViewAnimation" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/popupwindow_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/popupwindow_bottom_out</item>
+    </style>
 
  </resources>
