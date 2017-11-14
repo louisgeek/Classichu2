@@ -198,8 +198,7 @@ public class ClassicInputLayout extends LinearLayout {
 
     private void initInputEditText() {
         mInputEditText = new EditText(mContext);
-        LayoutParams ll_lp = new LayoutParams(
-                LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        LayoutParams ll_lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT);
         ll_lp.weight = 1.0f;
         ll_lp.gravity = Gravity.CENTER_VERTICAL;
         mInputEditText.setLayoutParams(ll_lp);

@@ -20,6 +20,7 @@ import com.classichu.classichu2.logic.patient.module.lifesign.bean.MyMultiItemEn
 import com.classichu.classichu2.logic.patient.module.lifesign.bean.MySectionEntity;
 import com.classichu.classichu2.logic.patient.module.lifesign.bean.VitalSignTimePointBean;
 import com.classichu.classichu2.logic.patient.module.lifesign.bean.VitalSignTypeItemBean;
+import com.classichu.classichu2.tool.SizeTool;
 import com.classichu.classichu2.tool.ToastTool;
 import com.classichu.classichu2.widget.ClassicFormInputLayout;
 import com.classichu.classichu2.widget.pinned_section_itemdecoration.PinnedHeaderItemDecoration;
@@ -56,9 +57,10 @@ public class VitalSignViewFactory {
             stringList.add(Pair.create(String.valueOf(vitalSignTimePointBean.VALUE), vitalSignTimePointBean.NAME));
         }
         classicFormInputLayout_TimePoint.addCenterEditView(null, "请选择时间点", stringList, false);
+        classicFormInputLayout_TimePoint.setPadding(classicFormInputLayout_TimePoint.getPaddingLeft()+ SizeTool.dp2px(5),classicFormInputLayout_TimePoint.getPaddingTop(),classicFormInputLayout_TimePoint.getPaddingRight(),classicFormInputLayout_TimePoint.getPaddingBottom());
         // classicFormInputLayout_TimePoint.setBackgroundResource(R.drawable.selector_classic_text_item_underline_bg);
         root.addView(classicFormInputLayout_TimePoint);
-      //####!!!  containerLayout.addView(root);
+         containerLayout.addView(root);
     }
 
 

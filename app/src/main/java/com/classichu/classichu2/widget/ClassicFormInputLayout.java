@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -38,8 +37,7 @@ public class ClassicFormInputLayout extends LinearLayout {
         super(context, attrs, defStyle);
         mContext = context;
         //
-        LinearLayout.LayoutParams ll_lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams ll_lp = new LinearLayout.LayoutParams(0,LayoutParams.WRAP_CONTENT);
         ll_lp.gravity = Gravity.CENTER_VERTICAL;
         ll_lp.weight = 1.0f;
         this.setLayoutParams(ll_lp);
@@ -80,8 +78,7 @@ public class ClassicFormInputLayout extends LinearLayout {
 
     private void initCenterLayout() {
         mCenterLayout = new LinearLayout(mContext);
-        LayoutParams ll_lp = new LayoutParams(
-                LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        LayoutParams ll_lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT);
         ll_lp.weight = 1.0f;
         ll_lp.gravity = Gravity.CENTER_VERTICAL;
       /*  int padding=SizeTool.dp2px(10);
@@ -196,14 +193,12 @@ public class ClassicFormInputLayout extends LinearLayout {
 
     public ClassicFormInputLayout addCenterEditView(String text, String hintText, List<Pair<String, String>> stringList, boolean editAble, int paddingLeftRight_Dp) {
         dropSelectEditView = new ClassicDropSelectEditView(mContext, editAble);
-        LayoutParams ll_lp = new LayoutParams(
-                LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        LayoutParams ll_lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT);
         ll_lp.weight = 1.0f;
         dropSelectEditView.setLayoutParams(ll_lp);
         dropSelectEditView.setHint(hintText);
         dropSelectEditView.setText(text);
         dropSelectEditView.setBackgroundResource(R.drawable.selector_classic_edit_item_bg);
-        //dropSelectEditView.setError("error");
         dropSelectEditView.setupDropDownSelectData(stringList);
         mCenterLayout.addView(dropSelectEditView);
         int paddingLeftRight = SizeTool.dp2px(paddingLeftRight_Dp);

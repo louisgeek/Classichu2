@@ -29,6 +29,8 @@ import com.classichu.adapter.recyclerview.ClassicRecyclerViewHolder;
 import com.classichu.classichu2.R;
 import com.classichu.classichu2.helper.VectorOrImageResHelper;
 import com.classichu.classichu2.tool.EmptyTool;
+import com.classichu.classichu2.tool.KeyBoardTool;
+import com.classichu.classichu2.tool.ScreenTool;
 import com.classichu.classichu2.tool.SizeTool;
 import com.fondesa.recyclerviewdivider.RecyclerViewDivider;
 
@@ -67,6 +69,7 @@ public class ClassicDropSelectEditView extends LinearLayout{
                 @Override
                 public void onClick(View v) {
                     showDropDownSelect(v);
+                    KeyBoardTool.hideKeyboard(v);//点击下拉 收起键盘
                 }
             });
         } else {
@@ -125,14 +128,14 @@ public class ClassicDropSelectEditView extends LinearLayout{
         editText.setError(error);
     }
 
+
     public String getText() {
         return editText.getText().toString();
     }
 
     private void initEditText() {
         editText = new EditText(mContext);
-        LayoutParams ll_lp = new LayoutParams(
-                LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        LayoutParams ll_lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT);
         ll_lp.weight = 1.0f;
         //android 5.0 API 21上的EditText文字偏上 定义不同的dimen文件 兼容处理这个问题
         int api21_fixed_edittext_spacing = mContext.getResources().getDimensionPixelSize(R.dimen.api21_fixed_edittext_spacing);
@@ -140,6 +143,7 @@ public class ClassicDropSelectEditView extends LinearLayout{
         editText.setGravity(Gravity.CENTER_VERTICAL);
         editText.setLayoutParams(ll_lp);
         editText.setLines(1);
+        editText.setMinimumWidth(ScreenTool.getScreenWidth()/8);
         //设置左padding
         editText.setPadding(editText.getPaddingLeft() + SizeTool.dp2px(5),
                 editText.getPaddingTop() + api21_fixed_edittext_spacing,

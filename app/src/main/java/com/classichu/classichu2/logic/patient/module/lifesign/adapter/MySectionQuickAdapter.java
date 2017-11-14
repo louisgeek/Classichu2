@@ -188,7 +188,7 @@ public class MySectionQuickAdapter extends BaseSectionQuickAdapter<MySectionEnti
             case "2":
                 ClassicFormInputLayout editLayout = new ClassicFormInputLayout(context);
                 //  editLayout.addStartText("开始");
-                editLayout.addCenterEditView(null);
+                editLayout.addCenterEditView("555");
                 //  editLayout.addEndText("结束");
                 EditText editText = editLayout.getEditTextInCenterLayout();
                 // 设置
