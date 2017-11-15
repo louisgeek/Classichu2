@@ -19,7 +19,6 @@
         android:layout_marginLeft="@dimen/classic_item_comm_margin"
         android:layout_marginRight="@dimen/classic_item_comm_margin"
         android:layout_marginTop="@dimen/classic_item_comm_margin"
-        android:inputType="text"
         android:hint="ip" />
 
 
@@ -30,7 +29,6 @@
         android:layout_marginLeft="@dimen/classic_item_comm_margin"
         android:layout_marginRight="@dimen/classic_item_comm_margin"
         android:layout_marginTop="@dimen/classic_item_comm_margin"
-        android:inputType="number"
         android:hint="port" />
 
 

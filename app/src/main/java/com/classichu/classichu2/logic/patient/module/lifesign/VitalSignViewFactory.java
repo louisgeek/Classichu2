@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.classichu.classichu2.R;
 import com.classichu.classichu2.logic.patient.module.lifesign.adapter.MyMultipleItemQuickAdapter;
 import com.classichu.classichu2.logic.patient.module.lifesign.adapter.MyMultipleItemQuickAdapter2;
@@ -21,7 +20,6 @@ import com.classichu.classichu2.logic.patient.module.lifesign.bean.MySectionEnti
 import com.classichu.classichu2.logic.patient.module.lifesign.bean.VitalSignTimePointBean;
 import com.classichu.classichu2.logic.patient.module.lifesign.bean.VitalSignTypeItemBean;
 import com.classichu.classichu2.tool.SizeTool;
-import com.classichu.classichu2.tool.ToastTool;
 import com.classichu.classichu2.widget.ClassicFormInputLayout;
 import com.classichu.classichu2.widget.pinned_section_itemdecoration.PinnedHeaderItemDecoration;
 import com.classichu.classichu2.widget.pinned_section_itemdecoration.callback.OnHeaderClickAdapter;
@@ -173,12 +171,12 @@ public class VitalSignViewFactory {
         //
         recyclerView3.addItemDecoration(new StickyItemDecoration(stickyHeadContainer, StickyItemDecoration.SECTION_HEADER_VIEW));*/
         MySectionQuickAdapter mySectionQuickAdapter = new MySectionQuickAdapter(R.layout.item_list_child,R.layout.item_list_card_expandable,mySectionEntityList);
-        mySectionQuickAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+   /*     mySectionQuickAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 ToastTool.show("onItemClick "+position);
             }
-        });
+        });*/
         recyclerView3.setAdapter(mySectionQuickAdapter);
 
 
