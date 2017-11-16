@@ -1,4 +1,4 @@
-package com.classichu.classichu2.widget.floatball.runner;
+package com.classichu.classichu2.widget.floatmenu.runner;
 
 import android.view.View;
 

@@ -1,4 +1,4 @@
-package com.classichu.classichu2.widget.floatball.floatball;
+package com.classichu.classichu2.widget.floatmenu.floatbutton;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -11,17 +11,17 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.classichu.classichu2.widget.floatball.FloatBallManager;
-import com.classichu.classichu2.widget.floatball.FloatBallUtil;
-import com.classichu.classichu2.widget.floatball.runner.ICarrier;
-import com.classichu.classichu2.widget.floatball.runner.OnceRunnable;
-import com.classichu.classichu2.widget.floatball.runner.ScrollRunner;
-import com.classichu.classichu2.widget.floatball.utils.MotionVelocityUtil;
+import com.classichu.classichu2.widget.floatmenu.FloatMenuManager;
+import com.classichu.classichu2.widget.floatmenu.FloatMenuUtil;
+import com.classichu.classichu2.widget.floatmenu.runner.IFloatAction;
+import com.classichu.classichu2.widget.floatmenu.runner.OnceRunnable;
+import com.classichu.classichu2.widget.floatmenu.runner.ScrollRunner;
+import com.classichu.classichu2.widget.floatmenu.utils.MotionVelocityUtil;
 
 
-public class FloatBall extends FrameLayout implements ICarrier {
+public class FloatButton extends FrameLayout implements IFloatAction {
 
-    private FloatBallManager floatBallManager;
+    private FloatMenuManager floatMenuManager;
     private ImageView imageView;
     private WindowManager.LayoutParams mLayoutParams;
     private WindowManager windowManager;
@@ -38,7 +38,7 @@ public class FloatBall extends FrameLayout implements ICarrier {
     private int mVelocityX, mVelocityY;
     private MotionVelocityUtil mVelocity;
     private boolean sleep = false;
-    private FloatBallCfg mConfig;
+    private FloatButtonCfg mConfig;
     private OnceRunnable mSleepRunnable = new OnceRunnable() {
         @Override
         public void onRun() {
@@ -49,9 +49,9 @@ public class FloatBall extends FrameLayout implements ICarrier {
         }
     };
 
-    public FloatBall(Context context, FloatBallManager floatBallManager, FloatBallCfg config) {
+    public FloatButton(Context context, FloatMenuManager floatMenuManager, FloatButtonCfg config) {
         super(context);
-        this.floatBallManager = floatBallManager;
+        this.floatMenuManager = floatMenuManager;
         mConfig = config;
         init(context);
     }
@@ -62,7 +62,7 @@ public class FloatBall extends FrameLayout implements ICarrier {
         mSize = mConfig.mSize;
         ViewCompat.setBackground(imageView, icon);
         addView(imageView, new ViewGroup.LayoutParams(mSize, mSize));
-        mLayoutParams = FloatBallUtil.getLayoutParams();
+        mLayoutParams = FloatMenuUtil.getLayoutParams();
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
         mRunner = new ScrollRunner(this);
         mVelocity = new MotionVelocityUtil(context);
@@ -97,18 +97,46 @@ public class FloatBall extends FrameLayout implements ICarrier {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int width = getMeasuredWidth();
         int height = getMeasuredHeight();
-        if (height != 0 && isFirst) {
+        if (width != 0 && height != 0 && isFirst) {
             isFirst = false;
-            int deltaY = floatBallManager.mScreenHeight / 2 - height;
-            onMove(0, deltaY);
+            int deltaX = 0;//默认FloatButtonCfg.LEFT_BOTTOM
+            int deltaY = floatMenuManager.mScreenHeight - height;//默认FloatButtonCfg.LEFT_BOTTOM
+            switch (mConfig.mFirstShowPlace) {
+                case FloatButtonCfg.LEFT_TOP:
+                    deltaX = 0;
+                    deltaY = height;
+                    break;
+                case FloatButtonCfg.LEFT_CENTER:
+                    deltaX = 0;
+                    deltaY = floatMenuManager.mScreenHeight / 2 - height;
+                    break;
+                case FloatButtonCfg.LEFT_BOTTOM:
+                    deltaX = 0;
+                    deltaY = floatMenuManager.mScreenHeight - height;
+                    break;
+                case FloatButtonCfg.RIGHT_TOP:
+                    deltaX = floatMenuManager.mScreenWidth - width;
+                    deltaY = height;
+                    break;
+                case FloatButtonCfg.RIGHT_CENTER:
+                    deltaX = floatMenuManager.mScreenWidth - width;
+                    deltaY = floatMenuManager.mScreenHeight / 2 - height;
+                    break;
+                case FloatButtonCfg.RIGHT_BOTTOM:
+                    deltaX = floatMenuManager.mScreenWidth - width;
+                    deltaY = floatMenuManager.mScreenHeight - height;
+                    break;
+            }
+            onMove(deltaX, deltaY);
         }
     }
 
     @Override
     protected void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        floatBallManager.onConfigurationChanged(newConfig);
+        floatMenuManager.onConfigurationChanged(newConfig);
         moveToEdge(false, false);
         postSleepRunnable();
     }
@@ -177,7 +205,7 @@ public class FloatBall extends FrameLayout implements ICarrier {
     }
 
     private void moveToX(boolean smooth, int destX) {
-        final int screenHeight = floatBallManager.mScreenHeight;
+        final int screenHeight = floatMenuManager.mScreenHeight;
         int height = getHeight();
         int destY = 0;
         if (mLayoutParams.y < 0) {
@@ -196,10 +224,10 @@ public class FloatBall extends FrameLayout implements ICarrier {
     }
 
     private void wakeUp() {
-        final int screenWidth = floatBallManager.mScreenWidth;
+        final int screenWidth = floatMenuManager.mScreenWidth;
         int width = getWidth();
-        int ballHalfWidth = width / 2;
-        int centerX = (screenWidth / 2 - ballHalfWidth);
+        int buttonHalfWidth = width / 2;
+        int centerX = (screenWidth / 2 - buttonHalfWidth);
         int destX;
         destX = mLayoutParams.x < centerX ? 0 : screenWidth - width;
         sleep = false;
@@ -209,22 +237,22 @@ public class FloatBall extends FrameLayout implements ICarrier {
     private void moveToEdge(boolean smooth, boolean forceSleep) {
 
 
-        final int screenWidth = floatBallManager.mScreenWidth;
+        final int screenWidth = floatMenuManager.mScreenWidth;
         int width = getWidth();
-        int ballHalfWidth = width / 2;
-        int ballHideWidth = ballHalfWidth;
+        int buttonHalfWidth = width / 2;
+        int buttonHideWidth = buttonHalfWidth;
         if (mConfig.mEdge_hide_width_percent >= 0 && mConfig.mEdge_hide_width_percent <= 1) {
-            ballHideWidth = (int) (width * mConfig.mEdge_hide_width_percent);
+            buttonHideWidth = (int) (width * mConfig.mEdge_hide_width_percent);
         }
-        int centerX = (screenWidth / 2 - ballHalfWidth);
+        int centerX = (screenWidth / 2 - buttonHalfWidth);
         int destX;
         final int minVelocity = mVelocity.getMinVelocity();
         if (mLayoutParams.x < centerX) {//左边
             sleep = forceSleep ? true : Math.abs(mVelocityX) > minVelocity && mVelocityX < 0 || mLayoutParams.x < 0;
-            destX = sleep ? -ballHideWidth : 0;
+            destX = sleep ? -buttonHideWidth : 0;
         } else {
             sleep = forceSleep ? true : Math.abs(mVelocityX) > minVelocity && mVelocityX > 0 || mLayoutParams.x > screenWidth - width;
-            destX = sleep ? screenWidth - (width - ballHideWidth) : screenWidth - width;
+            destX = sleep ? screenWidth - (width - buttonHideWidth) : screenWidth - width;
         }
         moveToX(smooth, destX);
     }
@@ -263,9 +291,9 @@ public class FloatBall extends FrameLayout implements ICarrier {
     }
 
     private void onClick() {
-        floatBallManager.floatballX = mLayoutParams.x;
-        floatBallManager.floatballY = mLayoutParams.y;
-        floatBallManager.onFloatBallClick();
+        floatMenuManager.floatbuttonX = mLayoutParams.x;
+        floatMenuManager.floatbuttonY = mLayoutParams.y;
+        floatMenuManager.onFloatButtonClick();
     }
 
     private void removeSleepRunnable() {

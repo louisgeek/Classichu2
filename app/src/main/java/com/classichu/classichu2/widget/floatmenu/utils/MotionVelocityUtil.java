@@ -1,4 +1,4 @@
-package com.classichu.classichu2.widget.floatball.utils;
+package com.classichu.classichu2.widget.floatmenu.utils;
 
 
 import android.content.Context;

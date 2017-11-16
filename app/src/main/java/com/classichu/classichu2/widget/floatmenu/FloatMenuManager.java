@@ -1,42 +1,41 @@
-package com.classichu.classichu2.widget.floatball;
+package com.classichu.classichu2.widget.floatmenu;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Point;
-import android.os.Build;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.classichu.classichu2.widget.floatball.floatball.FloatBall;
-import com.classichu.classichu2.widget.floatball.floatball.FloatBallCfg;
-import com.classichu.classichu2.widget.floatball.menu.FloatMenu;
-import com.classichu.classichu2.widget.floatball.menu.FloatMenuCfg;
-import com.classichu.classichu2.widget.floatball.menu.MenuItem;
+import com.classichu.classichu2.widget.floatmenu.floatbutton.FloatButton;
+import com.classichu.classichu2.widget.floatmenu.floatbutton.FloatButtonCfg;
+import com.classichu.classichu2.widget.floatmenu.menu.FloatMenu;
+import com.classichu.classichu2.widget.floatmenu.menu.FloatMenuCfg;
+import com.classichu.classichu2.widget.floatmenu.menu.FloatMenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class FloatBallManager {
+public class FloatMenuManager {
     public int mScreenWidth, mScreenHeight;
     private int mStatusBarHeight;
 
-    private IFloatBallPermission mPermission;
-    private OnFloatBallClickListener mFloatballClickListener;
+    private IFloatMenuPermission mPermission;
+    private OnFloatButtonClickListener onFloatButtonClickListener;
     private WindowManager mWindowManager;
     private Context mContext;
-    private FloatBall floatBall;
+    private FloatButton floatButton;
     private FloatMenu floatMenu;
-    public int floatballX, floatballY;
+    public int floatbuttonX, floatbuttonY;
     private boolean isShowing = false;
-    private List<MenuItem> menuItems = new ArrayList<>();
+    private List<FloatMenuItem> menuItems = new ArrayList<>();
 
-    public FloatBallManager(Context application, FloatBallCfg ballCfg) {
-        this(application, ballCfg, null);
+    public FloatMenuManager(Context application, FloatButtonCfg buttonCfg) {
+        this(application, buttonCfg, null);
     }
 
-    public FloatBallManager(Context application, FloatBallCfg ballCfg, FloatMenuCfg menuCfg) {
+    public FloatMenuManager(Context application, FloatButtonCfg buttonCfg, FloatMenuCfg menuCfg) {
         mContext = application.getApplicationContext();
         int statusbarId = application.getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (statusbarId > 0) {
@@ -44,7 +43,7 @@ public class FloatBallManager {
         }
         mWindowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
         computeScreenSize();
-        floatBall = new FloatBall(mContext, this, ballCfg);
+        floatButton = new FloatButton(mContext, this, buttonCfg);
         floatMenu = new FloatMenu(mContext, this, menuCfg);
     }
 
@@ -57,7 +56,7 @@ public class FloatBallManager {
      *
      * @param item
      */
-    public FloatBallManager addMenuItem(MenuItem item) {
+    public FloatMenuManager addMenuItem(FloatMenuItem item) {
         menuItems.add(item);
         return this;
     }
@@ -71,20 +70,20 @@ public class FloatBallManager {
      *
      * @param items
      */
-    public FloatBallManager setMenu(List<MenuItem> items) {
+    public FloatMenuManager setMenu(List<FloatMenuItem> items) {
         menuItems = items;
         return this;
     }
 
     private void inflateMenuItem() {
         floatMenu.removeAllItemViews();
-        for (MenuItem item : menuItems) {
+        for (FloatMenuItem item : menuItems) {
             floatMenu.addItem(item);
         }
     }
 
-    public int getBallSize() {
-        return floatBall.getSize();
+    public int getButtonSize() {
+        return floatButton.getSize();
     }
 
     public void computeScreenSize() {
@@ -99,14 +98,14 @@ public class FloatBallManager {
         if (mPermission == null) {
             return;
         }
-        if (!mPermission.hasFloatBallPermission(mContext)) {
-            mPermission.onRequestFloatBallPermission();
+        if (!mPermission.hasFloatButtonPermission(mContext)) {
+            mPermission.onRequestFloatButtonPermission();
             return;
         }
         if (isShowing) return;
         isShowing = true;
-        floatBall.setVisibility(View.VISIBLE);
-        floatBall.attachToWindow(mWindowManager);
+        floatButton.setVisibility(View.VISIBLE);
+        floatButton.attachToWindow(mWindowManager);
         floatMenu.detachFromWindow(mWindowManager);
     }
 
@@ -115,17 +114,17 @@ public class FloatBallManager {
     }
 
     public void reset() {
-        floatBall.setVisibility(View.VISIBLE);
-        floatBall.postSleepRunnable();
+        floatButton.setVisibility(View.VISIBLE);
+        floatButton.postSleepRunnable();
         floatMenu.detachFromWindow(mWindowManager);
     }
 
-    public void onFloatBallClick() {
+    public void onFloatButtonClick() {
         if (menuItems != null && menuItems.size() > 0) {
             floatMenu.attachToWindow(mWindowManager);
         } else {
-            if (mFloatballClickListener != null) {
-                mFloatballClickListener.onFloatBallClick();
+            if (onFloatButtonClickListener != null) {
+                onFloatButtonClickListener.onFloatButtonClick();
             }
         }
     }
@@ -133,7 +132,7 @@ public class FloatBallManager {
     public void hide() {
         if (!isShowing) return;
         isShowing = false;
-        floatBall.detachFromWindow(mWindowManager);
+        floatButton.detachFromWindow(mWindowManager);
         floatMenu.detachFromWindow(mWindowManager);
     }
 
@@ -142,38 +141,38 @@ public class FloatBallManager {
         reset();
     }
 
-    public void setPermission(IFloatBallPermission iPermission) {
+    public void setPermission(IFloatMenuPermission iPermission) {
         this.mPermission = iPermission;
     }
 
-    public void setOnFloatBallClickListener(OnFloatBallClickListener listener) {
-        mFloatballClickListener = listener;
+    public void setOnFloatButtonClickListener(OnFloatButtonClickListener listener) {
+        onFloatButtonClickListener = listener;
     }
 
-    public interface OnFloatBallClickListener {
-        void onFloatBallClick();
+    public interface OnFloatButtonClickListener {
+        void onFloatButtonClick();
     }
 
-    public interface IFloatBallPermission {
+    public interface IFloatMenuPermission {
         /**
-         * request the permission of floatball,just use {@link #requestFloatBallPermission(Activity)},
+         * request the permission of floatmenu,just use {@link #requestFloatButtonPermission(Activity)},
          * or use your custom method.
          *
          * @return return true if requested the permission
-         * @see #requestFloatBallPermission(Activity)
+         * @see #requestFloatButtonPermission(Activity)
          */
-        boolean onRequestFloatBallPermission();
+        boolean onRequestFloatButtonPermission();
 
         /**
-         * detect whether allow  using floatball here or not.
+         * detect whether allow  using floatmenu here or not.
          *
          * @return
          */
-        boolean hasFloatBallPermission(Context context);
+        boolean hasFloatButtonPermission(Context context);
 
         /**
-         * request floatball permission
+         * request floatmenu permission
          */
-//##############@ void requestFloatBallPermission(Activity activity);
+//##############@ void requestFloatButtonPermission(Activity activity);
     }
 }

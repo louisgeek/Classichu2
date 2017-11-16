@@ -1,20 +1,19 @@
-package com.classichu.classichu2.widget.floatball.menu;
+package com.classichu.classichu2.widget.floatmenu.menu;
 
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.ViewGroup;
 
 import com.classichu.classichu2.tool.SizeTool;
-import com.classichu.classichu2.widget.floatball.runner.ICarrier;
-import com.classichu.classichu2.widget.floatball.runner.ScrollRunner;
+import com.classichu.classichu2.widget.floatmenu.runner.IFloatAction;
+import com.classichu.classichu2.widget.floatmenu.runner.ScrollRunner;
 
 /**
  * 子菜单项布局
- *
- * @author 何凌波
  */
-public class MenuLayout extends ViewGroup implements ICarrier {
+public class FloatMenuLayout extends ViewGroup implements IFloatAction {
     private int mChildSize;
     private int mChildPadding = 5;
     private float mFromDegrees;
@@ -74,11 +73,11 @@ public class MenuLayout extends ViewGroup implements ICarrier {
         return mRadius + (mChildPadding * 2);
     }
 
-    public MenuLayout(Context context) {
+    public FloatMenuLayout(Context context) {
         this(context, null);
     }
 
-    public MenuLayout(Context context, AttributeSet attrs) {
+    public FloatMenuLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         MIN_RADIUS = SizeTool.dp2px(65);
         mRunner = new ScrollRunner(this);
@@ -134,7 +133,7 @@ public class MenuLayout extends ViewGroup implements ICarrier {
      */
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        if (isMoving) return;
+       //!!!! if (isMoving) return;
         computeCenterXY(position);
         final int radius = 0;
         layoutItem(radius);
@@ -155,6 +154,7 @@ public class MenuLayout extends ViewGroup implements ICarrier {
     }
 
     private void layoutItem(int radius) {
+        Log.i("zfqzfq", "layoutItem: radius"+radius);
         final int childCount = getChildCount();
 //        final float perDegrees =Math.abs (mToDegrees - mFromDegrees) / (childCount - 1);
         float perDegrees;
@@ -196,6 +196,10 @@ public class MenuLayout extends ViewGroup implements ICarrier {
         mExpanded = !mExpanded;
         isMoving = true;
         computeCenterXY(position);
+        ///!!!
+        mRadius = computeRadius(Math.abs(mToDegrees - mFromDegrees), getChildCount(),
+                mChildSize, mChildPadding, MIN_RADIUS);
+        ///!!!
         final int start = mExpanded ? 0 : mRadius;
         final int radius = mExpanded ? mRadius : -mRadius;
         mRunner.start(start, 0, radius, 0, duration);
@@ -203,7 +207,7 @@ public class MenuLayout extends ViewGroup implements ICarrier {
 
     @Override
     public void onMove(int lastX, int lastY, int curX, int curY) {
-        layoutItem(curX);
+      layoutItem(curX);
     }
 
     public void onDone() {
@@ -230,6 +234,7 @@ public class MenuLayout extends ViewGroup implements ICarrier {
         mToDegrees = toDegrees;
         computeCenterXY(position);
         requestLayout();
+
     }
 
     /**

@@ -17,10 +17,10 @@ import com.classichu.classichu2.logic.patient.module.lifesign.bean.VitalSignTime
 import com.classichu.classichu2.logic.patient.module.lifesign.bean.VitalSignTypeItemBean;
 import com.classichu.classichu2.tool.SizeTool;
 import com.classichu.classichu2.tool.floatwindowpermission.FloatWindowManager;
-import com.classichu.classichu2.widget.floatball.FloatBallManager;
-import com.classichu.classichu2.widget.floatball.floatball.FloatBallCfg;
-import com.classichu.classichu2.widget.floatball.menu.FloatMenuCfg;
-import com.classichu.classichu2.widget.floatball.menu.MenuItem;
+import com.classichu.classichu2.widget.floatmenu.FloatMenuManager;
+import com.classichu.classichu2.widget.floatmenu.floatbutton.FloatButtonCfg;
+import com.classichu.classichu2.widget.floatmenu.menu.FloatMenuCfg;
+import com.classichu.classichu2.widget.floatmenu.menu.FloatMenuItem;
 import com.classichu.dialogview.manager.DialogManager;
 
 import java.util.List;
@@ -67,13 +67,13 @@ public class VitalSignFragment extends BaseMvpFragment<VitalSignPresenter> imple
 
     }
 
-    private FloatBallManager mFloatballManager;
+    private FloatMenuManager mFloatballManager;
 
     private void initFloatMenu(Context context) {
         //1 初始化悬浮球配置，定义好悬浮球大小和icon的drawable
         int ballSize = SizeTool.dp2px(56);
-        Drawable ballIcon = VectorOrImageResHelper.getDrawable(R.drawable.ic_add_circle_outline_black_24dp);
-        FloatBallCfg ballCfg = new FloatBallCfg(ballSize, ballIcon);
+        Drawable icon = VectorOrImageResHelper.getDrawable(R.drawable.ic_add_circle_outline_black_24dp);
+        FloatButtonCfg buttonCfg = new FloatButtonCfg(ballSize, icon);
 
         //2 需要显示悬浮菜单
         //2.1 初始化悬浮菜单配置，有菜单item的大小和菜单item的个数
@@ -81,15 +81,15 @@ public class VitalSignFragment extends BaseMvpFragment<VitalSignPresenter> imple
         int menuItemSize = SizeTool.dp2px(48);
         FloatMenuCfg menuCfg = new FloatMenuCfg(menuSize, menuItemSize);
         //3 生成floatballManager
-        mFloatballManager = new FloatBallManager(context, ballCfg, menuCfg);
+        mFloatballManager = new FloatMenuManager(context, buttonCfg, menuCfg);
         addFloatMenuItem();
 
         setFloatPermission(context);
         //5 如果没有添加菜单，可以设置悬浮球点击事件
         if (mFloatballManager.getMenuItemSize() == 0) {
-            mFloatballManager.setOnFloatBallClickListener(new FloatBallManager.OnFloatBallClickListener() {
+            mFloatballManager.setOnFloatButtonClickListener(new FloatMenuManager.OnFloatButtonClickListener() {
                 @Override
-                public void onFloatBallClick() {
+                public void onFloatButtonClick() {
                     // toast("点击了悬浮球");
                 }
             });
@@ -98,15 +98,15 @@ public class VitalSignFragment extends BaseMvpFragment<VitalSignPresenter> imple
     }
 
     private void setFloatPermission(final Context context) {
-        mFloatballManager.setPermission(new FloatBallManager.IFloatBallPermission() {
+        mFloatballManager.setPermission(new FloatMenuManager.IFloatMenuPermission() {
             @Override
-            public boolean onRequestFloatBallPermission() {
+            public boolean onRequestFloatButtonPermission() {
                 FloatWindowManager.getInstance().applyPermission(context);
                 return true;
             }
 
             @Override
-            public boolean hasFloatBallPermission(Context context) {
+            public boolean hasFloatButtonPermission(Context context) {
                 return FloatWindowManager.getInstance().checkPermission(context);
             }
 
@@ -114,13 +114,13 @@ public class VitalSignFragment extends BaseMvpFragment<VitalSignPresenter> imple
     }
 
     private void addFloatMenuItem() {
-        MenuItem personItem = new MenuItem(VectorOrImageResHelper.getDrawable(R.drawable.ic_check_circle_black_24dp)) {
+        FloatMenuItem personItem = new FloatMenuItem(VectorOrImageResHelper.getDrawable(R.drawable.ic_check_circle_black_24dp)) {
             @Override
             public void action() {
                 mFloatballManager.closeMenu();
             }
         };
-        MenuItem walletItem = new MenuItem(VectorOrImageResHelper.getDrawable(R.drawable.ic_info_black_24dp)) {
+        FloatMenuItem walletItem = new FloatMenuItem(VectorOrImageResHelper.getDrawable(R.drawable.ic_info_black_24dp)) {
             @Override
             public void action() {
                 mFloatballManager.closeMenu();

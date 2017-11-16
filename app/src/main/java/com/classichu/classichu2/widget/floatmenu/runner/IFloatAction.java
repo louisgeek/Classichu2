@@ -1,9 +1,9 @@
-package com.classichu.classichu2.widget.floatball.runner;
+package com.classichu.classichu2.widget.floatmenu.runner;
 
 
 import android.content.Context;
 
-public interface ICarrier {
+public interface IFloatAction {
     Context getContext();
 
     void onMove(int lastX, int lastY, int curX, int curY);

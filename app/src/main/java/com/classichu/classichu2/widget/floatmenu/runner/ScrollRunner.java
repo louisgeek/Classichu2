@@ -1,16 +1,17 @@
-package com.classichu.classichu2.widget.floatball.runner;
+package com.classichu.classichu2.widget.floatmenu.runner;
 
 
+import android.util.Log;
 import android.view.animation.LinearInterpolator;
 import android.widget.Scroller;
 
 public class ScrollRunner implements Runnable {
     private Scroller mScroller;
-    private ICarrier mCarrier;
+    private IFloatAction mCarrier;
     private int mDuration = 250;
     private int lastX, lastY;
 
-    public ScrollRunner(ICarrier carrier) {
+    public ScrollRunner(IFloatAction carrier) {
         mCarrier = carrier;
         mScroller = new Scroller(carrier.getContext(), new LinearInterpolator());
     }
@@ -39,6 +40,7 @@ public class ScrollRunner implements Runnable {
     @Override
     public void run() {
         if (mScroller.computeScrollOffset()) {
+            Log.i("qqq", "run: ");
             final int currentX = mScroller.getCurrX();
             final int currentY = mScroller.getCurrY();
             mCarrier.onMove(lastX, lastY, currentX, currentY);
