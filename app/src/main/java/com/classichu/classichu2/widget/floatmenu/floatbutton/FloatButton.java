@@ -62,7 +62,7 @@ public class FloatButton extends FrameLayout implements IFloatAction {
         mSize = mConfig.mSize;
         ViewCompat.setBackground(imageView, icon);
         addView(imageView, new ViewGroup.LayoutParams(mSize, mSize));
-        mLayoutParams = FloatMenuUtil.getLayoutParams();
+        mLayoutParams = FloatMenuUtil.getMyLayoutParams();
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
         mRunner = new ScrollRunner(this);
         mVelocity = new MotionVelocityUtil(context);

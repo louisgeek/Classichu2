@@ -10,6 +10,7 @@ import com.classichu.classichu2.tool.SizeTool;
 import com.classichu.classichu2.widget.floatmenu.runner.IFloatAction;
 import com.classichu.classichu2.widget.floatmenu.runner.ScrollRunner;
 
+
 /**
  * 子菜单项布局
  */
@@ -133,7 +134,7 @@ public class FloatMenuLayout extends ViewGroup implements IFloatAction {
      */
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-       //!!!! if (isMoving) return;
+        //!!!! if (isMoving) return;
         computeCenterXY(position);
         final int radius = 0;
         layoutItem(radius);
@@ -207,7 +208,7 @@ public class FloatMenuLayout extends ViewGroup implements IFloatAction {
 
     @Override
     public void onMove(int lastX, int lastY, int curX, int curY) {
-      layoutItem(curX);
+        layoutItem(curX);
     }
 
     public void onDone() {

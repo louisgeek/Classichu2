@@ -6,6 +6,7 @@ import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,21 +27,35 @@ public class FloatMenu extends FrameLayout {
     private int mSize;
     private int mDuration = 250;
 
-    private FloatMenuManager floatMenuManager;
+    private FloatMenuManager mFloatMenuManager;
     private WindowManager.LayoutParams mLayoutParams;
     private boolean isAdded = false;
     private int mButtonSize;
     private FloatMenuCfg mConfig;
 
-    public FloatMenu(Context context, FloatMenuManager floatMenuManager, FloatMenuCfg config) {
+    public FloatMenu(Context context, final FloatMenuManager floatMenuManager, FloatMenuCfg config) {
         super(context);
-        this.floatMenuManager = floatMenuManager;
+        mFloatMenuManager = floatMenuManager;
         if (config == null) return;
         mConfig = config;
         mItemSize = mConfig.mItemSize;
         mSize = mConfig.mSize;
         init(context);
         mMenuLayout.setChildSize(mItemSize);
+        if (mConfig.mBackKeyCanHide) {
+            this.setFocusable(true);
+            this.setFocusableInTouchMode(true);
+            this.setOnKeyListener(new OnKeyListener() {
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_BACK) {
+                        mFloatMenuManager.closeMenu();
+                        return true;
+                    }
+                    return false;
+                }
+            });
+        }
     }
 
     public void removeViewTreeObserver(ViewTreeObserver.OnGlobalLayoutListener listener) {
@@ -78,10 +93,10 @@ public class FloatMenu extends FrameLayout {
 
     public void attachToWindow(WindowManager windowManager) {
         if (!isAdded) {
-            mButtonSize = floatMenuManager.getButtonSize();
+            mButtonSize = mFloatMenuManager.getButtonSize();
             toggle(mDuration);
-          /*  mLayoutParams.x = floatMenuManager.floatbuttonX;
-            mLayoutParams.y = floatMenuManager.floatbuttonY - mSize / 2;
+          /*  mLayoutParams.x = mFloatMenuManager.floatbuttonX;
+            mLayoutParams.y = mFloatMenuManager.floatbuttonY - mSize / 2;
             mPosition = computeMenuLayout(mLayoutParams);
             Log.i("zzzfffqqq", "attachToWindow: mPosition"+mPosition);
             refreshPathMenu(mPosition);*/
@@ -113,7 +128,7 @@ public class FloatMenu extends FrameLayout {
     }
 
     private void init(Context context) {
-        mLayoutParams = FloatMenuUtil.getLayoutParams();
+        mLayoutParams = FloatMenuUtil.getMyLayoutParams(mConfig.mBackKeyCanHide);
         mLayoutParams.height = mSize;
         mLayoutParams.width = mSize;
         addMenuLayout(context);
@@ -133,21 +148,20 @@ public class FloatMenu extends FrameLayout {
     }
 
     public void remove() {
-        floatMenuManager.reset();
+        mFloatMenuManager.reset();
         mMenuLayout.setExpand(false);
     }
 
     private void toggle(final int duration) {
         ///!!!!!!!!!!!!!!!!!!!!!!!!
-        mLayoutParams.x = floatMenuManager.floatbuttonX;
-        mLayoutParams.y = floatMenuManager.floatbuttonY - mSize / 2;
+        mLayoutParams.x = mFloatMenuManager.floatbuttonX;
+        mLayoutParams.y = mFloatMenuManager.floatbuttonY - mSize / 2;
         mPosition = computeMenuLayout(mLayoutParams);
         Log.i("zzzfffqqq", "attachToWindow: mPosition" + mPosition);
         refreshPathMenu(mPosition);
         ///!!!!!!!!!!!!!!!!!!!!!!!!
         //duration==0 indicate that close the menu, so if it has closed, do nothing.
-//       if (!mMenuLayout.isExpanded() && duration <= 0) return;
-//       if (!mMenuLayout.isExpanded() && duration <= 0) return;
+       if (!mMenuLayout.isExpanded() && duration <= 0) return;
         mMenuLayout.setVisibility(VISIBLE);
 
         if (getWidth() == 0) {
@@ -171,6 +185,7 @@ public class FloatMenu extends FrameLayout {
         imageview.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                closeMenu();
                 menuItem.action();
             }
         });
@@ -248,11 +263,11 @@ public class FloatMenu extends FrameLayout {
     public int computeMenuLayout(WindowManager.LayoutParams layoutParams) {
         int position = FloatMenu.RIGHT_CENTER;
         final int halfButtonSize = mButtonSize / 2;
-        final int screenWidth = floatMenuManager.mScreenWidth;
-        final int screenHeight = floatMenuManager.mScreenHeight;
-        final int floatbuttonCenterY = floatMenuManager.floatbuttonY + halfButtonSize;
+        final int screenWidth = mFloatMenuManager.mScreenWidth;
+        final int screenHeight = mFloatMenuManager.mScreenHeight;
+        final int floatbuttonCenterY = mFloatMenuManager.floatbuttonY + halfButtonSize;
 
-        int wmX = floatMenuManager.floatbuttonX;
+        int wmX = mFloatMenuManager.floatbuttonX;
         int wmY = floatbuttonCenterY;
 
         if (wmX <= screenWidth / 3) //左边  竖区域

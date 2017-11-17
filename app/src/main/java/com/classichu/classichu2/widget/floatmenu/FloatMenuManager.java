@@ -36,7 +36,8 @@ public class FloatMenuManager {
     }
 
     public FloatMenuManager(Context application, FloatButtonCfg buttonCfg, FloatMenuCfg menuCfg) {
-        mContext = application.getApplicationContext();
+     //  !!!!!!!!!WindowManager 可能会报错 mContext = application.getApplicationContext();
+        mContext = application;
         int statusbarId = application.getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (statusbarId > 0) {
             mStatusBarHeight = application.getResources().getDimensionPixelSize(statusbarId);
