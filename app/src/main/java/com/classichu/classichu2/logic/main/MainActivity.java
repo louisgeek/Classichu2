@@ -1,7 +1,6 @@
 package com.classichu.classichu2.logic.main;
 
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
@@ -17,7 +16,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.classichu.adapter.listener.SimpleOnRVItemTouchListener;
@@ -25,10 +23,11 @@ import com.classichu.classichu2.R;
 import com.classichu.classichu2.app.AppInfoDataManager;
 import com.classichu.classichu2.base.BaseActivity;
 import com.classichu.classichu2.base.BaseFragment;
-import com.classichu.classichu2.widget.BottomNavigationViewSupport;
 import com.classichu.classichu2.logic.login.bean.UserLoginBean;
 import com.classichu.classichu2.logic.main.adapter.AreaListAdapter;
 import com.classichu.classichu2.logic.main.factory.MainAtyFragmentFactory;
+import com.classichu.classichu2.widget.BottomNavigationViewSupport;
+import com.classichu.classichu2.widget.ClassichuPopupWindow;
 import com.fondesa.recyclerviewdivider.RecyclerViewDivider;
 import com.jakewharton.rxbinding2.view.RxView;
 
@@ -51,6 +50,7 @@ public class MainActivity extends BaseActivity {
     protected int setupLayoutResId() {
         return R.layout.activity_main;
     }
+
     @Override
     protected void initView(Bundle savedInstanceState) {
         configTitle("");
@@ -70,7 +70,7 @@ public class MainActivity extends BaseActivity {
         menuView.setVerticalScrollBarEnabled(false);
 
         View headView = id_navigation_view.getHeaderView(0);
-        TextView id_tv_navigation_header_name=findById(headView,R.id.id_tv_navigation_header_name);
+        TextView id_tv_navigation_header_name = findById(headView, R.id.id_tv_navigation_header_name);
         id_tv_navigation_header_name.setText(AppInfoDataManager.getInstance().getUserLoginBean().getLonginUser().getYHXM());
         //设置默认选中 选中的条件是该menu的checkable为true
         //id_navigation_view.setCheckedItem(R.id.id_menu_item_patient_list);
@@ -162,7 +162,7 @@ public class MainActivity extends BaseActivity {
         Toolbar toolbar = findById(R.id.id_toolbar);
         setSupportActionBar(toolbar);
         // ActionBar actionBar = getSupportActionBar();
-       //## actionBar.setDisplayHomeAsUpEnabled(true);
+        //## actionBar.setDisplayHomeAsUpEnabled(true);
         //必须设置在setSupportActionBar(mToolbar);后才有效
         toolbar.setNavigationIcon(R.drawable.ic_menu_black_24dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -174,7 +174,7 @@ public class MainActivity extends BaseActivity {
         setTitle(title);
     }
 
-    private PopupWindow popupWindow;
+    private ClassichuPopupWindow mClassichuPopupWindow;
 
     private void showAreaSelect(View view) {
         //
@@ -193,7 +193,8 @@ public class MainActivity extends BaseActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setHasFixedSize(true);
-        recyclerView.setBackgroundResource(R.drawable.selector_classic_popup_bg);
+        recyclerView.setBackgroundResource(R.drawable.shape_shadow_bg);
+        // ViewCompat.setElevation(recyclerView,22);
         //hideLastDivider
         RecyclerViewDivider.with(mContext).color(Color.parseColor("#FFD1CFCF")).build().addTo(recyclerView);
         recyclerView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -212,34 +213,13 @@ public class MainActivity extends BaseActivity {
                 }
                 id_tv_area.setText(areasBean.getKSMC());
                 //
-                popupWindow.dismiss();
+                mClassichuPopupWindow.dismiss();
             }
         });
         recyclerView.setAdapter(areaListAdapter);
         //
-        popupWindow = new PopupWindow(mContext);
-        popupWindow.setContentView(recyclerView);
-        popupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
-        popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-        //
-        popupWindow.setAnimationStyle(android.R.style.Animation_Dialog);
-        popupWindow.setTouchable(true);
-        popupWindow.setFocusable(true);
-        popupWindow.update();
-        //
-        popupWindow.setOutsideTouchable(true);
-        popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        //
-        int[] location = new int[2];
-        view.getLocationOnScreen(location);
-        View contentView = popupWindow.getContentView();
-        contentView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-        int contentViewWidth = contentView.getMeasuredWidth();
-        //x轴处理居中
-        popupWindow.showAsDropDown(view, -(contentViewWidth - view.getWidth()) / 2, -view.getHeight() / 5);
-        //此法不型  y偏移不行
-        // int statusBarHeight=ScreenTool.getStatusBarHeight();
-        // popupWindow.showAtLocation(view,Gravity.CENTER_HORIZONTAL,0,-statusBarHeight);
+        mClassichuPopupWindow=new ClassichuPopupWindow.Builder(mContext).setView(recyclerView).build();
+        mClassichuPopupWindow.showCenter(view,-view.getHeight()/5);
 
     }
 

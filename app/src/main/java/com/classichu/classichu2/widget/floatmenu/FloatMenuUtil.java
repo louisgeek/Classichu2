@@ -15,14 +15,14 @@ public class FloatMenuUtil {
     public static WindowManager.LayoutParams getMyLayoutParams(boolean backKeyCanHide) {
         WindowManager.LayoutParams mLayoutParams = new WindowManager.LayoutParams();
         final int sdkInt = Build.VERSION.SDK_INT;
-        if (sdkInt < Build.VERSION_CODES.KITKAT) {
+        if (sdkInt < 19) {//Build.VERSION_CODES.KITKAT API 19
             mLayoutParams.type = WindowManager.LayoutParams.TYPE_PHONE;
-        } else if (sdkInt < Build.VERSION_CODES.N_MR1) {
+        } else if (sdkInt < 25) {//Build.VERSION_CODES.N_MR1 API 25
             mLayoutParams.type = WindowManager.LayoutParams.TYPE_TOAST;
-        }//fixme // // // //
-        /* else if (sdkInt < Build.VERSION_CODES.O) {
+        } else if (sdkInt < 26) {//Build.VERSION_CODES.O API 26
             mLayoutParams.type = WindowManager.LayoutParams.TYPE_PHONE;
-        } else {//8.0以后
+        } /*fixme !!!!!!!!!
+        else {//8.0以后
             mLayoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
         }*/
         if (backKeyCanHide) {
@@ -40,4 +40,6 @@ public class FloatMenuUtil {
         mLayoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
         return mLayoutParams;
     }
+
+
 }

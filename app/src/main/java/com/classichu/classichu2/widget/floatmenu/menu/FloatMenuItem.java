@@ -1,19 +1,14 @@
 package com.classichu.classichu2.widget.floatmenu.menu;
 
-import android.graphics.drawable.Drawable;
+import android.view.View;
 
 public abstract class FloatMenuItem {
-    /**
-     * 菜单icon
-     */
-    public Drawable mDrawable;
+    public int resid ;
 
-    public FloatMenuItem(Drawable drawable) {
-        this.mDrawable = drawable;
+    public FloatMenuItem(int resid) {
+        this.resid=resid;
     }
 
-    /**
-     * 点击次菜单执行的操作
-     */
-    public abstract void action();
+
+    public abstract boolean actionClick(View view, int resid);
 }

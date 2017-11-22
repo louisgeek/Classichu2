@@ -28,12 +28,12 @@
         "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_cancel_black_24dp.png"
     },
     {
-        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_place_black_24dp.png",
-        "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_place_black_24dp.png"
-    },
-    {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_keyboard_arrow_left_black_24dp.png",
         "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_keyboard_arrow_left_black_24dp.png"
+    },
+    {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_place_black_24dp.png",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_place_black_24dp.png"
     },
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_chevron_left_black_24dp.png",
@@ -44,8 +44,16 @@
         "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_error_black_24dp.png"
     },
     {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_control_point_black_24dp.png",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_control_point_black_24dp.png"
+    },
+    {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_share_black_24dp.png",
         "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_share_black_24dp.png"
+    },
+    {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_highlight_off_black_24dp.png",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_highlight_off_black_24dp.png"
     },
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_menu_black_24dp.png",

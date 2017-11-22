@@ -3,9 +3,11 @@ package com.classichu.classichu2.base;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,10 @@ import com.classichu.classichu2.R;
 import com.classichu.classichu2.custom.CLog;
 import com.classichu.classichu2.custom.CustomFragment;
 import com.classichu.classichu2.logic.login.bean.UserLoginBean;
+import com.classichu.classichu2.tool.SizeTool;
+import com.classichu.classichu2.widget.floatmenu.FloatMenuManager;
+import com.classichu.classichu2.widget.floatmenu.floatbutton.FloatButtonCfg;
+import com.classichu.classichu2.widget.floatmenu.menu.FloatMenuCfg;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -33,6 +39,7 @@ public abstract class BaseFragment extends CustomFragment {
     protected View mRootLayout;
     protected SwipeRefreshLayout id_swipe_refresh_layout;
     private Unbinder mUnbinder;
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -52,10 +59,11 @@ public abstract class BaseFragment extends CustomFragment {
         //
         initSwipeRefreshLayout();
 
+        initFloatMenu();
         /**
          * last
          */
-        initView(mRootLayout,savedInstanceState);
+        initView(mRootLayout, savedInstanceState);
 
         return mRootLayout;
         //return super.onCreateView(inflater, container, savedInstanceState);
@@ -66,9 +74,9 @@ public abstract class BaseFragment extends CustomFragment {
      */
     protected abstract int setupLayoutResId();
 
-    protected abstract void initView(View rootLayout,Bundle savedInstanceState);
+    protected abstract void initView(View rootLayout, Bundle savedInstanceState);
 
-    protected  abstract void loginAgainSuccess(UserLoginBean userLoginBean);
+    protected abstract void loginAgainSuccess(UserLoginBean userLoginBean);
 
     /**
      * =======================================protected===================================
@@ -83,16 +91,19 @@ public abstract class BaseFragment extends CustomFragment {
     }
 
     protected void showSnack(int resId) {
-        Snackbar.make(mRootLayout,resId,Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(mRootLayout, resId, Snackbar.LENGTH_SHORT).show();
     }
-    protected void showSnack(int resId,int duration) {
-        Snackbar.make(mRootLayout,resId,duration).show();
+
+    protected void showSnack(int resId, int duration) {
+        Snackbar.make(mRootLayout, resId, duration).show();
     }
+
     protected void showSnack(CharSequence text) {
-        Snackbar.make(mRootLayout,text,Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(mRootLayout, text, Snackbar.LENGTH_SHORT).show();
     }
-    protected void showSnack(CharSequence text,int duration) {
-        Snackbar.make(mRootLayout,text,duration).show();
+
+    protected void showSnack(CharSequence text, int duration) {
+        Snackbar.make(mRootLayout, text, duration).show();
     }
 
     protected void startAty(Class<?> clazz) {
@@ -119,7 +130,6 @@ public abstract class BaseFragment extends CustomFragment {
     }
 
 
-
     protected void showSwipeRefreshLayout() {
         if (id_swipe_refresh_layout != null) {
             // id_swipe_refresh_layout.setRefreshing(true);
@@ -144,12 +154,12 @@ public abstract class BaseFragment extends CustomFragment {
     }
 
 
-    protected  int configSwipeRefreshLayoutResId(){
+    protected int configSwipeRefreshLayoutResId() {
         return 0;
     }
-    protected  void toRefreshData(){
-    }
 
+    protected void toRefreshData() {
+    }
 
 
     /**
@@ -178,6 +188,86 @@ public abstract class BaseFragment extends CustomFragment {
         super.onDestroyView();
         if (mUnbinder != null) {
             mUnbinder.unbind();
+        }
+    }
+
+    protected int[] configFloatMenuItemDrawables() {
+        return null;
+    }
+
+    protected void updateFloatMenuItemDrawables(int[] itemDrawables, final FloatMenuManager.OnFloatMenuItemClickListener onFloatMenuItemClickListener) {
+        if (mFloatMenuManager != null) {
+            mFloatMenuManager.setUpdateMenuItems(itemDrawables, onFloatMenuItemClickListener);
+        }
+    }
+
+    protected boolean onFloatMenuClick(View view, int resid) {
+        return false;
+    }
+
+
+    private FloatMenuManager mFloatMenuManager;
+
+    private void initFloatMenu() {
+        Context context = getActivity();
+        int[] itemDrawables = configFloatMenuItemDrawables();
+        if (itemDrawables == null || itemDrawables.length <= 0) {
+            return;
+        }
+        //1 初始化悬浮按钮配置，定义好悬浮按钮大小和icon的drawable
+        int iconSize = SizeTool.dp2px(56);
+        Drawable icon = ContextCompat.getDrawable(context, R.drawable.selector_menu_icon);
+        FloatButtonCfg buttonCfg = new FloatButtonCfg(iconSize, icon);
+
+        //2 需要显示悬浮菜单
+        //2.1 初始化悬浮菜单配置，有菜单item的大小和菜单item的个数
+        int menuSize = SizeTool.dp2px(250);
+        int menuItemSize = SizeTool.dp2px(48);
+        FloatMenuCfg menuCfg = new FloatMenuCfg(menuSize, menuItemSize);
+        //3 生成mFloatMenuManager
+        mFloatMenuManager = new FloatMenuManager(context, buttonCfg, menuCfg);
+        mFloatMenuManager.setPermission(new FloatMenuManager.IFloatMenuPermission() {
+            @Override
+            public boolean onRequestFloatButtonPermission() {
+                return true;
+            }
+
+            @Override
+            public boolean hasFloatButtonPermission(Context context) {
+                return true;
+            }
+        });
+        mFloatMenuManager.setUpdateMenuItems(itemDrawables, new FloatMenuManager.OnFloatMenuItemClickListener() {
+            @Override
+            public boolean onFloatMenuItemClick(View view, int resid) {
+                return onFloatMenuClick(view, resid);
+            }
+        });
+        //5 如果没有添加菜单，可以设置悬浮按钮点击事件
+    /*	if (mFloatMenuManager.getMenuItemSize() == 0) {
+            mFloatMenuManager.setOnFloatButtonClickListener(new FloatMenuManager.OnFloatButtonClickListener() {
+				@Override
+				public void onFloatButtonClick() {
+					// toast("点击了悬浮按钮");
+				}
+			});
+		}*/
+        mFloatMenuManager.show();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mFloatMenuManager != null) {
+            mFloatMenuManager.show();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mFloatMenuManager != null) {
+            mFloatMenuManager.hide();
         }
     }
 

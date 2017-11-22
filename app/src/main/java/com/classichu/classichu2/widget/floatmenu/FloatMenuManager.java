@@ -1,6 +1,6 @@
 package com.classichu.classichu2.widget.floatmenu;
 
-import android.app.Activity;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Point;
@@ -12,6 +12,7 @@ import com.classichu.classichu2.widget.floatmenu.floatbutton.FloatButtonCfg;
 import com.classichu.classichu2.widget.floatmenu.menu.FloatMenu;
 import com.classichu.classichu2.widget.floatmenu.menu.FloatMenuCfg;
 import com.classichu.classichu2.widget.floatmenu.menu.FloatMenuItem;
+import com.classichu.classichu2.widget.floatmenu.runner.IFloatMenuExpandAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class FloatMenuManager {
     }
 
     public FloatMenuManager(Context application, FloatButtonCfg buttonCfg, FloatMenuCfg menuCfg) {
-     //  !!!!!!!!!WindowManager 可能会报错 mContext = application.getApplicationContext();
+        //  !!!!!!!!!WindowManager 可能会报错 mContext = application.getApplicationContext();
         mContext = application;
         int statusbarId = application.getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (statusbarId > 0) {
@@ -45,7 +46,17 @@ public class FloatMenuManager {
         mWindowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
         computeScreenSize();
         floatButton = new FloatButton(mContext, this, buttonCfg);
-        floatMenu = new FloatMenu(mContext, this, menuCfg);
+        floatMenu = new FloatMenu(mContext, this, menuCfg, new IFloatMenuExpandAction() {
+            @Override
+            public void onExpandChange(boolean isExpanded) {
+                //###floatButton.setSelected(isExpanded);
+                if (isExpanded) {
+                    ObjectAnimator.ofFloat(floatButton, "rotation", 0f, 45f+90f).setDuration(250).start();
+                } else {
+                    ObjectAnimator.ofFloat(floatButton, "rotation", 45f+90f, 0f).setDuration(250).start();
+                }
+            }
+        });
     }
 
     public void buildMenu() {
@@ -72,7 +83,8 @@ public class FloatMenuManager {
      * @param items
      */
     public FloatMenuManager setMenu(List<FloatMenuItem> items) {
-        menuItems = items;
+        menuItems.clear();
+        menuItems.addAll(items);
         return this;
     }
 
@@ -81,6 +93,33 @@ public class FloatMenuManager {
         for (FloatMenuItem item : menuItems) {
             floatMenu.addItem(item);
         }
+    }
+
+    /**
+     * 常规入口
+     *
+     * @param itemDrawables
+     * @param onFloatMenuItemClickListener
+     */
+    public void setUpdateMenuItems(int[] itemDrawables, final OnFloatMenuItemClickListener onFloatMenuItemClickListener) {
+        if (itemDrawables == null || itemDrawables.length <= 0) {
+            return;
+        }
+        List<FloatMenuItem> floatMenuItemList = new ArrayList<>();
+        for (int itemDrawableResid : itemDrawables) {
+            FloatMenuItem floatMenuItem = new FloatMenuItem(itemDrawableResid) {
+                @Override
+                public boolean actionClick(View view, int resid) {
+                    if (onFloatMenuItemClickListener != null) {
+                        return onFloatMenuItemClickListener.onFloatMenuItemClick(view, resid);
+                    }
+                    return false;
+                }
+            };
+            floatMenuItemList.add(floatMenuItem);
+        }
+        this.closeMenu();
+        this.setMenu(floatMenuItemList).buildMenu();
     }
 
     public int getButtonSize() {
@@ -154,14 +193,13 @@ public class FloatMenuManager {
         void onFloatButtonClick();
     }
 
+
+    public interface OnFloatMenuItemClickListener {
+        boolean onFloatMenuItemClick(View view, int resid);
+    }
+
     public interface IFloatMenuPermission {
-        /**
-         * request the permission of floatmenu,just use {@link #requestFloatButtonPermission(Activity)},
-         * or use your custom method.
-         *
-         * @return return true if requested the permission
-         * @see #requestFloatButtonPermission(Activity)
-         */
+
         boolean onRequestFloatButtonPermission();
 
         /**

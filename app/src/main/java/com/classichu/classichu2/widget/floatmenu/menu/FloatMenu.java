@@ -3,7 +3,6 @@ package com.classichu.classichu2.widget.floatmenu.menu;
 
 import android.content.Context;
 import android.os.Build;
-import android.support.v4.view.ViewCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -17,6 +16,7 @@ import android.widget.ImageView;
 
 import com.classichu.classichu2.widget.floatmenu.FloatMenuManager;
 import com.classichu.classichu2.widget.floatmenu.FloatMenuUtil;
+import com.classichu.classichu2.widget.floatmenu.runner.IFloatMenuExpandAction;
 
 
 public class FloatMenu extends FrameLayout {
@@ -32,10 +32,12 @@ public class FloatMenu extends FrameLayout {
     private boolean isAdded = false;
     private int mButtonSize;
     private FloatMenuCfg mConfig;
+    private IFloatMenuExpandAction iFloatMenuExpandAction;
 
-    public FloatMenu(Context context, final FloatMenuManager floatMenuManager, FloatMenuCfg config) {
+    public FloatMenu(Context context, FloatMenuManager floatMenuManager, FloatMenuCfg config, IFloatMenuExpandAction iFloatMenuExpandAction) {
         super(context);
         mFloatMenuManager = floatMenuManager;
+        this.iFloatMenuExpandAction = iFloatMenuExpandAction;
         if (config == null) return;
         mConfig = config;
         mItemSize = mConfig.mItemSize;
@@ -161,32 +163,36 @@ public class FloatMenu extends FrameLayout {
         refreshPathMenu(mPosition);
         ///!!!!!!!!!!!!!!!!!!!!!!!!
         //duration==0 indicate that close the menu, so if it has closed, do nothing.
-       if (!mMenuLayout.isExpanded() && duration <= 0) return;
+        if (!mMenuLayout.isExpanded() && duration <= 0) return;
         mMenuLayout.setVisibility(VISIBLE);
 
         if (getWidth() == 0) {
             getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 @Override
                 public void onGlobalLayout() {
-                    mMenuLayout.switchState(mPosition, duration);
+                    mMenuLayout.switchState(mPosition, duration,iFloatMenuExpandAction);
                     removeViewTreeObserver(this);
                 }
             });
         } else {
-            mMenuLayout.switchState(mPosition, duration);
+            mMenuLayout.switchState(mPosition, duration,iFloatMenuExpandAction);
         }
+
+
     }
 
     public void addItem(final FloatMenuItem menuItem) {
         if (mConfig == null) return;
         ImageView imageview = new ImageView(getContext());
-        ViewCompat.setBackground(imageview, menuItem.mDrawable);
+        imageview.setImageResource(menuItem.resid);
         mMenuLayout.addView(imageview);
         imageview.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                closeMenu();
-                menuItem.action();
+                boolean close = menuItem.actionClick(v, menuItem.resid);
+                if (close) {
+                    closeMenu();
+                }
             }
         });
     }

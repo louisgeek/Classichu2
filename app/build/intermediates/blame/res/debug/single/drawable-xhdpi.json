@@ -20,6 +20,10 @@
         "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_broken_image_black_24dp.png"
     },
     {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_highlight_off_black_24dp.png",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_highlight_off_black_24dp.png"
+    },
+    {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_visibility_black_24dp.png",
         "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_visibility_black_24dp.png"
     },
@@ -58,6 +62,10 @@
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_expand_more_black_24dp.png",
         "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_expand_more_black_24dp.png"
+    },
+    {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_control_point_black_24dp.png",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_control_point_black_24dp.png"
     },
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_menu_black_24dp.png",

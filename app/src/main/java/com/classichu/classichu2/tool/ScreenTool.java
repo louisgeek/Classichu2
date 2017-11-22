@@ -27,7 +27,7 @@ public class ScreenTool {
     }
 
     public static int getScreenWidth2() {
-        Context appContext=BaseTool.getAppContext();
+        Context appContext = BaseTool.getAppContext();
         WindowManager windowManager = (WindowManager) appContext
                 .getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics outMetrics = new DisplayMetrics();
@@ -52,7 +52,7 @@ public class ScreenTool {
     }
 
     public static int getScreenHeight3() {
-        Context appContext=BaseTool.getAppContext();
+        Context appContext = BaseTool.getAppContext();
         WindowManager windowManager = (WindowManager) appContext
                 .getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics outMetrics = new DisplayMetrics();
@@ -78,7 +78,7 @@ public class ScreenTool {
     }
 
     public static float getScreenDensity2() {
-        Context appContext=BaseTool.getAppContext();
+        Context appContext = BaseTool.getAppContext();
         WindowManager windowManager = (WindowManager) appContext
                 .getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics outMetrics = new DisplayMetrics();
@@ -117,4 +117,12 @@ public class ScreenTool {
         return statusBarHeight;
     }
 
+    public static int getNavigationBarHeight() {
+        int navigationBarHeight = 0;
+        int resourceId = Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            navigationBarHeight = Resources.getSystem().getDimensionPixelSize(resourceId);
+        }
+        return navigationBarHeight;
+    }
 }

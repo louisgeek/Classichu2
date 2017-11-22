@@ -91,7 +91,7 @@ public class DateTimeSelectPopupWindow extends PopupWindow {
         this.setAnimationStyle(R.style.ClassicDateSelectViewAnimation);
         this.setTouchable(true);
         this.setFocusable(true);//设置后  返回按钮先消失popupWindow
-        this.update();
+        ///####this.update();
     }
 
     private Calendar calendar;

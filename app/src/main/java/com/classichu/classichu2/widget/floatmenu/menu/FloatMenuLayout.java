@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.classichu.classichu2.tool.SizeTool;
 import com.classichu.classichu2.widget.floatmenu.runner.IFloatAction;
+import com.classichu.classichu2.widget.floatmenu.runner.IFloatMenuExpandAction;
 import com.classichu.classichu2.widget.floatmenu.runner.ScrollRunner;
 
 
@@ -192,9 +193,9 @@ public class FloatMenuLayout extends ViewGroup implements IFloatAction {
     /**
      * 切换中心按钮的展开缩小
      */
-    public void switchState(int position, int duration) {
+    public void switchState(int position, int duration,IFloatMenuExpandAction iFloatMenuExpandAction) {
         this.position = position;
-        mExpanded = !mExpanded;
+        this.setExpand(!mExpanded);
         isMoving = true;
         computeCenterXY(position);
         ///!!!
@@ -204,6 +205,10 @@ public class FloatMenuLayout extends ViewGroup implements IFloatAction {
         final int start = mExpanded ? 0 : mRadius;
         final int radius = mExpanded ? mRadius : -mRadius;
         mRunner.start(start, 0, radius, 0, duration);
+        ////
+        if (iFloatMenuExpandAction != null) {
+            iFloatMenuExpandAction.onExpandChange(this.isExpanded());
+        }
     }
 
     @Override

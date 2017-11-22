@@ -4,6 +4,10 @@
         "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_arrow_back_black_24dp.png"
     },
     {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\ic_highlight_off_black_24dp.png",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_highlight_off_black_24dp.png"
+    },
+    {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\ic_cancel_black_24dp.png",
         "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_cancel_black_24dp.png"
     },
@@ -22,6 +26,10 @@
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\ic_check_circle_black_24dp.png",
         "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_check_circle_black_24dp.png"
+    },
+    {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\ic_control_point_black_24dp.png",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_control_point_black_24dp.png"
     },
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\ic_search_black_24dp.png",

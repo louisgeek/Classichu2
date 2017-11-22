@@ -56,6 +56,10 @@
         "source": "D:\\LouisGit\\study\\Classichu2\\app\\src\\main\\res\\drawable\\shape_round_toast_bg.xml"
     },
     {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_menu_icon.xml",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\src\\main\\res\\drawable\\selector_menu_icon.xml"
+    },
+    {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_track_material.xml",
         "source": "C:\\Users\\Classichu\\.android\\build-cache\\91ed6dfae12bfd18ac5f563e89f923cec52d644f\\output\\res\\drawable\\abc_seekbar_track_material.xml"
     },
@@ -134,6 +138,10 @@
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_icon_background.xml",
         "source": "C:\\Users\\Classichu\\.android\\build-cache\\91ed6dfae12bfd18ac5f563e89f923cec52d644f\\output\\res\\drawable\\notification_icon_background.xml"
+    },
+    {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_shadow_bg.xml",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\src\\main\\res\\drawable\\shape_shadow_bg.xml"
     },
     {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_edit_text_material.xml",
