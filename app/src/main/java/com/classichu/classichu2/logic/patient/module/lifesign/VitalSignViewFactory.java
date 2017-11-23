@@ -35,7 +35,7 @@ import java.util.List;
 public class VitalSignViewFactory {
 
 
-    public static void buildTimePointView(LinearLayout containerLayout, List<VitalSignTimePointBean> vitalSignTimePointBeanList) {
+    public  void buildTimePointView(LinearLayout containerLayout, List<VitalSignTimePointBean> vitalSignTimePointBeanList) {
         Context context = containerLayout.getContext();
         LinearLayout root = new LinearLayout(context);
         LinearLayout.LayoutParams ll_lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -62,7 +62,7 @@ public class VitalSignViewFactory {
     }
 
 
-    public static void buildVitalSignTypeItemView(final LinearLayout containerLayout, List<VitalSignTypeItemBean> vitalSignTypeItemBeanList, final boolean isTempTime, final String serverDate) {
+    public  void buildVitalSignTypeItemView(final LinearLayout containerLayout, List<VitalSignTypeItemBean> vitalSignTypeItemBeanList, final boolean isTempTime, final String serverDate) {
 /* ExpandableListView 中会遇到 输入框的焦点和内容相关奇葩问题       ExpandableListView expandableListView = new ExpandableListView(containerLayout.getContext());
         expandableListView.setGroupIndicator(null);
        // expandableListView.setDividerHeight(0);

@@ -28,7 +28,6 @@ import com.classichu.classichu2.R;
 import com.classichu.classichu2.helper.VectorOrImageResHelper;
 import com.classichu.classichu2.tool.EmptyTool;
 import com.classichu.classichu2.tool.KeyBoardTool;
-import com.classichu.classichu2.tool.ScreenTool;
 import com.classichu.classichu2.tool.SizeTool;
 import com.fondesa.recyclerviewdivider.RecyclerViewDivider;
 
@@ -60,7 +59,8 @@ public class ClassicDropSelectEditView extends LinearLayout {
         mContext = context;
         mEditAble = editAble;
         init();
-        initEditText();
+        //initEditText();
+        initClassicInputLayout();
         initDropDownImg();
         //
         if (mEditAble) {
@@ -72,7 +72,7 @@ public class ClassicDropSelectEditView extends LinearLayout {
                 }
             });
         } else {
-            editText.setCursorVisible(false);
+            mClassicInputLayout.getInput().setCursorVisible(false);
             //
             this.setOnClickListener(new OnClickListener() {
                 @Override
@@ -108,35 +108,71 @@ public class ClassicDropSelectEditView extends LinearLayout {
         this.addView(dropDownImg);
     }
 
-    private EditText editText;
+    /* private EditText editText;
 
-    public EditText getEditText() {
-        return editText;
+     public EditText getEditText() {
+         return editText;
+     }*/
+    private ClassicInputLayout mClassicInputLayout;
+
+    public ClassicInputLayout getClassicInputLayout() {
+        return mClassicInputLayout;
     }
 
     public void setHint(CharSequence hint) {
-        editText.setHint(hint);
+        mClassicInputLayout.setHint(hint);
     }
 
     public void setSelectAllOnFocus(boolean selectAllOnFocus) {
-        editText.setSelectAllOnFocus(selectAllOnFocus);
+        mClassicInputLayout.getInput().setSelectAllOnFocus(selectAllOnFocus);
     }
 
     public void setText(CharSequence text) {
-        editText.setText(text);
+        mClassicInputLayout.setText(text);
     }
 
     public void setError(CharSequence error) {
-        editText.setError(error);
+        mClassicInputLayout.setError(error);
     }
 
 
     public String getText() {
-        return editText.getText().toString();
+        return mClassicInputLayout.getText();
+    }
+
+    private void initClassicInputLayout() {
+        mClassicInputLayout = new ClassicInputLayout(mContext);
+        LayoutParams ll_lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT);
+        ll_lp.weight = 1.0f;
+        //android 5.0 API 21上的EditText文字偏上 定义不同的dimen文件 兼容处理这个问题
+        int api21_fixed_edittext_spacing = mContext.getResources().getDimensionPixelSize(R.dimen.api21_fixed_edittext_spacing);
+        ll_lp.gravity = Gravity.CENTER_VERTICAL;
+        mClassicInputLayout.setGravity(Gravity.CENTER_VERTICAL);
+        mClassicInputLayout.setLayoutParams(ll_lp);
+        //设置左padding
+        mClassicInputLayout.setPadding(mClassicInputLayout.getPaddingLeft() + SizeTool.dp2px(5),
+                mClassicInputLayout.getPaddingTop() + api21_fixed_edittext_spacing,
+                mClassicInputLayout.getPaddingRight(),
+                mClassicInputLayout.getPaddingBottom());
+        //mClassicInputLayout.getInput().setHintTextColor(Color.parseColor("#42000000"));
+        mClassicInputLayout.getInput().setLines(1);
+        mClassicInputLayout.getInput().setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.classic_text_size_secondary));
+        ViewCompat.setBackground(mClassicInputLayout.getInput(), null);
+        if (mEditAble) {
+            mClassicInputLayout.getInput().setOnFocusChangeListener(new OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    // 会影响内部view 的 setSelected 状态
+                    ClassicDropSelectEditView.this.setSelected(hasFocus);
+                    // ClassicInputLayout.this.setActivated(hasFocus);
+                }
+            });
+        }
+        this.addView(mClassicInputLayout);
     }
 
     private void initEditText() {
-        editText = new EditText(mContext);
+        EditText editText = new EditText(mContext);
         LayoutParams ll_lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT);
         ll_lp.weight = 1.0f;
         //android 5.0 API 21上的EditText文字偏上 定义不同的dimen文件 兼容处理这个问题
@@ -145,7 +181,6 @@ public class ClassicDropSelectEditView extends LinearLayout {
         editText.setGravity(Gravity.CENTER_VERTICAL);
         editText.setLayoutParams(ll_lp);
         editText.setLines(1);
-        editText.setMinimumWidth(ScreenTool.getScreenWidth() / 8);
         //设置左padding
         editText.setPadding(editText.getPaddingLeft() + SizeTool.dp2px(5),
                 editText.getPaddingTop() + api21_fixed_edittext_spacing,
@@ -223,8 +258,8 @@ public class ClassicDropSelectEditView extends LinearLayout {
                 super.onItemClick(view, position);
                 // ToastTool.show("onItemClick");
                 Pair<String, String> value = adapter.getData(position);
-                editText.setText(value.second);
-                editText.setSelection(editText.length());//将光标移动最后一个字符后面
+                mClassicInputLayout.setText(value.second);
+                mClassicInputLayout.getInput().setSelection(mClassicInputLayout.getInput().length());//将光标移动最后一个字符后面
                 //
                 mClassichuPopupWindow.dismiss();
             }

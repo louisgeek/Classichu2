@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Classichu</string>
     <!--classic_app-->
+    <string name="classic_app_menu">classic_app_menu</string>
     <string name="classic_app_ok">好</string>
     <string name="classic_app_confirm">确定</string>
     <string name="classic_app_cancel">取消</string>

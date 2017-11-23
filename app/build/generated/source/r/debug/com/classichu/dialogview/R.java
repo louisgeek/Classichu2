@@ -591,7 +591,7 @@ public final class R {
         public static final int icon_group = 0x7f0d00c8;
         public static final int id_hold_loading_info = 0x7f0d000c;
         public static final int id_tv_loading_message = 0x7f0d00ab;
-        public static final int id_ui_in_code_loading_one = 0x7f0d000d;
+        public static final int id_ui_in_code_loading_one = 0x7f0d000f;
         public static final int ifRoom = 0x7f0d0052;
         public static final int image = 0x7f0d005c;
         public static final int info = 0x7f0d00c4;

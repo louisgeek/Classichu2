@@ -78,6 +78,7 @@ public class LoginFragment extends BaseMvpFragment<LoginPresenter> implements Lo
     @Override
     protected void initView(View rootLayout, Bundle savedInstanceState) {
 
+
         RxView.clicks(id_btn_login)
                 .throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe(new Consumer<Object>() {

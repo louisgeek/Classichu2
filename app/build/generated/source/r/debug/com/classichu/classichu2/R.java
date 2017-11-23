@@ -3573,6 +3573,8 @@ containing a value of this type.
         public static final int id_menu_item_oral_single=0x7f0d00e1;
         public static final int id_menu_item_patient_info=0x7f0d00ea;
         public static final int id_menu_item_patient_list=0x7f0d00dc;
+        public static final int id_menu_item_plus_1=0x7f0d000d;
+        public static final int id_menu_item_plus_2=0x7f0d000e;
         public static final int id_menu_item_risk_evaluation=0x7f0d00ef;
         public static final int id_menu_item_saved_offline=0x7f0d00e7;
         public static final int id_menu_item_specimen_collection=0x7f0d00e0;
@@ -3593,9 +3595,7 @@ containing a value of this type.
         public static final int id_tv_navigation_header_name=0x7f0d00af;
         public static final int id_tv_setting=0x7f0d00b0;
         public static final int id_tv_toast=0x7f0d00b6;
-        public static final int id_ui_in_code_loading_one=0x7f0d000d;
-        public static final int id_view_error_msg_holder=0x7f0d000e;
-        public static final int id_view_error_popup_holder=0x7f0d000f;
+        public static final int id_ui_in_code_loading_one=0x7f0d000f;
         public static final int id_view_location_holder=0x7f0d0010;
         public static final int id_view_state_holder=0x7f0d0011;
         public static final int idxxx=0x7f0d00a7;
@@ -3806,6 +3806,7 @@ containing a value of this type.
         public static final int menu_navigation_view_left=0x7f0e0003;
         public static final int menu_navigation_view_right=0x7f0e0004;
         public static final int menu_patient=0x7f0e0005;
+        public static final int menu_vitalsign=0x7f0e0006;
     }
     public static final class mipmap {
         public static final int ic_launcher=0x7f030000;
@@ -3852,25 +3853,26 @@ containing a value of this type.
         public static final int classic_app_confirm=0x7f07002a;
         public static final int classic_app_finish=0x7f07002b;
         public static final int classic_app_login=0x7f07002c;
-        public static final int classic_app_ok=0x7f07002d;
-        public static final int classic_app_submit=0x7f07002e;
-        public static final int classic_app_tip=0x7f07002f;
-        public static final int closeDrawerContentDesc=0x7f070030;
+        public static final int classic_app_menu=0x7f07002d;
+        public static final int classic_app_ok=0x7f07002e;
+        public static final int classic_app_submit=0x7f07002f;
+        public static final int classic_app_tip=0x7f070030;
+        public static final int closeDrawerContentDesc=0x7f070031;
         public static final int load_end=0x7f070015;
         public static final int load_failed=0x7f070016;
         public static final int loading=0x7f070017;
-        public static final int login_admin_login=0x7f070031;
-        public static final int login_login_again=0x7f070032;
-        public static final int login_password_hint=0x7f070033;
-        public static final int login_username_hint=0x7f070034;
-        public static final int menu_main_switch=0x7f070035;
-        public static final int menu_setting_finish=0x7f070036;
-        public static final int openDrawerContentDesc=0x7f070037;
-        public static final int password_toggle_content_description=0x7f070038;
-        public static final int path_password_eye=0x7f070039;
-        public static final int path_password_eye_mask_strike_through=0x7f07003a;
-        public static final int path_password_eye_mask_visible=0x7f07003b;
-        public static final int path_password_strike_through=0x7f07003c;
+        public static final int login_admin_login=0x7f070032;
+        public static final int login_login_again=0x7f070033;
+        public static final int login_password_hint=0x7f070034;
+        public static final int login_username_hint=0x7f070035;
+        public static final int menu_main_switch=0x7f070036;
+        public static final int menu_setting_finish=0x7f070037;
+        public static final int openDrawerContentDesc=0x7f070038;
+        public static final int password_toggle_content_description=0x7f070039;
+        public static final int path_password_eye=0x7f07003a;
+        public static final int path_password_eye_mask_strike_through=0x7f07003b;
+        public static final int path_password_eye_mask_visible=0x7f07003c;
+        public static final int path_password_strike_through=0x7f07003d;
         public static final int search_menu_title=0x7f070013;
         public static final int status_bar_notification_info_overflow=0x7f070014;
     }
@@ -4059,8 +4061,6 @@ containing a value of this type.
         public static final int ClassicTextSecondaryColored=0x7f0900e9;
         public static final int ClassicTextTertiary=0x7f0900ea;
         public static final int ClassicTextTertiaryColored=0x7f0900eb;
-        /** <item name="android:windowAnimationStyle">@style/ClassicAnimationActivity</item>
-         */
         public static final int ClassicTheme=0x7f0900ec;
         public static final int ClassicTheme_Fullscreen=0x7f0900ed;
         public static final int ClassicTheme_Fullscreen_Translucent=0x7f0900ee;

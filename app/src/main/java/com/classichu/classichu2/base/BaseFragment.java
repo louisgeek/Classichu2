@@ -255,6 +255,7 @@ public abstract class BaseFragment extends CustomFragment {
         mFloatMenuManager.show();
     }
 
+
     @Override
     public void onResume() {
         super.onResume();

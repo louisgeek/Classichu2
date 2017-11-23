@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
@@ -13,6 +12,7 @@ import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.text.Editable;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -25,7 +25,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.classichu.classichu2.R;
@@ -47,7 +46,9 @@ public class ClassicInputLayout extends LinearLayout {
     private boolean mIsPassword = false;
     private boolean mContentClearImageViewEnabled = true;
     private final static int DEFLAUT_PADDING_LEFT_RIGHT_START_END = 12;
-
+    private ClassichuPopupWindow mClassichuPopupWindow;
+    private String lastText;
+    private CharSequence lastErrorMsg;
     public ClassicInputLayout(Context context) {
         this(context, null);
     }
@@ -130,7 +131,7 @@ public class ClassicInputLayout extends LinearLayout {
         this.addView(mPasswordToggleImageButton);
     }
 
-    private boolean lastShow = true;
+    private boolean isShow = true;
 
     private void initErrorBtn() {
 
@@ -148,17 +149,12 @@ public class ClassicInputLayout extends LinearLayout {
         mErrorImageView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //
-                CharSequence error = (CharSequence) mErrorImageView.getTag(R.id.id_view_error_msg_holder);
-                PopupWindow popup = (PopupWindow) mErrorImageView.getTag(R.id.id_view_error_popup_holder);
-                if (popup != null && lastShow) {
-                    popup.dismiss();
+                if (mClassichuPopupWindow != null && isShow) {
+                    mClassichuPopupWindow.dismiss();
                 } else {
-                    setError(error);
+                    setError(lastErrorMsg);
                 }
-                //
-                lastShow = !lastShow;
+                isShow=!isShow;
             }
         });
         mErrorImageView.setVisibility(GONE);
@@ -193,8 +189,6 @@ public class ClassicInputLayout extends LinearLayout {
         switchVisibilityClearBtn();
         this.addView(mContentClearImageView);
     }
-
-    private String lastText;
 
     private void initInputEditText() {
         mInputEditText = new EditText(mContext);
@@ -238,6 +232,9 @@ public class ClassicInputLayout extends LinearLayout {
                 switchVisibilityClearBtn();
                 //变动后隐藏
                 mErrorImageView.setVisibility(GONE);
+                if (mClassichuPopupWindow!=null){
+                    mClassichuPopupWindow.dismiss();
+                }
                 //
                 lastText = s.toString();
             }
@@ -453,27 +450,34 @@ public class ClassicInputLayout extends LinearLayout {
         return mInputEditText.getText().toString();
     }
 
-    public void setError(final CharSequence text) {
+    public void setError(final CharSequence errorMsg) {
         //!!!
         initErrorBtnPadding();
 
         mErrorImageView.setVisibility(VISIBLE);
-        mErrorImageView.setTag(R.id.id_view_error_msg_holder, text);
         mErrorImageView.post(new Runnable() {
             @Override
             public void run() {
-
+                if (TextUtils.isEmpty(errorMsg) && mClassichuPopupWindow != null) {
+                    mClassichuPopupWindow.dismiss();
+                    return;
+                }
                 //View.post 用来解决 GONE --> VISIBLE 后 第一次显示位置错误
                 final TextView textView = new TextView(mContext);
                 textView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT));
-                textView.setText(text);
+                textView.setText(errorMsg);
                 int padding = 10;
                 int rightMargin = SizeTool.dp2px(10);//10dp
                 textView.setPadding(padding, padding, padding, padding);
                 textView.setBackgroundColor(Color.WHITE);
                 // textView.setTextColor(Color.WHITE);
-                PopupWindow popupWindow = new PopupWindow(mContext);
+                //setEnableOutsideTouchDismiss setError后仍可以输入
+                mClassichuPopupWindow = new ClassichuPopupWindow.Builder(mContext).setEnableOutsideTouchDismiss(false).setView(textView).build();
+                mClassichuPopupWindow.showRight(mErrorImageView);
+                //设置tag
+                lastErrorMsg=errorMsg;
+        /*        PopupWindow popupWindow = new PopupWindow(mContext);
                 popupWindow.setContentView(textView);
                 popupWindow.setOutsideTouchable(true);
                 popupWindow.setWidth(LayoutParams.WRAP_CONTENT);
@@ -486,7 +490,7 @@ public class ClassicInputLayout extends LinearLayout {
                 int xOffset = rightMargin;
                 int yOffset = 5;
                 popupWindow.showAtLocation(mErrorImageView, Gravity.RIGHT | Gravity.END | Gravity.TOP,
-                        xOffset, y + mErrorImageView.getHeight() + yOffset);
+                        xOffset, y + mErrorImageView.getHeight() + yOffset);*/
            /*     PopupWindow popupWindow = new PopupWindow(mContext);
                 popupWindow.setContentView(textView);
                 popupWindow.setOutsideTouchable(true);
@@ -504,8 +508,7 @@ public class ClassicInputLayout extends LinearLayout {
                     //  Gravity.BOTTOM|Gravity.END 以mErrorImageView右下角为原点  向x负方向偏移 contentViewWidth
                     PopupWindowCompat.showAsDropDown(popupWindow, mErrorImageView, -contentViewWidth, 5, Gravity.BOTTOM | Gravity.END | Gravity.RIGHT);
                 }*/
-                //设置tag
-                mErrorImageView.setTag(R.id.id_view_error_popup_holder, popupWindow);
+
                 /*//针对单行文本居中
                 textView.post(new Runnable() {
                     @Override

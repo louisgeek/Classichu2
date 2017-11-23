@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -37,7 +36,7 @@ public class ClassicFormInputLayout extends LinearLayout {
         super(context, attrs, defStyle);
         mContext = context;
         //
-        LinearLayout.LayoutParams ll_lp = new LinearLayout.LayoutParams(0,LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams ll_lp = new LinearLayout.LayoutParams(0, LayoutParams.WRAP_CONTENT);
         ll_lp.gravity = Gravity.CENTER_VERTICAL;
         ll_lp.weight = 1.0f;
         this.setLayoutParams(ll_lp);
@@ -173,31 +172,40 @@ public class ClassicFormInputLayout extends LinearLayout {
         return this;
     }
 
-    public EditText getEditTextInCenterLayout() {
-        return dropSelectEditView != null ? dropSelectEditView.getEditText() : null;
+    public ClassicInputLayout getInputLayoutInCenterLayout() {
+        return dropSelectEditView != null ? dropSelectEditView.getClassicInputLayout() : null;
     }
 
     private ClassicDropSelectEditView dropSelectEditView;
 
     public ClassicFormInputLayout addCenterEditView(String text) {
-        return addCenterEditView(text, null, null);
+        return addCenterEditView(text, null, null, true, false, DEFLAUT_PADDING_LEFT_RIGHT_START_END_SMALL);
+    }
+
+    public ClassicFormInputLayout addCenterEditView(String text, String hintText) {
+        return addCenterEditView(text, hintText, null, true, false, DEFLAUT_PADDING_LEFT_RIGHT_START_END_SMALL);
     }
 
     public ClassicFormInputLayout addCenterEditView(String text, String hintText, List<Pair<String, String>> stringList) {
-        return addCenterEditView(text, hintText, stringList, true);
+        return addCenterEditView(text, hintText, stringList, true, false, DEFLAUT_PADDING_LEFT_RIGHT_START_END_SMALL);
     }
 
     public ClassicFormInputLayout addCenterEditView(String text, String hintText, List<Pair<String, String>> stringList, boolean editAble) {
-        return addCenterEditView(text, hintText, stringList, editAble, DEFLAUT_PADDING_LEFT_RIGHT_START_END_SMALL);
+        return addCenterEditView(text, hintText, stringList, editAble, false, DEFLAUT_PADDING_LEFT_RIGHT_START_END_SMALL);
     }
 
-    public ClassicFormInputLayout addCenterEditView(String text, String hintText, List<Pair<String, String>> stringList, boolean editAble, int paddingLeftRight_Dp) {
+    public ClassicFormInputLayout addCenterEditView(String text, String hintText, List<Pair<String, String>> stringList, boolean editAble, boolean clearAble) {
+        return addCenterEditView(text, hintText, stringList, editAble, clearAble, DEFLAUT_PADDING_LEFT_RIGHT_START_END_SMALL);
+    }
+
+    public ClassicFormInputLayout addCenterEditView(String text, String hintText, List<Pair<String, String>> stringList, boolean editAble, boolean clearAble, int paddingLeftRight_Dp) {
         dropSelectEditView = new ClassicDropSelectEditView(mContext, editAble);
         LayoutParams ll_lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT);
         ll_lp.weight = 1.0f;
         dropSelectEditView.setLayoutParams(ll_lp);
         dropSelectEditView.setHint(hintText);
         dropSelectEditView.setText(text);
+        dropSelectEditView.getClassicInputLayout().setContentClearImageButtonEnabled(clearAble);
         dropSelectEditView.setBackgroundResource(R.drawable.selector_classic_edit_item_bg);
         dropSelectEditView.setupDropDownSelectData(stringList);
         mCenterLayout.addView(dropSelectEditView);
@@ -205,6 +213,7 @@ public class ClassicFormInputLayout extends LinearLayout {
         mCenterLayout.setPadding(paddingLeftRight, 0, paddingLeftRight, 0);
         return this;
     }
+
 
     //  End 2017/8/21
     ///////////////////////////////////////////////////////////////////////////

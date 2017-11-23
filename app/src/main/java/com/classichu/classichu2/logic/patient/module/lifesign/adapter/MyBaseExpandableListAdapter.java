@@ -32,6 +32,7 @@ import com.classichu.classichu2.logic.patient.module.lifesign.bean.LifeSignOptio
 import com.classichu.classichu2.logic.patient.module.lifesign.bean.VitalSignTypeItemBean;
 import com.classichu.classichu2.tool.SizeTool;
 import com.classichu.classichu2.widget.ClassicFormInputLayout;
+import com.classichu.classichu2.widget.ClassicInputLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -207,9 +208,9 @@ public class MyBaseExpandableListAdapter extends BaseExpandableListAdapter {
         layout.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         layout.setGravity(Gravity.CENTER_VERTICAL);
-        int leftRight= SizeTool.dp2px(10);
-        int topBottom=SizeTool.dp2px(2);
-        layout.setPadding(leftRight,topBottom,leftRight,topBottom);
+        int leftRight = SizeTool.dp2px(10);
+        int topBottom = SizeTool.dp2px(2);
+        layout.setPadding(leftRight, topBottom, leftRight, topBottom);
         if (null != lifeSignInputItem.LifeSignControlItemList && lifeSignInputItem.LifeSignControlItemList.size() > 0) {
             for (LifeSignControlItem lifeSignControlItem : lifeSignInputItem.LifeSignControlItemList) {
                 int tsbz = lifeSignControlItem.TSBZ == null ? 0 : Integer.parseInt(lifeSignControlItem.TSBZ);
@@ -240,12 +241,12 @@ public class MyBaseExpandableListAdapter extends BaseExpandableListAdapter {
                 return textView;
             case "2":
                 ClassicFormInputLayout editLayout = new ClassicFormInputLayout(context);
-              //  editLayout.addStartText("开始");
+                //  editLayout.addStartText("开始");
                 editLayout.addCenterEditView(null);
-              //  editLayout.addEndText("结束");
-                EditText editText = editLayout.getEditTextInCenterLayout();
+                //  editLayout.addEndText("结束");
+                ClassicInputLayout classicInputLayout = editLayout.getInputLayoutInCenterLayout();
                 // 设置
-                setNumListener(editText, lifeSignControlItem);
+                setNumListener(classicInputLayout, lifeSignControlItem);
                 editLayout.setTag(lifeSignControlItem.TZXM);
                 return editLayout;
             case "4":
@@ -286,16 +287,16 @@ public class MyBaseExpandableListAdapter extends BaseExpandableListAdapter {
                     pullEditViewList.add(pullEditView);
                 }*/
                 ClassicFormInputLayout editViewLayout = new ClassicFormInputLayout(context);
-              //  editViewLayout.addStartText("开始");
-                editViewLayout.addCenterEditView(text, null, stringList, editAble);
-              //  editViewLayout.addEndText("结束");
-                EditText editView = editViewLayout.getEditTextInCenterLayout();
+                //  editViewLayout.addStartText("开始");
+                editViewLayout.addCenterEditView(text, null, stringList,editAble, false);
+                //  editViewLayout.addEndText("结束");
+                ClassicInputLayout inputLayout = editViewLayout.getInputLayoutInCenterLayout();
                 // 设置
-                setNumListener(editView, lifeSignControlItem);
-                editView.setTag(lifeSignControlItem.TZXM);
+                setNumListener(inputLayout, lifeSignControlItem);
+                inputLayout.setTag(lifeSignControlItem.TZXM);
 
                 // 设置
-                setNumListener(editView, lifeSignControlItem);
+                setNumListener(inputLayout, lifeSignControlItem);
                 editViewLayout.setTag(lifeSignControlItem.TZXM);
                 return editViewLayout;
 
@@ -356,8 +357,8 @@ public class MyBaseExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     // 是否设置数字输入
-    private void setNumListener(EditText edit, LifeSignControlItem lifeSignControlItem) {
-        if (edit == null) {
+    private void setNumListener(ClassicInputLayout inputLayout, LifeSignControlItem lifeSignControlItem) {
+        if (inputLayout == null) {
             return;
         }
     /*
@@ -368,7 +369,7 @@ public class MyBaseExpandableListAdapter extends BaseExpandableListAdapter {
         ////########2017-9-8 15:52:20 if ("1".equals(lifeSignControlItem.SZSR)) {
         if ("1".equals(lifeSignControlItem.SZSR) && !"1".equals(lifeSignControlItem.QTSR)) {
             /* =============================================================== end */
-            edit.setKeyListener(new NumberKeyListener() {
+            inputLayout.getInput().setKeyListener(new NumberKeyListener() {
 
                 @Override
                 protected char[] getAcceptedChars() {
@@ -383,15 +384,15 @@ public class MyBaseExpandableListAdapter extends BaseExpandableListAdapter {
                 }
             });
 
-            setNumLimit(edit, lifeSignControlItem);
+            setNumLimit(inputLayout, lifeSignControlItem);
         }
     }
 
     // 设置输入的区间限制
-    private void setNumLimit(final EditText edit, final LifeSignControlItem lifeSignControlItem) {
+    private void setNumLimit(final ClassicInputLayout inputLayout, final LifeSignControlItem lifeSignControlItem) {
         if (lifeSignControlItem.isMaxMinAble()) {
 
-            edit.addTextChangedListener(new TextWatcher() {
+            inputLayout.getInput().addTextChangedListener(new TextWatcher() {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start,
@@ -420,25 +421,25 @@ public class MyBaseExpandableListAdapter extends BaseExpandableListAdapter {
                         int value = lifeSignControlItem.getMaxMinStatue(inputText);
                         switch (value) {
                             case 1:
-                                edit.setTextColor(Color.BLACK);
-                                edit.setError("数值超出正常下限");
+                                inputLayout.setTextColor(Color.BLACK);
+                                inputLayout.setError("数值超出正常下限");
                                 //abnormityMap.put(lifeSignControlItem.TZXM, "-2");
                                 break;
                             case 2:
-                                edit.setTextColor(Color.RED);
+                                inputLayout.setTextColor(Color.RED);
                                 // abnormityMap.put(lifeSignControlItem.TZXM, "-1");
                                 break;
                             case 3:
-                                edit.setTextColor(Color.BLACK);
+                                inputLayout.setTextColor(Color.BLACK);
                                 // abnormityMap.put(lifeSignControlItem.TZXM, "0");
                                 break;
                             case 4:
-                                edit.setTextColor(Color.RED);
+                                inputLayout.setTextColor(Color.RED);
                                 //  abnormityMap.put(lifeSignControlItem.TZXM, "1");
                                 break;
                             case 5:
-                                edit.setTextColor(Color.BLACK);
-                                edit.setError("数值超出正常上限");
+                                inputLayout.setTextColor(Color.BLACK);
+                                inputLayout.setError("数值超出正常上限");
                                 //  abnormityMap.put(lifeSignControlItem.TZXM, "2");
                                 break;
                             default:
@@ -450,7 +451,7 @@ public class MyBaseExpandableListAdapter extends BaseExpandableListAdapter {
 
             });
 
-          edit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            inputLayout.getInput().setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus) {
@@ -469,16 +470,16 @@ public class MyBaseExpandableListAdapter extends BaseExpandableListAdapter {
                             int value = lifeSignControlItem.getMaxMinStatue(inputText);
                             switch (value) {
                                 case 1:
-                                    edit.setText("");
-                                    Toast.makeText(edit.getContext(), "输入数值超出下限",
+                                    inputLayout.setText("");
+                                    Toast.makeText(inputLayout.getContext(), "输入数值超出下限",
                                             Toast.LENGTH_SHORT).show();
-                                    edit.getLayoutParams().width = 200;
+                                    inputLayout.getLayoutParams().width = 200;
                                     break;
                                 case 5:
-                                    edit.setText("");
-                                    Toast.makeText(edit.getContext(), "输入数值超出上限",
+                                    inputLayout.setText("");
+                                    Toast.makeText(inputLayout.getContext(), "输入数值超出上限",
                                             Toast.LENGTH_SHORT).show();
-                                    edit.getLayoutParams().width = 200;
+                                    inputLayout.getLayoutParams().width = 200;
                                     break;
 
                                 default:

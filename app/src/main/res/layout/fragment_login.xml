@@ -39,7 +39,6 @@
         android:paddingBottom="20dp"
         android:paddingTop="20dp" />
 
-
     <Button
         android:id="@+id/id_btn_login"
         style="@style/ClassicButtonRound"

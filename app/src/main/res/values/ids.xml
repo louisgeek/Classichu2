@@ -3,6 +3,6 @@
     <item name="id_base_holder" type="id"/>
     <item name="id_view_state_holder" type="id"/>
     <item name="id_view_location_holder" type="id"/>
-    <item name="id_view_error_msg_holder" type="id"/>
-    <item name="id_view_error_popup_holder" type="id"/>
+    <item name="id_menu_item_plus_1" type="id"/>
+    <item name="id_menu_item_plus_2" type="id"/>
 </resources>

@@ -19,7 +19,7 @@ import android.widget.PopupWindow;
  */
 
 public class ClassichuPopupWindow extends PopupWindow {
-    private static boolean isPopupWindowShowing;
+    private static boolean popupWindowShowing;
 
     public void show(View anchor) {
         show(anchor, 0);
@@ -267,15 +267,15 @@ public class ClassichuPopupWindow extends PopupWindow {
     @Override
     public void dismiss() {
         super.dismiss();
-        isPopupWindowShowing = false;
+        popupWindowShowing = false;
     }
 
 
     private void showAsDropDownCompat(View anchor, int xoff, int yoff, int gravity) {
-        if (isPopupWindowShowing) {
+        if (popupWindowShowing) {
             return;
         }
-        isPopupWindowShowing = true;
+        popupWindowShowing = true;
 
         //Build.VERSION_CODES.N api 24  android 7.0
         //Build.VERSION_CODES.N_MR1 api 25  android 7.1.1

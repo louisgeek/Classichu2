@@ -30,6 +30,7 @@ import com.classichu.classichu2.logic.patient.module.lifesign.bean.MyMultiItemEn
 import com.classichu.classichu2.logic.patient.module.lifesign.bean.VitalSignTypeItemBean;
 import com.classichu.classichu2.tool.SizeTool;
 import com.classichu.classichu2.widget.ClassicFormInputLayout;
+import com.classichu.classichu2.widget.ClassicInputLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +74,6 @@ public class MyMultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<MyMult
         }
 
     }
-
 
 
     private void parserRoot(Context context, VitalSignTypeItemBean lifeSignTypeItem, LinearLayout root) {
@@ -175,9 +175,9 @@ public class MyMultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<MyMult
                 //  editLayout.addStartText("开始");
                 editLayout.addCenterEditView(null);
                 //  editLayout.addEndText("结束");
-                EditText editText = editLayout.getEditTextInCenterLayout();
+                ClassicInputLayout inputLayout = editLayout.getInputLayoutInCenterLayout();
                 // 设置
-                setNumListener(editText, lifeSignControlItem);
+                setNumListener(inputLayout, lifeSignControlItem);
                 editLayout.setTag(lifeSignControlItem.TZXM);
                 return editLayout;
             case "4":
@@ -219,15 +219,15 @@ public class MyMultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<MyMult
                 }*/
                 ClassicFormInputLayout editViewLayout = new ClassicFormInputLayout(context);
                 //  editViewLayout.addStartText("开始");
-                editViewLayout.addCenterEditView(text, null, stringList, editAble);
+                editViewLayout.addCenterEditView(text, null, stringList, editAble, false);
                 //  editViewLayout.addEndText("结束");
-                EditText editView = editViewLayout.getEditTextInCenterLayout();
+                ClassicInputLayout classicInputLayout = editViewLayout.getInputLayoutInCenterLayout();
                 // 设置
-                setNumListener(editView, lifeSignControlItem);
-                editView.setTag(lifeSignControlItem.TZXM);
+                setNumListener(classicInputLayout, lifeSignControlItem);
+                classicInputLayout.setTag(lifeSignControlItem.TZXM);
 
                 // 设置
-                setNumListener(editView, lifeSignControlItem);
+                setNumListener(classicInputLayout, lifeSignControlItem);
                 editViewLayout.setTag(lifeSignControlItem.TZXM);
                 return editViewLayout;
 
@@ -288,8 +288,8 @@ public class MyMultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<MyMult
     }
 
     // 是否设置数字输入
-    private void setNumListener(EditText edit, LifeSignControlItem lifeSignControlItem) {
-        if (edit == null) {
+    private void setNumListener(ClassicInputLayout inputLayout, LifeSignControlItem lifeSignControlItem) {
+        if (inputLayout == null) {
             return;
         }
     /*
@@ -300,7 +300,7 @@ public class MyMultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<MyMult
         ////########2017-9-8 15:52:20 if ("1".equals(lifeSignControlItem.SZSR)) {
         if ("1".equals(lifeSignControlItem.SZSR) && !"1".equals(lifeSignControlItem.QTSR)) {
             /* =============================================================== end */
-            edit.setKeyListener(new NumberKeyListener() {
+            inputLayout.getInput().setKeyListener(new NumberKeyListener() {
 
                 @Override
                 protected char[] getAcceptedChars() {
@@ -315,15 +315,15 @@ public class MyMultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<MyMult
                 }
             });
 
-            setNumLimit(edit, lifeSignControlItem);
+            setNumLimit(inputLayout, lifeSignControlItem);
         }
     }
 
     // 设置输入的区间限制
-    private void setNumLimit(final EditText edit, final LifeSignControlItem lifeSignControlItem) {
+    private void setNumLimit(final ClassicInputLayout inputLayout, final LifeSignControlItem lifeSignControlItem) {
         if (lifeSignControlItem.isMaxMinAble()) {
 
-            edit.addTextChangedListener(new TextWatcher() {
+            inputLayout.getInput().addTextChangedListener(new TextWatcher() {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start,
@@ -352,25 +352,25 @@ public class MyMultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<MyMult
                         int value = lifeSignControlItem.getMaxMinStatue(inputText);
                         switch (value) {
                             case 1:
-                                edit.setTextColor(Color.BLACK);
-                                edit.setError("数值超出正常下限");
+                                inputLayout.setTextColor(Color.BLACK);
+                                inputLayout.setError("数值超出正常下限");
                                 //abnormityMap.put(lifeSignControlItem.TZXM, "-2");
                                 break;
                             case 2:
-                                edit.setTextColor(Color.RED);
+                                inputLayout.setTextColor(Color.RED);
                                 // abnormityMap.put(lifeSignControlItem.TZXM, "-1");
                                 break;
                             case 3:
-                                edit.setTextColor(Color.BLACK);
+                                inputLayout.setTextColor(Color.BLACK);
                                 // abnormityMap.put(lifeSignControlItem.TZXM, "0");
                                 break;
                             case 4:
-                                edit.setTextColor(Color.RED);
+                                inputLayout.setTextColor(Color.RED);
                                 //  abnormityMap.put(lifeSignControlItem.TZXM, "1");
                                 break;
                             case 5:
-                                edit.setTextColor(Color.BLACK);
-                                edit.setError("数值超出正常上限");
+                                inputLayout.setTextColor(Color.BLACK);
+                                inputLayout.setError("数值超出正常上限");
                                 //  abnormityMap.put(lifeSignControlItem.TZXM, "2");
                                 break;
                             default:
@@ -382,7 +382,7 @@ public class MyMultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<MyMult
 
             });
 
-            edit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            inputLayout.getInput().setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus) {
@@ -401,16 +401,16 @@ public class MyMultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<MyMult
                             int value = lifeSignControlItem.getMaxMinStatue(inputText);
                             switch (value) {
                                 case 1:
-                                    edit.setText("");
-                                    Toast.makeText(edit.getContext(), "输入数值超出下限",
+                                    inputLayout.setText("");
+                                    Toast.makeText(inputLayout.getContext(), "输入数值超出下限",
                                             Toast.LENGTH_SHORT).show();
-                                    edit.getLayoutParams().width = 200;
+                                    inputLayout.getLayoutParams().width = 200;
                                     break;
                                 case 5:
-                                    edit.setText("");
-                                    Toast.makeText(edit.getContext(), "输入数值超出上限",
+                                    inputLayout.setText("");
+                                    Toast.makeText(inputLayout.getContext(), "输入数值超出上限",
                                             Toast.LENGTH_SHORT).show();
-                                    edit.getLayoutParams().width = 200;
+                                    inputLayout.getLayoutParams().width = 200;
                                     break;
 
                                 default:

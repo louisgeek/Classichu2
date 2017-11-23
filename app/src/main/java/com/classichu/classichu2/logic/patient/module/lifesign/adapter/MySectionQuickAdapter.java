@@ -31,6 +31,7 @@ import com.classichu.classichu2.logic.patient.module.lifesign.bean.MySectionEnti
 import com.classichu.classichu2.logic.patient.module.lifesign.bean.VitalSignTypeItemBean;
 import com.classichu.classichu2.tool.SizeTool;
 import com.classichu.classichu2.widget.ClassicFormInputLayout;
+import com.classichu.classichu2.widget.ClassicInputLayout;
 import com.classichu.classichu2.widget.pinned_section_itemdecoration.utils.FullSpanUtil;
 
 import java.util.ArrayList;
@@ -58,6 +59,7 @@ public class MySectionQuickAdapter extends BaseSectionQuickAdapter<MySectionEnti
     public MySectionQuickAdapter(int layoutResId, int sectionHeadResId, List<MySectionEntity> data) {
         super(layoutResId, sectionHeadResId, data);
     }
+
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
@@ -69,6 +71,7 @@ public class MySectionQuickAdapter extends BaseSectionQuickAdapter<MySectionEnti
         super.onViewAttachedToWindow(holder);
         FullSpanUtil.onViewAttachedToWindow(holder, this, BaseSectionQuickAdapter.SECTION_HEADER_VIEW);
     }
+
     @Override
     protected void convertHead(BaseViewHolder helper, MySectionEntity item) {
         helper.setText(R.id.id_tv_item_title, item.header);
@@ -190,9 +193,9 @@ public class MySectionQuickAdapter extends BaseSectionQuickAdapter<MySectionEnti
                 //  editLayout.addStartText("开始");
                 editLayout.addCenterEditView(null);
                 //  editLayout.addEndText("结束");
-                EditText editText = editLayout.getEditTextInCenterLayout();
+                ClassicInputLayout classicInputLayout = editLayout.getInputLayoutInCenterLayout();
                 // 设置
-                setNumListener(editText, lifeSignControlItem);
+                setNumListener(classicInputLayout, lifeSignControlItem);
                 editLayout.setTag(lifeSignControlItem.TZXM);
                 return editLayout;
             case "4":
@@ -234,15 +237,15 @@ public class MySectionQuickAdapter extends BaseSectionQuickAdapter<MySectionEnti
                 }*/
                 ClassicFormInputLayout editViewLayout = new ClassicFormInputLayout(context);
                 //  editViewLayout.addStartText("开始");
-                editViewLayout.addCenterEditView(text, null, stringList, editAble);
+                editViewLayout.addCenterEditView(text, null, stringList, editAble,false);
                 //  editViewLayout.addEndText("结束");
-                EditText editView = editViewLayout.getEditTextInCenterLayout();
+                ClassicInputLayout centerLayout = editViewLayout.getInputLayoutInCenterLayout();
                 // 设置
-                setNumListener(editView, lifeSignControlItem);
-                editView.setTag(lifeSignControlItem.TZXM);
+                setNumListener(centerLayout, lifeSignControlItem);
+                centerLayout.setTag(lifeSignControlItem.TZXM);
 
                 // 设置
-                setNumListener(editView, lifeSignControlItem);
+                setNumListener(centerLayout, lifeSignControlItem);
                 editViewLayout.setTag(lifeSignControlItem.TZXM);
                 return editViewLayout;
 
@@ -303,8 +306,8 @@ public class MySectionQuickAdapter extends BaseSectionQuickAdapter<MySectionEnti
     }
 
     // 是否设置数字输入
-    private void setNumListener(EditText edit, LifeSignControlItem lifeSignControlItem) {
-        if (edit == null) {
+    private void setNumListener(ClassicInputLayout classicInputLayout, LifeSignControlItem lifeSignControlItem) {
+        if (classicInputLayout == null) {
             return;
         }
     /*
@@ -315,7 +318,7 @@ public class MySectionQuickAdapter extends BaseSectionQuickAdapter<MySectionEnti
         ////########2017-9-8 15:52:20 if ("1".equals(lifeSignControlItem.SZSR)) {
         if ("1".equals(lifeSignControlItem.SZSR) && !"1".equals(lifeSignControlItem.QTSR)) {
             /* =============================================================== end */
-            edit.setKeyListener(new NumberKeyListener() {
+            classicInputLayout.getInput().setKeyListener(new NumberKeyListener() {
 
                 @Override
                 protected char[] getAcceptedChars() {
@@ -330,15 +333,15 @@ public class MySectionQuickAdapter extends BaseSectionQuickAdapter<MySectionEnti
                 }
             });
 
-            setNumLimit(edit, lifeSignControlItem);
+            setNumLimit(classicInputLayout, lifeSignControlItem);
         }
     }
 
     // 设置输入的区间限制
-    private void setNumLimit(final EditText edit, final LifeSignControlItem lifeSignControlItem) {
+    private void setNumLimit(final ClassicInputLayout classicInputLayout, final LifeSignControlItem lifeSignControlItem) {
         if (lifeSignControlItem.isMaxMinAble()) {
 
-            edit.addTextChangedListener(new TextWatcher() {
+            classicInputLayout.getInput().addTextChangedListener(new TextWatcher() {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start,
@@ -367,25 +370,25 @@ public class MySectionQuickAdapter extends BaseSectionQuickAdapter<MySectionEnti
                         int value = lifeSignControlItem.getMaxMinStatue(inputText);
                         switch (value) {
                             case 1:
-                                edit.setTextColor(Color.BLACK);
-                                edit.setError("数值超出正常下限");
+                                classicInputLayout.setTextColor(Color.BLACK);
+                                classicInputLayout.setError("数值超出正常下限");
                                 //abnormityMap.put(lifeSignControlItem.TZXM, "-2");
                                 break;
                             case 2:
-                                edit.setTextColor(Color.RED);
+                                classicInputLayout.setTextColor(Color.RED);
                                 // abnormityMap.put(lifeSignControlItem.TZXM, "-1");
                                 break;
                             case 3:
-                                edit.setTextColor(Color.BLACK);
+                                classicInputLayout.setTextColor(Color.BLACK);
                                 // abnormityMap.put(lifeSignControlItem.TZXM, "0");
                                 break;
                             case 4:
-                                edit.setTextColor(Color.RED);
+                                classicInputLayout.setTextColor(Color.RED);
                                 //  abnormityMap.put(lifeSignControlItem.TZXM, "1");
                                 break;
                             case 5:
-                                edit.setTextColor(Color.BLACK);
-                                edit.setError("数值超出正常上限");
+                                classicInputLayout.setTextColor(Color.BLACK);
+                                classicInputLayout.setError("数值超出正常上限");
                                 //  abnormityMap.put(lifeSignControlItem.TZXM, "2");
                                 break;
                             default:
@@ -397,7 +400,7 @@ public class MySectionQuickAdapter extends BaseSectionQuickAdapter<MySectionEnti
 
             });
 
-            edit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            classicInputLayout.getInput().setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus) {
@@ -416,16 +419,16 @@ public class MySectionQuickAdapter extends BaseSectionQuickAdapter<MySectionEnti
                             int value = lifeSignControlItem.getMaxMinStatue(inputText);
                             switch (value) {
                                 case 1:
-                                    edit.setText("");
-                                    Toast.makeText(edit.getContext(), "输入数值超出下限",
+                                    classicInputLayout.setText("");
+                                    Toast.makeText(classicInputLayout.getContext(), "输入数值超出下限",
                                             Toast.LENGTH_SHORT).show();
-                                    edit.getLayoutParams().width = 200;
+                                    classicInputLayout.getLayoutParams().width = 200;
                                     break;
                                 case 5:
-                                    edit.setText("");
-                                    Toast.makeText(edit.getContext(), "输入数值超出上限",
+                                    classicInputLayout.setText("");
+                                    Toast.makeText(classicInputLayout.getContext(), "输入数值超出上限",
                                             Toast.LENGTH_SHORT).show();
-                                    edit.getLayoutParams().width = 200;
+                                    classicInputLayout.getLayoutParams().width = 200;
                                     break;
 
                                 default:
