@@ -69,5 +69,6 @@ dependencies {
     compile 'com.jaeger.statusbaruitl:library:1.4.0'
     compile 'cn.bingoogolapple:bga-swipebacklayout:1.0.8@aar'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.33'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 }

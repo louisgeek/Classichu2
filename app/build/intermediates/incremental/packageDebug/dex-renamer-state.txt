@@ -1,4 +1,4 @@
-#Thu Nov 23 20:19:28 CST 2017
+#Mon Nov 27 17:33:05 CST 2017
 base.0=D\:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_d33766427bb1e7220d9083b57e5a63569df45bcd
 renamed.1=classes2.dex
 renamed.0=classes.dex
