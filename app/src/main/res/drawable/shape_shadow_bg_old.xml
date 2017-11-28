@@ -2,6 +2,18 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <!--变相实现 阴影、渐变 like @android:drawable/dialog_holo_light_frame -->
+    <!-- 10%透明 -->
+    <item>
+        <shape>
+            <padding
+                android:bottom="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1px" />
+            <solid android:color="#1ACCCCCC" />
+            <corners android:radius="1dp" />
+        </shape>
+    </item>
     <!-- 20%透明 -->
     <item>
         <shape>
@@ -11,6 +23,18 @@
                 android:right="1dp"
                 android:top="1px" />
             <solid android:color="#33CCCCCC" />
+            <corners android:radius="1dp" />
+        </shape>
+    </item>
+    <!-- 30%透明 -->
+    <item>
+        <shape>
+            <padding
+                android:bottom="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1px" />
+            <solid android:color="#4DCCCCCC" />
             <corners android:radius="1dp" />
         </shape>
     </item>
@@ -26,7 +50,7 @@
             <corners android:radius="1dp" />
         </shape>
     </item>
-    <!-- 40%透明 -->
+    <!-- 50%透明 -->
     <item>
         <shape>
             <padding
@@ -34,7 +58,7 @@
                 android:left="1dp"
                 android:right="1dp"
                 android:top="1px" />
-            <solid android:color="#CCbcbcbc" />
+            <solid android:color="#80CCCCCC" />
             <corners android:radius="1dp" />
         </shape>
     </item>

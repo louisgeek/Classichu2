@@ -175,7 +175,9 @@ public class ClassicFormInputLayout extends LinearLayout {
     public ClassicInputLayout getInputLayoutInCenterLayout() {
         return dropSelectEditView != null ? dropSelectEditView.getClassicInputLayout() : null;
     }
-
+    public LinearLayout getCenterLayout() {
+        return mCenterLayout;
+    }
     private ClassicDropSelectEditView dropSelectEditView;
 
     public ClassicFormInputLayout addCenterEditView(String text) {

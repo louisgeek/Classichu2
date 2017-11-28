@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="id_base_holder" type="id"/>
-    <item name="id_view_state_holder" type="id"/>
-    <item name="id_view_location_holder" type="id"/>
-    <item name="id_menu_item_plus_1" type="id"/>
-    <item name="id_menu_item_plus_2" type="id"/>
+    <item name="id_holder_base" type="id" />
+    <item name="id_holder_view_state" type="id" />
+    <item name="id_holder_view_organizeLayout" type="id" />
+    <item name="id_holder_view_classicLayout_expandImageView" type="id" />
+    <item name="id_holder_view_radioButton_key" type="id" />
+    <item name="id_holder_view_checkBox_key" type="id" />
+    <item name="id_holder_view_data_nei" type="id" />
+    <item name="id_menu_item_plus_1" type="id" />
+    <item name="id_menu_item_plus_2" type="id" />
 </resources>

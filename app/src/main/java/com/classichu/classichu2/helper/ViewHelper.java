@@ -27,8 +27,8 @@ public class ViewHelper {
      */
     public static void showView(final View view) {
         int viewState = VIEW_STATE_DEFAULT;
-        if (view.getTag(R.id.id_view_state_holder) != null) {
-            viewState = (int) view.getTag(R.id.id_view_state_holder);
+        if (view.getTag(R.id.id_holder_view_state) != null) {
+            viewState = (int) view.getTag(R.id.id_holder_view_state);
         }
         switch (viewState) {
             case VIEW_STATE_ANIMING:
@@ -40,7 +40,7 @@ public class ViewHelper {
                 /**
                  *
                  */
-                view.setTag(R.id.id_view_state_holder, VIEW_STATE_ANIMING);
+                view.setTag(R.id.id_holder_view_state, VIEW_STATE_ANIMING);
                 //
                 int startHeight = 0;
                 int endHeight = ViewTool.getMeasuredHeightMy(view);
@@ -61,7 +61,7 @@ public class ViewHelper {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
-                        view.setTag(R.id.id_view_state_holder, VIEW_STATE_SHOW);
+                        view.setTag(R.id.id_holder_view_state, VIEW_STATE_SHOW);
                     }
                 });
                 ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(view, "alpha", 0f, 1f);
@@ -81,8 +81,8 @@ public class ViewHelper {
      */
     public static void hideView(final View view) {
         int viewState = VIEW_STATE_DEFAULT;
-        if (view.getTag(R.id.id_view_state_holder) != null) {
-            viewState = (int) view.getTag(R.id.id_view_state_holder);
+        if (view.getTag(R.id.id_holder_view_state) != null) {
+            viewState = (int) view.getTag(R.id.id_holder_view_state);
         }
         switch (viewState) {
             case VIEW_STATE_ANIMING:
@@ -94,7 +94,7 @@ public class ViewHelper {
                 /**
                  *
                  */
-                view.setTag(R.id.id_view_state_holder, VIEW_STATE_ANIMING);
+                view.setTag(R.id.id_holder_view_state, VIEW_STATE_ANIMING);
                 //
                 int startHeight = ViewTool.getMeasuredHeightMy(view);
                 int endHeight = 0;
@@ -115,7 +115,7 @@ public class ViewHelper {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
-                        view.setTag(R.id.id_view_state_holder, VIEW_STATE_HIDED);
+                        view.setTag(R.id.id_holder_view_state, VIEW_STATE_HIDED);
                     }
                 });
                 ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(view, "alpha", 1f, 0f);

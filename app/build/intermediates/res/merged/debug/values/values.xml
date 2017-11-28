@@ -731,13 +731,17 @@
     <item name="hold_classic_base_view_holder" type="id"/>
     <item name="hold_classic_recyclerview_view_holder" type="id"/>
     <item name="home" type="id"/>
-    <item name="id_base_holder" type="id"/>
     <item name="id_hold_loading_info" type="id"/>
+    <item name="id_holder_base" type="id"/>
+    <item name="id_holder_view_checkBox_key" type="id"/>
+    <item name="id_holder_view_classicLayout_expandImageView" type="id"/>
+    <item name="id_holder_view_data_nei" type="id"/>
+    <item name="id_holder_view_organizeLayout" type="id"/>
+    <item name="id_holder_view_radioButton_key" type="id"/>
+    <item name="id_holder_view_state" type="id"/>
     <item name="id_menu_item_plus_1" type="id"/>
     <item name="id_menu_item_plus_2" type="id"/>
     <item name="id_ui_in_code_loading_one" type="id"/>
-    <item name="id_view_location_holder" type="id"/>
-    <item name="id_view_state_holder" type="id"/>
     <item name="item_touch_helper_previous_elevation" type="id"/>
     <item name="progress_circular" type="id"/>
     <item name="progress_horizontal" type="id"/>

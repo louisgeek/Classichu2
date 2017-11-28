@@ -5,10 +5,29 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/idxxx"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" />
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/id_btn_load"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="load" />
+
+        <Button
+            android:id="@+id/id_btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="save" />
+
+        <LinearLayout
+            android:id="@+id/idxxx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    </LinearLayout>
 
 </ScrollView>
 

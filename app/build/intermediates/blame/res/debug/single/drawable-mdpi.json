@@ -72,6 +72,10 @@
         "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_broken_image_black_24dp.png"
     },
     {
+        "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_add_box_black_24dp.png",
+        "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_add_box_black_24dp.png"
+    },
+    {
         "merged": "D:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_search_black_24dp.png",
         "source": "D:\\LouisGit\\study\\Classichu2\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_search_black_24dp.png"
     },

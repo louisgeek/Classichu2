@@ -1,4 +1,4 @@
-#Tue Nov 28 08:51:33 CST 2017
+#Tue Nov 28 20:21:35 CST 2017
 base.0=D\:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_5
 renamed.0=classes.dex
 file.0=D\:\\LouisGit\\study\\Classichu2\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_5\\classes.dex

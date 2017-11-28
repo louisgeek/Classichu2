@@ -10,6 +10,8 @@ import java.util.List;
 
 public class NursingEvaluateItem {
     public int id;
+    public String XMBH;
+    public String XMQZ;
     public String XMMC;
     public String QZWB;
     public String HZWB;
