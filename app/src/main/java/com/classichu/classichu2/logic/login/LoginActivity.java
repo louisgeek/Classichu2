@@ -29,14 +29,14 @@ public class LoginActivity extends BaseActivity{
     }
 
     private void configTitle(CharSequence title) {
-        CacheHelper.putString("key1", "中国");
-        CacheTool.getInstance().putString("key2", "四届", 5 * CacheTool.MINUTE_IN_MILLIS);
+        CacheHelper.putString("key11", "123456");
+        CacheTool.getInstance().putString("key22", "7890", 5 * CacheTool.MINUTE_IN_MILLIS);
         Toolbar toolbar = findById(R.id.id_toolbar);
         toolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String key1 = CacheHelper.getString("key1");
-                String key2 = CacheHelper.getString("key2");
+                String key1 = CacheHelper.getString("key11");
+                String key2 = CacheHelper.getString("key22");
                 DialogManager.showTipDialog(mActivity, "xx", key1 + "\n" + key2);
             }
         });

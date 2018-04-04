@@ -57,13 +57,17 @@ public class CacheTool {
     private static File mCacheDir;
 
     private static CacheTool getInstance(File cacheDir, long maxSize, int maxCount) {
-        mCacheDir = cacheDir;
-        String cacheKey = cacheDir.getAbsoluteFile() + "_" + Process.myPid();
-        CacheTool cacheTool = sSimpleArrayMapCacheInstance.get(cacheKey);
+        String filePath = cacheDir.getAbsolutePath() + "_" + Process.myPid();
+        CacheTool cacheTool = sSimpleArrayMapCacheInstance.get(filePath);
         if (cacheTool == null) {
             cacheTool = new CacheTool(maxSize, maxCount);
-            sSimpleArrayMapCacheInstance.put(cacheKey, cacheTool);
+            sSimpleArrayMapCacheInstance.put(filePath, cacheTool);
         }
+        File cachePath = new File(filePath);
+        if (!cachePath.exists()&&cachePath.isDirectory()){
+            cachePath.mkdirs();
+        }
+        mCacheDir = cachePath;
         return cacheTool;
     }
 
@@ -73,6 +77,9 @@ public class CacheTool {
         }
         String filePath = getApp().getCacheDir().getAbsolutePath();
         File file = new File(filePath, cacheName);
+        if (!file.exists() && file.isDirectory()) {
+            file.mkdirs();
+        }
         return getInstance(file, maxSize, maxCount);
     }
 
@@ -97,7 +104,7 @@ public class CacheTool {
     }
 
     public byte[] getBytes(String key, byte[] defaultValue) {
-        File file = new File(mCacheDir, String.valueOf(key.hashCode()));
+        File file = new File(mCacheDir, String.valueOf(key.hashCode()+".txt"));
         try {
             if (file.exists()) {
                 //
@@ -166,11 +173,8 @@ public class CacheTool {
         } else {
             realSaveDataBytes = dataBytes;
         }
-        File file = new File(mCacheDir, String.valueOf(key.hashCode()));
+        File file = new File(mCacheDir, String.valueOf(key.hashCode())+".txt");
         try {
-            if (!file.getParentFile().exists()){
-                file.getParentFile().mkdirs();
-            }
             if (!file.exists()) {
                 file.createNewFile();
             }
@@ -184,12 +188,15 @@ public class CacheTool {
     public void putBytes(String key, byte[] dataBytes) {
         putBytes(key, dataBytes, -1);
     }
+
     public void putString(String key, String string) {
         putString(key, string, -1);
     }
-    public void putString(String key, String string,long timeInMillis) {
+
+    public void putString(String key, String string, long timeInMillis) {
         putBytes(key, string.getBytes(), timeInMillis);
     }
+
     public void putSerializable(String key, Serializable serializable, long timeInMillis) {
         try {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
