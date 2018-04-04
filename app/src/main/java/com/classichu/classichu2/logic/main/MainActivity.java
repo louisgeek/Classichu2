@@ -23,11 +23,14 @@ import com.classichu.classichu2.R;
 import com.classichu.classichu2.app.AppInfoDataManager;
 import com.classichu.classichu2.base.BaseActivity;
 import com.classichu.classichu2.base.BaseFragment;
+import com.classichu.classichu2.helper.CacheHelper;
 import com.classichu.classichu2.logic.login.bean.UserLoginBean;
 import com.classichu.classichu2.logic.main.adapter.AreaListAdapter;
 import com.classichu.classichu2.logic.main.factory.MainAtyFragmentFactory;
+import com.classichu.classichu2.tool.CacheTool;
 import com.classichu.classichu2.widget.BottomNavigationViewSupport;
 import com.classichu.classichu2.widget.ClassichuPopupWindow;
+import com.classichu.dialogview.manager.DialogManager;
 import com.fondesa.recyclerviewdivider.RecyclerViewDivider;
 import com.jakewharton.rxbinding2.view.RxView;
 
@@ -218,8 +221,8 @@ public class MainActivity extends BaseActivity {
         });
         recyclerView.setAdapter(areaListAdapter);
         //
-        mClassichuPopupWindow=new ClassichuPopupWindow.Builder(mContext).setView(recyclerView).build();
-        mClassichuPopupWindow.showCenter(view,-view.getHeight()/5);
+        mClassichuPopupWindow = new ClassichuPopupWindow.Builder(mContext).setView(recyclerView).build();
+        mClassichuPopupWindow.showCenter(view, -view.getHeight() / 5);
 
     }
 

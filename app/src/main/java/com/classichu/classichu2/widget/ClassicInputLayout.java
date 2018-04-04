@@ -28,7 +28,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.classichu.classichu2.R;
-import com.classichu.dialogview.tool.SizeTool;
+import com.classichu.classichu2.tool.SizeTool;
 
 
 /**

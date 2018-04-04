@@ -12,6 +12,8 @@ import java.util.TimeZone;
 
 /**
  * Created by louisgeek on 2016/6/19.
+ *  * V1.0.1
+ * Updated by louisgeek on 2018-3-9.
  */
 public class DateTool {
 
@@ -103,7 +105,26 @@ public class DateTool {
         formats.add(new SimpleDateFormat(FORMAT_cn_9, Locale.CHINA));
     }
 
+    public static String getPreviousDayDateTime() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -1);//加1天  -1减一天  和Calendar.DAY_OF_MONTH值一样
+        return parseCalendar2Str(calendar, FORMAT_DATE_TIME);
+    }
 
+    public static String getPreviousDayDate() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -1);//加1天  -1减一天  和Calendar.DAY_OF_MONTH值一样
+        return parseCalendar2Str(calendar, FORMAT_DATE);
+    }
+    public static String getNowDayDateTime() {
+        Calendar calendar = Calendar.getInstance();
+        return parseCalendar2Str(calendar, FORMAT_DATE_TIME);
+    }
+
+    public static String getNowDayDate() {
+        Calendar calendar = Calendar.getInstance();
+        return parseCalendar2Str(calendar, FORMAT_DATE);
+    }
     public static String getNextDayDateTime() {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, 1);//加1天  -1减一天  和Calendar.DAY_OF_MONTH值一样
@@ -205,6 +226,11 @@ public class DateTool {
         return date;
     }
 
+    public static String parseStr2Str(String dateStrIn, String formatStrIn, String formatStrOut) {
+        Date date = parseStr2Date(dateStrIn, formatStrIn);
+        return parseDate2Str(date, formatStrOut);
+    }
+
     public static String parseDate2Str(Date date, String formatStr) {
         SimpleDateFormat sdf = new SimpleDateFormat(formatStr, Locale.CHINA);//Locale.SIMPLIFIED_CHINESE和Locale.CHINA一样
         return sdf.format(date);
@@ -304,7 +330,11 @@ public class DateTool {
         }
         return date.getTime() - System.currentTimeMillis();
     }
-
+    public static String getNextTimeStr(long timeInMillis) {
+        Date date = new Date(System.currentTimeMillis() + timeInMillis);
+        SimpleDateFormat sdf = new SimpleDateFormat(FORMAT_DATE_TIME, Locale.CHINA);
+        return  sdf.format(date);
+    }
     public static long timeCompare(String oneTimeStr, String anotherTimeStr) {
         Date oneTimeDate = DateTimeTool.parseDateStr2Date(oneTimeStr);
         Date anotherTimeDate = DateTimeTool.parseDateStr2Date(anotherTimeStr);

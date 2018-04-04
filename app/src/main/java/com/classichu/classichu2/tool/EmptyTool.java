@@ -14,9 +14,27 @@ import java.util.Map;
 
 /**
  * Created by Classichu on 2017-6-9.
+ * V1.0.1
+ * Updated by louisgeek on 2018-3-9.
  */
 
 public class EmptyTool {
+
+    public static boolean isNotBlank(final CharSequence s) {
+        return !isBlank(s);
+    }
+
+    public static boolean isBlank(final CharSequence s) {
+        if (s == null) {
+            return true;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            if (!Character.isWhitespace(s.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     public static boolean isEmpty(Object obj) {
         if (obj == null) {

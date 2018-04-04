@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public static final String BUNDLE_EXTRA_INT_1 = "BUNDLE_EXTRA_INT_1";
     public static final String BUNDLE_EXTRA_STR_1 = "BUNDLE_EXTRA_STR_1";
     protected static String mTag;
-    protected Activity mActivity;
+    protected FragmentActivity mActivity;
     protected Context mContext;
     private Unbinder mUnbinder;
 

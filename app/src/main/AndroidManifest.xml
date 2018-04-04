@@ -15,8 +15,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ClassicTheme">
-        <activity android:name=".logic.main.MainActivity"></activity>
+        <activity android:name=".logic.main.MainActivity">
+
+        </activity>
         <activity android:name=".logic.login.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity android:name=".logic.setting.SettingActivity" />
@@ -24,11 +31,7 @@
             android:name=".logic.patient.PatientActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".logic.patient.module.nursingevaluate.NursingEvaluateActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
     </application>
