@@ -21,7 +21,11 @@ public class CacheHelper {
     }
 
     public static void putData(String key, Serializable objectSerializable) {
-        CacheTool.getInstance().putSerializable(key, objectSerializable);
+        putData(key, objectSerializable, -1);
+    }
+
+    public static void putData(String key, Serializable objectSerializable, long timeInMillis) {
+        CacheTool.getInstance().putSerializable(key, objectSerializable, timeInMillis);
     }
 
     @Deprecated
@@ -36,9 +40,12 @@ public class CacheHelper {
     }
 
     public static void putString(String key, String value) {
-        CacheTool.getInstance().putString(key, value);
+        putString(key, value, -1);
     }
 
+    public static void putString(String key, String value, long timeInMillis) {
+        CacheTool.getInstance().putString(key, value, timeInMillis);
+    }
    /* public static Bitmap getBitmap(String key) {
         //return ACache.get(BaseTool.getAppContext()).getAsBitmap(key);
         return CacheTool.getInstance().getBitmap(key);
@@ -49,18 +56,18 @@ public class CacheHelper {
         CacheTool.getInstance().put(key, bitmap);
     }*/
 
-  /*  public static boolean remove(String key) {
+    public static boolean remove(String key) {
        // return ACache.get(BaseTool.getAppContext()).remove(key);
         return CacheTool.getInstance().remove(key);
-    }*/
+    }
 
   /*  public static File getCacheFile(String key) {
         return ACache.get(BaseTool.getAppContext()).file(key);
         // return CacheToolOld.getInstance().get(key);
     }*/
 
-  /*  public static void clearAllCache() {
+    public static void clear() {
         // ACache.get(BaseTool.getAppContext()).clear();
         CacheTool.getInstance().clear();
-    }*/
+    }
 }

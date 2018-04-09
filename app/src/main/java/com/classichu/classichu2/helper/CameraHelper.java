@@ -19,7 +19,7 @@ public class CameraHelper {
             Camera.Parameters mParameters = mCamera.getParameters();
             mCamera.setParameters(mParameters);
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             isCanUse = false;
         }
 
@@ -27,7 +27,7 @@ public class CameraHelper {
             try {
                 mCamera.release();
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
                 return isCanUse;
             }
         }

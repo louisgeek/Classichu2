@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.classichu.classichu2.R;
 import com.classichu.classichu2.base.BaseMvpFragment;
+import com.classichu.classichu2.helper.CacheHelper;
 import com.classichu.classichu2.logic.login.adapter.AgencyBaseAdapter;
 import com.classichu.classichu2.logic.login.bean.AgencyBean;
 import com.classichu.classichu2.logic.login.bean.AgencyBeanWrapper;
@@ -21,6 +22,7 @@ import com.classichu.classichu2.logic.login.bean.UserLoginBean;
 import com.classichu.classichu2.logic.login.manager.LoginManager;
 import com.classichu.classichu2.logic.main.MainActivity;
 import com.classichu.classichu2.logic.setting.SettingActivity;
+import com.classichu.classichu2.tool.CacheTool;
 import com.classichu.classichu2.tool.KeyBoardTool;
 import com.classichu.classichu2.tool.SharedPreferencesTool;
 import com.classichu.classichu2.tool.ToastTool;
@@ -113,7 +115,6 @@ public class LoginFragment extends BaseMvpFragment<LoginPresenter> implements Lo
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(@NonNull Object o) throws Exception {
-
                         showLoginAdminDialog();
                     }
                 });
